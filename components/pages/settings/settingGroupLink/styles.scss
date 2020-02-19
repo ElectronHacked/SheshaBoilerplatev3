@@ -1,0 +1,23 @@
+@import 'styles/variables';
+@import 'styles/mixins';
+
+.setting-group-link {
+  @include textHoverEffect;
+
+
+  :hover {
+    background-color: lighten($color: $primary-color, $amount: 45%);
+  }
+
+  &.setting-group-link-active {
+    background-color: lighten($color: $primary-color, $amount: 55%);
+  }
+
+  a {
+    text-decoration: none;
+    color: unset;
+    display: block;
+    line-height: 26px;
+    padding: 0 $padding-lg;
+  }
+}

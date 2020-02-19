@@ -1,0 +1,25 @@
+@import 'styles/variables';
+
+.setting-panel {
+  border-right: 1px solid grey;
+  min-width: 250px;
+
+  margin: -$padding-lg;
+  margin-right: unset;
+
+  // min-width: 321px;
+  border-right: 1px solid rgba(0, 0, 0, .2);
+  border-right: 1px solid var(--palette-black-alpha-20, rgba(0, 0, 0, .2));
+  background-color: rgba(248, 248, 248, 1);
+  background-color: rgba(var(--palette-neutral-2, 248, 248, 248), 1);
+  overflow-y: auto;
+
+  .setting-panel-header {
+    padding: 0 $padding-lg;
+    ;
+
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: $padding-lg;
+  }
+}

@@ -1,0 +1,119 @@
+@import 'styles/variables';
+@import 'styles/mixins';
+@import 'styles/main';
+
+$white: #ffffff;
+$sider-collapsed-width: 40px;
+$sider-expanded-width: 200px;
+$sider-bg: #f6f6f6;
+$header-height: 37.5px;
+$ant-menu-item: 10px;
+$submenu-padding: 24px;
+$body-padding: 8px;
+$header-sides-spadding: $ant-menu-item;
+
+.nav-links-renderer {
+
+  .nav-links-renderer {
+    // color: #fff;
+  }
+
+  .ant-menu-submenu {
+    padding: 0 10px !important;
+
+    .ant-menu-submenu-title {
+      padding: unset !important;
+      margin: unset !important;
+
+      .ant-menu-submenu-arrow {
+        right: 0;
+      }
+
+      .ant-menu-submenu-inline {
+        font: bolder;
+      }
+    }
+  }
+}
+
+.ant-layout-sider-children {
+  .ant-menu {
+    background-color: #f6f6f6;
+    line-height: 64px;
+
+    .ant-menu-submenu {
+      transition: none;
+      padding: 0 $submenu-padding !important;
+
+      &.is-ant-menu-item {
+        // padding: unset !important;
+      }
+
+      &.ant-menu-submenu-open {
+        .ant-menu-item {
+          padding: unset !important;
+        }
+      }
+    }
+
+    &.ant-menu-sub {
+      &.ant-menu-inline {
+        padding-left: 24px !important;
+      }
+    }
+
+    &.ant-menu-inline-collapsed {
+      width: $sider-collapsed-width !important;
+
+      .ant-menu-item,
+      .ant-menu-submenu {
+        padding: 0 $ant-menu-item !important;
+      }
+    }
+
+
+
+    .ant-menu-vertical {
+      border-right: 0;
+    }
+
+    .ant-menu-item {
+      margin-top: 0px;
+      margin-bottom: unset;
+    }
+
+    .ant-menu-item-selected {
+      background: $primary-color;
+
+      a {
+        color: $white;
+      }
+
+      .anticon {
+        color: $white;
+      }
+    }
+
+    .ant-menu-item-active {
+      // color: $primary-color;
+
+      .anticon {
+        color: $primary-color;
+      }
+    }
+
+    .ant-menu-item-selected.ant-menu-item-active {
+      a {
+        color: $white;
+      }
+
+      .anticon {
+        color: $white;
+      }
+    }
+  }
+}
+
+.ant-menu-item-is-summebu {
+  margin: unset !important;
+}

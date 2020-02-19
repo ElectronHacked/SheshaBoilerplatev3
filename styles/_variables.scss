@@ -1,0 +1,41 @@
+// Colors
+$primary-color: #0066c1;
+$kznims-active-card-orange: #ffedcc;
+$kznims-hover-card-color: #fff6e5;
+$kznims-secondary-color: #ffb769;
+$kznims-light-grey: #d5d5d5;
+$kznims-button-border-color: #a0a0a0;
+$kznims-border-color: #e8e8e8;
+$kznims-light-green: #d5fdd5;
+$box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+$background-color: #f0f2f5;
+// Customize Ant Design Varialbles
+
+$card-shadow: 0 2px 8px rgba($primary-color, 0.09);
+$layout-body-background: #f0f2f5;
+
+// Paddings
+$padding-sm: 4px;
+$padding-lg: 12px;
+
+// Transitions
+$transition-time: 0.3s;
+$transition-all: all $transition-time ease-out;
+
+// Fonts
+$font-size-sm: 12.5px;
+$font-size-sm: 12px;
+
+// Borders
+$border-style: 1px solid #e8e8e8;
+
+// Labels
+$label-font-weight: 600;
+
+// Header
+$header-height: 37.5px;
+$content-heading-height: 35px;
+
+:export {
+  primaryColor: $primary-color;
+}

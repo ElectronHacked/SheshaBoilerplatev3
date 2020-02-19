@@ -1,0 +1,59 @@
+@import 'styles/variables';
+@import 'styles/mixins';
+
+$padding: 8px;
+
+.sha-panel {
+  &.has-border-top {
+    border-top: 3px solid $primary-color !important;
+  }
+
+  overflow: hidden;
+  padding: 4px $padding;
+  box-shadow: $box-shadow;
+  background: white;
+  display: flex;
+  flex-direction: column;
+
+  .sha-panel-header {
+    display: flex;
+    justify-content: space-between;
+
+    .sha-title {
+      font-weight: 600;
+    }
+
+    .sha-controls {
+      display: flex;
+
+
+      .panel-collapse {
+        margin-left: 12px;
+        color: $primary-color;
+        cursor: pointer;
+
+        :hover {
+          color: darken($color: $primary-color, $amount: 35%)
+        }
+
+        .anticon {
+          @include transition;
+
+          &.collapsed {
+            transform: rotate(-180deg);
+          }
+        }
+      }
+    }
+  }
+
+  .sha-panel-body {
+    flex: 1;
+    @include transition;
+
+    &.collapsed {
+      max-height: 0 !important;
+      overflow-y: hidden;
+    }
+  }
+}

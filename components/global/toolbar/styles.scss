@@ -1,0 +1,20 @@
+@import 'styles/variables';
+@import 'styles/mixins';
+
+.index-table {
+  background: white;
+  height: 100%;
+  padding: $padding-sm $padding-lg;
+
+  .table {
+    .rt-table {
+      .rt-thead {
+        &.-header {
+          .rt-tr {
+            font-weight: $label-font-weight;
+          }
+        }
+      }
+    }
+  }
+}

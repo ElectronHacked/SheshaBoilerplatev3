@@ -1,0 +1,8 @@
+@import 'styles/variables';
+$heading-combined-height: $content-heading-height+$header-height;
+
+.settings-layout {
+  display: flex;
+
+  height: calc(100vh - #{$heading-combined-height}) !important;
+}

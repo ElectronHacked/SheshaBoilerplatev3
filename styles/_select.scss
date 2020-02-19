@@ -1,0 +1,9 @@
+.ant-select-dropdown--multiple {
+  .ant-select-dropdown-menu {
+    .ant-select-dropdown-menu-item {
+      &.ant-select-dropdown-menu-item-selected {
+        display: none;
+      }
+    }
+  }
+}

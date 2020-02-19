@@ -1,0 +1,10 @@
+@import 'styles/variables';
+@import 'styles/mixins';
+
+.cancel-tool {
+  cursor: pointer;
+
+  .cross {
+    @include textHoverEffect;
+  }
+}

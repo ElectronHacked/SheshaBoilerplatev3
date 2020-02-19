@@ -1,0 +1,25 @@
+@import 'variables';
+
+// All the transitions in this app should be like this
+@mixin transition {
+  transition: $transition-all;
+}
+
+// Hoveer
+@mixin textHoverEffect {
+  @include transition;
+
+  &:hover {
+    color: $primary-color !important;
+  }
+
+  cursor: pointer;
+}
+
+@mixin maxHeigh {
+  height: 100%;
+}
+
+@mixin bottomTop {
+  border-top: 1px solid lightgray;
+}

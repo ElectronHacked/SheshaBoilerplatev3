@@ -1,0 +1,31 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "api": "./api",
+          "hocs": "./hocs",
+          "components": "./components",
+          "app-constants": "./app-constants",
+          "contexts": "./contexts",
+          "data": "./data",
+          "providers": "./providers",
+          "routes": "./routes",
+          "styles": "./styles",
+          "useApis": "./useApis",
+          "utils": "./utils"
+        }
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ]
+  ]
+}
