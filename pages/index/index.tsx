@@ -23,6 +23,7 @@ export const Home = () => {
   const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('right');
   const { mutate: createBatchAssignmentHttp } = useInspectionBatchAssignmentCreate({});
 
+  // @ts-ignore
   const createBatchAssignment = () => {
     createBatchAssignmentHttp({
       projectId: '',
