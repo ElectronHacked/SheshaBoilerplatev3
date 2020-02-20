@@ -4,6 +4,7 @@ import { withAuth } from 'hocs';
 import { Collapse, Icon, Select } from 'antd';
 import { ExpandIconPosition } from 'antd/lib/collapse/Collapse';
 import { MainLayout } from 'components/layouts';
+import { useInspectionBatchAssignmentCreate } from 'api/inspectionBatchAssignments';
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -20,6 +21,23 @@ const text = `
 
 export const Home = () => {
   const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('right');
+  const { mutate: createBatchAssignmentHttp } = useInspectionBatchAssignmentCreate({});
+
+  const createBatchAssignment = () => {
+    createBatchAssignmentHttp({
+      projectId: '',
+      regionId: '',
+      propertyGroupId: '',
+      assignedTeamId: '',
+      plannedStartDate: '',
+      plannedCompletionDate: '',
+    })
+      .then(data => {
+        console.log('createBatchAssignment data :', data);
+      })
+      .catch(e => console.log('createBatchAssignment object :', e));
+  };
+
   const genExtra = () => {
     if (expandIconPosition) {
       return null;
@@ -48,7 +66,7 @@ export const Home = () => {
             <div>{text}</div>
           </Panel>
         </Collapse>
-                      <br />
+        <br />
         <span>Expand Icon Position: </span>
         <Select value={expandIconPosition} onChange={setExpandIconPosition}>
           <Option value="left">left</Option>

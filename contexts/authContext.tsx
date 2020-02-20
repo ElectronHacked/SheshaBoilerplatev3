@@ -46,14 +46,14 @@ export interface IAuthStateContext {
 export interface IAuthActionsContext {
   checkAuth?: () => void;
   loginUser?: (loginFormData: ILoginForm) => void;
-  loginUserSuccess?: (loginInfo: ILoginInfo) => void;
-  loginUserError?: (authErrorMsg: string, isReauth: boolean) => void;
+  // loginUserSuccess?: (loginInfo: ILoginInfo) => void;
+  // loginUserError?: (authErrorMsg: string, isReauth: boolean) => void;
   logoutUser?: () => void;
-  logoutUserSuccess?: () => void;
-  logoutUserError?: (authErrorMsg: string) => void;
+  // logoutUserSuccess?: () => void;
+  // logoutUserError?: (authErrorMsg: string) => void;
   fetchUserInfo?: () => void;
-  fetchUserInfoSuccess?: (userInfo: any) => void;
-  fetchUserInfoError?: () => void;
+  // fetchUserInfoSuccess?: (userInfo: any) => void;
+  // fetchUserInfoError?: () => void;
 
   //#region Forgot password
   sendOtp?: (payload: UserResetPasswordSendOtpQueryParams) => void;
