@@ -47,7 +47,7 @@ interface IQueryParams {
 
 const AuthProvider: FC<IQueryParams> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {});
-  
+
   const router = useRouter();
 
   const { nextRoute } = useRouteState();

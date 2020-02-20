@@ -20,7 +20,7 @@
     "release": "git push origin --tags",
     "release-and-publish": "npm run release && npm publish",
     "generate-fetcher": "restful-react import --config restful-react.config.js",
-    "postgenerate-fetcher": "prettier ./api/person.tsx --write"
+    "postgenerate-fetcher": "prettier ./api/*.tsx --write"
   },
   "lint-staged": {
     "*.{js,jsx,json,css,ts,tsx}": [
@@ -29,7 +29,6 @@
     ]
   },
   "dependencies": {
-    "@shesha/react-components": "^1.0.7",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",

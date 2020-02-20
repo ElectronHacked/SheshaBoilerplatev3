@@ -5,178 +5,126 @@ import { Get, GetProps, useGet, UseGetProps, Mutate, MutateProps, useMutate, Use
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-export type IsTenantAvailableInput = {
-  tenancyName: string;
-} | null;
+export interface IsTenantAvailableInput {
+  tenancyName: string | null;
+}
 
 export type TenantAvailabilityState = number;
 
-export type IsTenantAvailableOutput = {
+export interface IsTenantAvailableOutput {
   state?: TenantAvailabilityState;
   tenantId?: number | null;
-} | null;
+}
 
-export type RegisterInput = {
-  name: string;
-  surname: string;
-  userName: string;
-  emailAddress: string;
-  password: string;
+export interface RegisterInput {
+  name: string | null;
+  surname: string | null;
+  userName: string | null;
+  emailAddress: string | null;
+  password: string | null;
   captchaResponse?: string | null;
-} | null;
+}
 
-export type RegisterOutput = {
+export interface RegisterOutput {
   canLogin?: boolean;
-} | null;
+}
 
-export type GetAppointmentsInput = { [key: string]: any } | null;
-
-export type RefListPropertyTypeNullable = number | null;
-
-export type RefListPropertyOccupantTypeNullable = number | null;
-
-/**
- * Property DTO
- */
-export type InspectionPropertyDto = {
-  id?: string;
-  area?: string | null;
-  suburb?: string | null;
-  buildingComplexName?: string | null;
-  unitNo?: string | null;
-  erfNo?: string | null;
-  streetName?: string | null;
-  streetNumber?: string | null;
-  locationDescription?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  propertyType?: RefListPropertyTypeNullable;
-  occupantType?: RefListPropertyOccupantTypeNullable;
-  title?: string | null;
-  firstname?: string | null;
-  lastname?: string | null;
-  idNumber?: string | null;
-  mobileNumber?: string | null;
-  /**
-   * Id of the property Group (transformer). todo: make it mandatory after clarifications (or remove this comment)
-   */
-  propertyGroupId?: string | null;
-  batchAssignmentId?: string | null;
-} | null;
-
-export type RefListPropertyInspectionStatus = number;
-
-export type InspectorDto = {
-  fullName?: string | null;
-  shortName?: string | null;
-  userName?: string | null;
-  id?: string;
-} | null;
-
-export type RefListInspectionAppointmentStatusNullable = number | null;
-
-export type PropertyInspectionDto = {
-  orderIndex?: number;
-  refNo?: string | null;
-  status?: RefListPropertyInspectionStatus;
-  statusUpdatedDate?: string | null;
-  assignedTo?: InspectorDto;
-  notes?: string | null;
-  revisitAppointmentDate?: string | null;
-  revisitAppointmentEndDate?: string | null;
-  revisitAppointmentStatus?: RefListInspectionAppointmentStatusNullable;
-  id?: string;
-} | null;
-
-export type RefListCheckInResultNullable = number | null;
-
-export type RefListAccessResultNullable = number | null;
-
-export type RefListVisitTypeNullable = number | null;
-
-export type PropertyVisitDto = {
-  checkInLat?: number | null;
-  checkInLong?: number | null;
-  checkInTimestamp?: string | null;
-  checkInResult?: RefListCheckInResultNullable;
-  completedBy?: InspectorDto;
-  completedDate?: string | null;
-  accessResult?: RefListAccessResultNullable;
-  noAccessRef?: string | null;
-  visitType?: RefListVisitTypeNullable;
-  notes?: string | null;
-  id?: string;
-} | null;
-
-export type AppointmentDto = {
-  property?: InspectionPropertyDto;
-  propertyInspection?: PropertyInspectionDto;
-  lastVisit?: PropertyVisitDto;
-} | null;
-
-/**
- * Generic DTO of the simple autocomplete item
- */
-export type AutocompleteItemDto = {
+export interface AutocompleteItemDto {
   value?: string | null;
   displayText?: string | null;
-} | null;
+}
 
-export type ValidationErrorInfo = {
+export interface ValidationErrorInfo {
   message?: string | null;
-  members?: string | null[] | null;
-} | null;
+  members?: string[] | null;
+}
 
-export type ErrorInfo = {
+export interface ErrorInfo {
   code?: number;
   message?: string | null;
   details?: string | null;
   validationErrors?: ValidationErrorInfo[] | null;
-} | null;
+}
 
-export type AutocompleteItemDtoListAjaxResponse = {
+export interface AutocompleteItemDtoListAjaxResponse {
   result?: AutocompleteItemDto[] | null;
   targetUrl?: string | null;
   success?: boolean;
   error?: ErrorInfo;
   unAuthorizedRequest?: boolean;
   __abp?: boolean;
-} | null;
+}
 
-export type AjaxResponseBase = {
+export interface AjaxResponseBase {
   targetUrl?: string | null;
   success?: boolean;
   error?: ErrorInfo;
   unAuthorizedRequest?: boolean;
   __abp?: boolean;
-} | null;
+}
 
-export type AreaDto = {
+export interface GuidNullableEntityWithDisplayNameDto {
+  displayText?: string | null;
+  id?: string | null;
+}
+
+export interface AreaDto {
   name?: string | null;
   shortName?: string | null;
+  parentArea?: GuidNullableEntityWithDisplayNameDto;
+  comments?: string | null;
   id?: string;
-} | null;
+}
 
-export type AreaDtoAjaxResponse = {
+export interface AreaDtoAjaxResponse {
   result?: AreaDto;
   targetUrl?: string | null;
   success?: boolean;
   error?: ErrorInfo;
   unAuthorizedRequest?: boolean;
   __abp?: boolean;
-} | null;
+}
 
-export type AreaDtoPagedResultDto = {
+export interface AreaDtoPagedResultDto {
   totalCount?: number;
   items?: AreaDto[] | null;
-} | null;
+}
 
-export type AreaCreateDto = {
+export interface AreaCreateDto {
   name?: string | null;
   shortName?: string | null;
-} | null;
+  parentArea?: GuidNullableEntityWithDisplayNameDto;
+  comments?: string | null;
+}
 
-export type DataTableColumnDto = {
+export interface ClickatellSettingDto {
+  clickatellHost?: string | null;
+  clickatellApiUsername?: string | null;
+  clickatellApiPassword?: string | null;
+  clickatellApiId?: string | null;
+}
+
+export interface AjaxResponse {
+  result?: { [key: string]: any } | null;
+  targetUrl?: string | null;
+  success?: boolean;
+  error?: ErrorInfo;
+  unAuthorizedRequest?: boolean;
+  __abp?: boolean;
+}
+
+export interface ClickatellSettingDtoAjaxResponse {
+  result?: ClickatellSettingDto;
+  targetUrl?: string | null;
+  success?: boolean;
+  error?: ErrorInfo;
+  unAuthorizedRequest?: boolean;
+  __abp?: boolean;
+}
+
+export type ListSortDirection = number;
+
+export interface DataTableColumnDto {
   propertyName?: string | null;
   filterCaption?: string | null;
   name?: string | null;
@@ -184,28 +132,28 @@ export type DataTableColumnDto = {
   allowShowHide?: boolean;
   dataType?: string | null;
   visible?: boolean;
-} | null;
+  isFilterable?: boolean;
+  defaultSorting?: ListSortDirection;
+}
 
-export type DataTableConfigDto = {
+export interface DataTableConfigDto {
   id?: string | null;
   pageSize?: number;
   columns?: DataTableColumnDto[] | null;
-} | null;
+}
 
-export type ColumnSortingDto = {
+export interface ColumnSortingDto {
   id?: string | null;
   desc?: boolean;
-} | null;
+}
 
-export type Object = { [key: string]: any } | null;
-
-export type ColumnFilterDto = {
+export interface ColumnFilterDto {
   columnId?: string | null;
   filterOption?: string | null;
-  filter?: Object;
-} | null;
+  filter?: { [key: string]: any } | null;
+}
 
-export type DataTableGetDataInput = {
+export interface DataTableGetDataInput {
   id?: string | null;
   pageSize?: number;
   quickSearch?: string | null;
@@ -213,779 +161,204 @@ export type DataTableGetDataInput = {
   parentEntityId?: string | null;
   sorting?: ColumnSortingDto[] | null;
   filter?: ColumnFilterDto[] | null;
-} | null;
+}
 
-/**
- * Represents the data of the table used by DataTables  on the client-side
- */
-export type DataTableData = {
-  /**
-   * Total number of rows after filters
-   */
+export interface DataTableData {
   totalRows?: number;
-  /**
-   * Total number of rows before filters
-   */
   totalRowsBeforeFilter?: number;
-  /**
-   * Total number of pages
-   */
   totalPages?: number;
   echo?: number;
   rows?:
     | {
-        [key: string]: Object;
-      }
-    | null[]
+        [key: string]: { [key: string]: any };
+      }[]
     | null;
-} | null;
+}
 
-export type SmtpSettingsInput = {
-  /**
-   * SMTP Host name/IP.
-   */
+export interface SmtpSettingsDto {
   host?: string | null;
-  /**
-   * SMTP Port.
-   */
   port?: number;
-  /**
-   * User name to login to SMTP server.
-   */
   userName?: string | null;
-  /**
-   * Password to login to SMTP server.
-   */
   password?: string | null;
-  /**
-   * Domain name to login to SMTP server.
-   */
   domain?: string | null;
-  /**
-   * Is SSL enabled?
-   */
   enableSsl?: boolean;
-  /**
-   * Use default credentials?
-   */
   useDefaultCredentials?: boolean;
-} | null;
+}
 
-export type EmailSettingsInput = {
-  /**
-   * Default from address.
-   */
-  defaultFromAddress?: string | null;
-  /**
-   * Default display name.
-   */
-  defaultFromDisplayName?: string | null;
-} | null;
-
-export type SendTestEmailInput = {
-  to: string;
-  subject: string;
-  body: string;
-} | null;
-
-export type SendTestEmailDto = {
+export interface SmtpSettingsDtoAjaxResponse {
+  result?: SmtpSettingsDto;
+  targetUrl?: string | null;
   success?: boolean;
-} | null;
+  error?: ErrorInfo;
+  unAuthorizedRequest?: boolean;
+  __abp?: boolean;
+}
 
-export type RefListInspectionBatchAssignmentStatusNullable = number | null;
+export interface SendTestEmailInput {
+  to: string | null;
+  subject: string | null;
+  body: string | null;
+}
 
-export type RefListPropertyGroupTypeNullable = number | null;
+export interface SendTestEmailDto {
+  success?: boolean;
+}
 
-export type InspectionBatchWithStatisticDto = {
-  totalUnits?: number | null;
-  completedUnits?: number | null;
-  verifiedUnits?: number | null;
-  /**
-   * Id of the PropertyGroup (transformer)
-   */
-  propertyGroupId?: string | null;
-  projectName?: string | null;
-  regionName?: string | null;
-  status?: RefListInspectionBatchAssignmentStatusNullable;
-  propertyGroupType?: RefListPropertyGroupTypeNullable;
-  plannedStartDate?: string | null;
-  plannedCompletionDate?: string | null;
-  suburb?: string | null;
-  transNo?: string | null;
-  notes?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  id?: string;
-} | null;
+export interface SendTestEmailDtoAjaxResponse {
+  result?: SendTestEmailDto;
+  targetUrl?: string | null;
+  success?: boolean;
+  error?: ErrorInfo;
+  unAuthorizedRequest?: boolean;
+  __abp?: boolean;
+}
 
-export type RefListPropertyInspectionStatusNullable = number | null;
-
-export type InspectionBatchPropertyDto = {
-  id?: string;
-  area?: string | null;
-  suburb?: string | null;
-  buildingComplexName?: string | null;
-  unitNo?: string | null;
-  erfNo?: string | null;
-  streetName?: string | null;
-  streetNumber?: string | null;
-  locationDescription?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  propertyType?: RefListPropertyTypeNullable;
-  occupantType?: RefListPropertyOccupantTypeNullable;
-  title?: string | null;
-  firstname?: string | null;
-  lastname?: string | null;
-  idNumber?: string | null;
-  mobileNumber?: string | null;
-  propertyInspectionId?: string | null;
-  status?: RefListPropertyInspectionStatusNullable;
-  isVerified?: boolean | null;
-  statusUpdatedDate?: string | null;
-  assignedTo?: InspectorDto;
-} | null;
-
-export type PropertyGroupCreateDto = {
-  projectId: string;
-  teamId: string;
-  name: string;
-  suburb: string;
-  propertyGroupType?: RefListPropertyGroupTypeNullable;
-  lat?: number | null;
-  long?: number | null;
-  notes?: string | null;
-} | null;
-
-export type PropertyGroupDto = {
-  name: string;
-  suburb: string;
-  propertyGroupType?: RefListPropertyGroupTypeNullable;
-  areaLevel1?: AreaDto;
-  /**
-   * Id of the `InspectionBatchAssignment` (is used only when batch is created with assignment at once)
-   */
-  inspectionBatchAssignmentId?: string | null;
-  id?: string;
-} | null;
-
-export type UpdateTransformerDetailsInput = {
-  projectId?: string;
-  notes?: string | null;
-  suburb?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  id?: string;
-} | null;
-
-/**
- * Generic entity Dto with display text
- */
-export type GuidNullableEntityWithDisplayNameDto = {
-  displayText?: string | null;
+export interface FormDto {
   id?: string | null;
-} | null;
-
-export type InspectionBatchAssignmentDto = {
-  project?: GuidNullableEntityWithDisplayNameDto;
-  propertyGroup?: GuidNullableEntityWithDisplayNameDto;
-  assignedTeam?: GuidNullableEntityWithDisplayNameDto;
-  plannedStartDate?: string | null;
-  plannedCompletionDate?: string | null;
-  area?: string | null;
-  region?: string | null;
-  suburb?: string | null;
-  numProperties?: number;
-  numPropertiesInspected?: number;
-  numPropertiesNoAccess?: number;
-  numMeters?: number;
-  id?: string;
-} | null;
-
-export type InspectionBatchAssignmentDtoAjaxResponse = {
-  result?: InspectionBatchAssignmentDto;
-  targetUrl?: string | null;
-  success?: boolean;
-  error?: ErrorInfo;
-  unAuthorizedRequest?: boolean;
-  __abp?: boolean;
-} | null;
-
-export type InspectionBatchAssignmentCreateDto = {
-  projectId?: string;
-  regionId?: string | null;
-  propertyGroupId?: string;
-  assignedTeamId?: string;
-  plannedStartDate: string;
-  plannedCompletionDate: string;
-} | null;
-
-export type InspectionBatchAssignmentDtoPagedResultDto = {
-  totalCount?: number;
-  items?: InspectionBatchAssignmentDto[] | null;
-} | null;
-
-export type InspectionProjectDto = {
   name?: string | null;
-  startDate?: string | null;
-  endDate?: string | null;
-  areaLevel1?: AreaDto;
-  id?: string;
-} | null;
-
-export type InspectionProjectDtoAjaxResponse = {
-  result?: InspectionProjectDto;
-  targetUrl?: string | null;
-  success?: boolean;
-  error?: ErrorInfo;
-  unAuthorizedRequest?: boolean;
-  __abp?: boolean;
-} | null;
-
-export type InspectionProjectDtoPagedResultDto = {
-  totalCount?: number;
-  items?: InspectionProjectDto[] | null;
-} | null;
-
-export type InspectionProjectCreateDto = {
-  name?: string | null;
-  startDate?: string | null;
-  endDate?: string | null;
-  areaLevel1?: AreaDto;
-} | null;
-
-/**
- * Property DTO
- */
-export type CreateInspectionPropertyDto = {
-  area?: string | null;
-  suburb?: string | null;
-  buildingComplexName?: string | null;
-  unitNo?: string | null;
-  erfNo?: string | null;
-  streetName?: string | null;
-  streetNumber?: string | null;
-  locationDescription?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  propertyType?: RefListPropertyTypeNullable;
-  occupantType?: RefListPropertyOccupantTypeNullable;
-  title?: string | null;
-  firstname?: string | null;
-  lastname?: string | null;
-  idNumber?: string | null;
-  mobileNumber?: string | null;
-  /**
-   * Id of the property Group (transformer). todo: make it mandatory after clarifications (or remove this comment)
-   */
-  propertyGroupId?: string | null;
-  batchAssignmentId?: string | null;
-} | null;
-
-export type UpdatePropertyDetailsInput = {
-  propertyInspectionId?: string;
-  area?: string | null;
-  suburb?: string | null;
-  buildingComplexName?: string | null;
-  unitNo?: string | null;
-  erfNo?: string | null;
-  streetName?: string | null;
-  streetNumber?: string | null;
-  locationDescription?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  propertyType?: RefListPropertyTypeNullable;
-  id?: string;
-} | null;
-
-/**
- * Property DTO
- */
-export type UpdateInspectionPropertyDetailsInput = {
-  area?: string | null;
-  suburb?: string | null;
-  buildingComplexName?: string | null;
-  unitNo?: string | null;
-  erfNo?: string | null;
-  streetName?: string | null;
-  streetNumber?: string | null;
-  locationDescription?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  propertyType?: RefListPropertyTypeNullable;
-  id?: string;
-} | null;
-
-export type UpdateCustomerDetailsInput = {
-  title?: string | null;
-  firstname?: string | null;
-  lastname?: string | null;
-  idNumber?: string | null;
-  mobileNumber?: string | null;
-  occupantType?: RefListPropertyOccupantTypeNullable;
-  id?: string;
-} | null;
-
-export type UpdateInspectionStatusInput = {
-  status?: RefListPropertyInspectionStatus;
-  id?: string;
-} | null;
-
-export type InspectionPropertyCheckInInput = {
-  lat?: number | null;
-  long?: number | null;
-  outside?: boolean;
-  propertyInspectionId?: string;
-} | null;
-
-export type InspectionPropertyCheckInDto = {
-  /**
-   * Id of the `PropertyVisit`, is used to save the data of the visit (no access/entry refused etc.)
-   */
-  propertyVisitId?: string;
-  checkInTimestamp?: string | null;
-} | null;
-
-export type AssignInspectorInput = {
-  propertyIds?: string[] | null;
-  inspectorId?: string;
-  batchId?: string;
-} | null;
-
-export type NoAccessInput = {
-  /**
-   * Id of the `PropertyVisit`, the system sends it to inspector on check-in
-   */
-  propertyVisitId?: string;
-  noAccessRef: string;
-  notes?: string | null;
-  accessResult?: RefListAccessResultNullable;
-  hasLeftLetter?: boolean;
-} | null;
-
-export type PropertyVisitInput = {
-  /**
-   * Id of the `PropertyVisit`, the system sends it to inspector on check-in
-   */
-  propertyVisitId?: string;
-} | null;
-
-export type ReportFindingsInput = {
-  /**
-   * Id of the `PropertyVisit`, the system sends it to inspector on check-in
-   */
-  propertyVisitId?: string;
-  accessResult?: RefListAccessResultNullable;
-} | null;
-
-export type ReassignPropertyInput = {
-  propertyInspectionId: string;
-  inspectorId: string;
-} | null;
-
-export type InspectionTeamDto = {
-  teamLead?: InspectorDto;
-  name?: string | null;
-  areaLevel1?: AreaDto;
-  id?: string;
-} | null;
-
-export type TeamMemberDto = {
-  role?: number | null;
-  shortName?: string | null;
-  personId?: string;
-  id?: string;
-} | null;
-
-export type PersonDto = {
-  userName?: string | null;
-  password?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
-  mobileNumber?: string | null;
-  emailAddress?: string | null;
-  id?: string;
-} | null;
-
-export type InspectionTeamCreateDto = {
-  teamLead?: PersonDto;
-  name?: string | null;
-  areaLevel1?: AreaDto;
-} | null;
-
-export type InspectionTeamDtoAjaxResponse = {
-  result?: InspectionTeamDto;
-  targetUrl?: string | null;
-  success?: boolean;
-  error?: ErrorInfo;
-  unAuthorizedRequest?: boolean;
-  __abp?: boolean;
-} | null;
-
-export type AddInspectionTeamMemberInput = {
-  teamId?: string;
-  personId?: string;
-} | null;
-
-export type GuidEntityDto = {
-  id?: string;
-} | null;
-
-export type CalendarEventDto = {
-  id?: string | null;
-  title?: string | null;
   description?: string | null;
-  allDay?: boolean;
-  /**
-   * Original comment:
-   * Date. Required.
-   * The date/time an event begins.
-   * When specifying Event Objects for events or eventSources, you may specify a string in IETF format (ex: "Wed, 18 Oct 2009 13:00:00 EST"), a string in ISO8601 format (ex: "2009-11-05T13:15:30Z") or a UNIX timestamp.
-   */
-  start?: string;
-  /**
-   * Original comment:
-   * Date. Optional.
-   * The date/time an event ends.
-   * As with start, you may specify it in IETF, ISO8601, or UNIX timestamp format.
-   * If an event is all-day...
-   * the end date is inclusive. This means an event with start Nov 10 and end Nov 12 will span 3 days on the calendar.
-   * If an event is NOT all-day...
-   * the end date is exclusive. This is only a gotcha when your end has time 00:00. It means your event ends on midnight, and it will not span through the next day.
-   */
-  end?: string | null;
-  /**
-   * true or false. Optional.
-   * Overrides the master editable option for this single event.
-   */
-  editable?: boolean;
-} | null;
-
-export type InspectionTeamDtoPagedResultDto = {
-  totalCount?: number;
-  items?: InspectionTeamDto[] | null;
-} | null;
-
-export type RefListMeterAuditFindingNullable = number | null;
-
-export type RefListMeterTypeNullable = number | null;
-
-/**
- * Meter with last inspections result DTO
- */
-export type MeterWithInspectionDto = {
-  propertyVisitId?: string | null;
-  serialNo?: string | null;
-  meterReading?: number;
-  meterReading2?: number;
-  finding?: RefListMeterAuditFindingNullable;
-  notes?: string | null;
-  propertyId?: string;
-  meterType?: RefListMeterTypeNullable;
-  description?: string | null;
-  id?: string;
-} | null;
-
-export type CreateMeterDto = {
-  propertyId?: string;
-  serialNo: string;
-  meterType: RefListMeterTypeNullable;
-  description?: string | null;
-} | null;
-
-/**
- * Meter DTO
- */
-export type MeterDto = {
-  propertyId?: string;
-  serialNo?: string | null;
-  meterType?: RefListMeterTypeNullable;
-  description?: string | null;
-  id?: string;
-} | null;
-
-export type MeterInspectionInput = {
-  propertyVisitId?: string;
-  meterId?: string;
-  meterReading?: number;
-  meterReading2?: number;
-  finding?: RefListMeterAuditFindingNullable;
-  notes?: string | null;
-} | null;
-
-export type MeterInspectionDto = {
-  propertyVisitId?: string;
-  meterId?: string;
-  serialNo?: string | null;
-  meterReading?: number;
-  meterReading2?: number;
-  finding?: RefListMeterAuditFindingNullable;
-  notes?: string | null;
-  id?: string;
-} | null;
+  modelType?: string | null;
+}
 
 export type OtpSendType = number;
 
-export type SendPinInput = {
-  /**
-   * Mobile number/email address (depending on the `send type`) to which the OTP should be sent
-   */
+export interface SendPinInput {
   sendTo?: string | null;
   sendType: OtpSendType;
   recipientType?: string | null;
   recipientId?: string | null;
-  /**
-   * Lifetime of the one time password in seconds
-   */
   lifetime?: number | null;
-} | null;
+}
 
-export type SendPinDto = {
-  /**
-   * Unique runtime identifier of the operation. Is used for resending
-   */
+export interface SendPinDto {
   operationId?: string;
-  /**
-   * Mobile number/email address (depending on the `send type`) to which the OTP has been sent. Is used when we send OTP to the user or another entity
-   */
   sentTo?: string | null;
-} | null;
+}
 
-export type VerifyPinInput = {
-  /**
-   * Unique runtime identifier of the operation. Is used for resending
-   */
+export interface VerifyPinInput {
   operationId?: string;
-  /**
-   * Value of the One Time Pin
-   */
   pin?: string | null;
-} | null;
+}
 
-export type VerifyPinResponse = {
-  /**
-   * Indicates that the OTP matches to the sent one
-   */
+export interface VerifyPinResponse {
   isSuccess?: boolean;
-  /**
-   * Error message
-   */
   errorMessage?: string | null;
-} | null;
+}
 
-export type CreatePersonAccountDto = {
-  userName: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  mobileNumber?: string | null;
-  emailAddress: string;
-} | null;
+export interface ReferenceListItemValueDto {
+  item?: string | null;
+  itemValue?: number;
+}
 
-export type PersonAccountDto = {
-  userName: string;
-  firstName: string;
-  lastName: string;
+export interface CreatePersonAccountDto {
+  userName: string | null;
+  password: string | null;
+  firstName: string | null;
+  lastName: string | null;
   mobileNumber?: string | null;
-  emailAddress: string;
+  emailAddress: string | null;
+  typeOfAccount?: ReferenceListItemValueDto;
+}
+
+export interface PersonAccountDto {
+  userName: string | null;
+  firstName: string | null;
+  lastName: string | null;
+  mobileNumber?: string | null;
+  emailAddress: string | null;
+  typeOfAccount?: ReferenceListItemValueDto;
   id?: string;
-} | null;
+}
 
-export type PersonAccountDtoAjaxResponse = {
+export interface PersonAccountDtoAjaxResponse {
   result?: PersonAccountDto;
   targetUrl?: string | null;
   success?: boolean;
   error?: ErrorInfo;
   unAuthorizedRequest?: boolean;
   __abp?: boolean;
-} | null;
+}
 
-export type PersonAccountDtoPagedResultDto = {
+export interface PersonAccountDtoPagedResultDto {
   totalCount?: number;
   items?: PersonAccountDto[] | null;
-} | null;
+}
 
-export type PropertyGroupDtoPagedResultDto = {
-  totalCount?: number;
-  items?: PropertyGroupDto[] | null;
-} | null;
-
-export type PropertyInspectionDtoAjaxResponse = {
-  result?: PropertyInspectionDto;
-  targetUrl?: string | null;
-  success?: boolean;
-  error?: ErrorInfo;
-  unAuthorizedRequest?: boolean;
-  __abp?: boolean;
-} | null;
-
-export type ReferenceListItemValueDto = {
-  item?: string | null;
-  itemValue?: number;
-} | null;
-
-export type PropertyInspectionDetailsDto = {
-  status?: ReferenceListItemValueDto;
-  refNo?: string | null;
-  statusUpdatedDate?: string | null;
-  assignedTo?: InspectorDto;
-  team?: InspectionTeamDto;
-  transformer?: string | null;
-  notes?: string | null;
-  revisitAppointmentDate?: string | null;
-  revisitAppointmentEndDate?: string | null;
-  revisitAppointmentStatus?: ReferenceListItemValueDto;
-  region?: AreaDto;
-  area?: AreaDto;
-  suburb?: string | null;
-  buildingComplexName?: string | null;
-  unitNo?: string | null;
-  erfNo?: string | null;
-  streetName?: string | null;
-  streetNumber?: string | null;
-  locationDescription?: string | null;
-  lat?: number | null;
-  long?: number | null;
-  propertyType?: ReferenceListItemValueDto;
-  occupantType?: ReferenceListItemValueDto;
-  title?: string | null;
-  firstname?: string | null;
-  lastname?: string | null;
-  idNumber?: string | null;
-  mobileNumber?: string | null;
-  id?: string;
-} | null;
-
-export type PropertyInspectionDetailsDtoAjaxResponse = {
-  result?: PropertyInspectionDetailsDto;
-  targetUrl?: string | null;
-  success?: boolean;
-  error?: ErrorInfo;
-  unAuthorizedRequest?: boolean;
-  __abp?: boolean;
-} | null;
-
-export type StoredFileDto = {
-  error?: string | null;
-  id?: string | null;
-  name?: string | null;
-  fileCategory?: number | null;
-  url?: string | null;
-  size?: number;
-  type?: string | null;
-} | null;
-
-export type StoredFileDtoListAjaxResponse = {
-  result?: StoredFileDto[] | null;
-  targetUrl?: string | null;
-  success?: boolean;
-  error?: ErrorInfo;
-  unAuthorizedRequest?: boolean;
-  __abp?: boolean;
-} | null;
-
-export type UpdateRevisitInput = {
-  propertyInspectionId?: string;
-  revisitAppointmentDate?: string;
-  revisitAppointmentEndDate?: string;
-} | null;
-
-export type PropertyInspectionDtoPagedResultDto = {
-  totalCount?: number;
-  items?: PropertyInspectionDto[] | null;
-} | null;
-
-export type PropertyInspectionCreateDto = {
-  orderIndex?: number;
-  status?: RefListPropertyInspectionStatus;
-  statusUpdatedDate?: string | null;
-  assignedTo?: InspectorDto;
-  notes?: string | null;
-  revisitAppointmentDate?: string | null;
-  revisitAppointmentStatus?: RefListInspectionAppointmentStatusNullable;
-} | null;
-
-export type RevisitDto = {
-  property?: InspectionPropertyDto;
-  propertyInspection?: PropertyInspectionDto;
-  lastVisit?: PropertyVisitDto;
-} | null;
-
-export type CreateRoleDto = {
-  name: string;
-  displayName: string;
+export interface CreateRoleDto {
+  name: string | null;
+  displayName: string | null;
   normalizedName?: string | null;
   description?: string | null;
-  grantedPermissions?: string | null[] | null;
-} | null;
+  grantedPermissions?: string[] | null;
+}
 
-export type RoleDto = {
-  name: string;
-  displayName: string;
+export interface RoleDto {
+  name: string | null;
+  displayName: string | null;
   normalizedName?: string | null;
   description?: string | null;
-  grantedPermissions?: string | null[] | null;
+  grantedPermissions?: string[] | null;
   id?: number;
-} | null;
+}
 
-export type RoleListDto = {
+export interface RoleListDto {
   name?: string | null;
   displayName?: string | null;
   isStatic?: boolean;
   isDefault?: boolean;
   creationTime?: string;
   id?: number;
-} | null;
+}
 
-export type RoleListDtoListResultDto = {
+export interface RoleListDtoListResultDto {
   items?: RoleListDto[] | null;
-} | null;
+}
 
-export type PermissionDto = {
+export interface PermissionDto {
   name?: string | null;
   displayName?: string | null;
   description?: string | null;
   id?: number;
-} | null;
+}
 
-export type PermissionDtoListResultDto = {
+export interface PermissionDtoListResultDto {
   items?: PermissionDto[] | null;
-} | null;
+}
 
-export type RoleEditDto = {
-  name: string;
-  displayName: string;
+export interface RoleEditDto {
+  name: string | null;
+  displayName: string | null;
   description?: string | null;
   isStatic?: boolean;
   id?: number;
-} | null;
+}
 
-export type FlatPermissionDto = {
+export interface FlatPermissionDto {
   name?: string | null;
   displayName?: string | null;
   description?: string | null;
-} | null;
+}
 
-export type GetRoleForEditOutput = {
+export interface GetRoleForEditOutput {
   role?: RoleEditDto;
   permissions?: FlatPermissionDto[] | null;
-  grantedPermissionNames?: string | null[] | null;
-} | null;
+  grantedPermissionNames?: string[] | null;
+}
 
-export type RoleDtoPagedResultDto = {
+export interface RoleDtoPagedResultDto {
   totalCount?: number;
   items?: RoleDto[] | null;
-} | null;
+}
 
-export type ApplicationInfoDto = {
+export interface ApplicationInfoDto {
   version?: string | null;
   releaseDate?: string;
   features?: {
     [key: string]: boolean;
   } | null;
-} | null;
+}
 
-export type UserLoginInfoDto = {
+export interface UserLoginInfoDto {
   accountFound?: boolean;
   userName?: string | null;
   firstName?: string | null;
@@ -998,164 +371,239 @@ export type UserLoginInfoDto = {
   loginProvider?: string | null;
   homeUrl?: string | null;
   isSelfServiceUser?: boolean;
+  grantedPermissions?: string[] | null;
   id?: number;
-} | null;
+}
 
-export type TenantLoginInfoDto = {
+export interface TenantLoginInfoDto {
   tenancyName?: string | null;
   name?: string | null;
   id?: number;
-} | null;
+}
 
-export type GetCurrentLoginInformationsOutput = {
+export interface GetCurrentLoginInformationsOutput {
   application?: ApplicationInfoDto;
   user?: UserLoginInfoDto;
   tenant?: TenantLoginInfoDto;
-} | null;
+}
 
-export type DeleteStoredFileInput = {
+export interface CreateShaRoleDto {
+  name: string | null;
+  nameSpace?: string | null;
+  description?: string | null;
+  canAssignToMultiple?: boolean;
+  canAssignToPerson?: boolean;
+  canAssignToRole?: boolean;
+  canAssignToOrganisationRoleLevel?: boolean;
+  canAssignToUnit?: boolean;
+}
+
+export interface ShaRoleDto {
+  name: string | null;
+  nameSpace?: string | null;
+  description?: string | null;
+  isRegionSpecific?: boolean;
+  canAssignToMultiple?: boolean;
+  canAssignToPerson?: boolean;
+  canAssignToRole?: boolean;
+  canAssignToOrganisationRoleLevel?: boolean;
+  canAssignToUnit?: boolean;
+  id?: string;
+}
+
+export interface ShaRoleDtoAjaxResponse {
+  result?: ShaRoleDto;
+  targetUrl?: string | null;
+  success?: boolean;
+  error?: ErrorInfo;
+  unAuthorizedRequest?: boolean;
+  __abp?: boolean;
+}
+
+export interface ShaRoleDtoPagedResultDto {
+  totalCount?: number;
+  items?: ShaRoleDto[] | null;
+}
+
+export interface GuidEntityWithDisplayNameDto {
+  displayText?: string | null;
+  id?: string;
+}
+
+export interface CreateShaRoleAppointedPersonDto {
+  roleId?: string;
+  person?: GuidNullableEntityWithDisplayNameDto;
+  regions?: GuidEntityWithDisplayNameDto[] | null;
+}
+
+export interface ShaRoleAppointedPersonDto {
+  roleId?: string;
+  person?: GuidNullableEntityWithDisplayNameDto;
+  regions?: GuidEntityWithDisplayNameDto[] | null;
+  id?: string;
+}
+
+export interface ShaRoleAppointedPersonDtoAjaxResponse {
+  result?: ShaRoleAppointedPersonDto;
+  targetUrl?: string | null;
+  success?: boolean;
+  error?: ErrorInfo;
+  unAuthorizedRequest?: boolean;
+  __abp?: boolean;
+}
+
+export interface GuidEntityDto {
+  id?: string;
+}
+
+export interface StoredFileDto {
+  error?: string | null;
+  id?: string | null;
+  name?: string | null;
+  fileCategory?: number | null;
+  url?: string | null;
+  size?: number;
+  type?: string | null;
+}
+
+export interface DeleteStoredFileInput {
   fileId?: string;
-  ownerId: string;
-  ownerType: string;
+  ownerId: string | null;
+  ownerType: string | null;
   filesCategory?: number | null;
   propertyName?: string | null;
-} | null;
+}
 
-export type CreateTenantDto = {
-  tenancyName: string;
-  name: string;
-  adminEmailAddress: string;
+export interface CreateTenantDto {
+  tenancyName: string | null;
+  name: string | null;
+  adminEmailAddress: string | null;
   connectionString?: string | null;
   isActive?: boolean;
-} | null;
+}
 
-export type TenantDto = {
-  tenancyName: string;
-  name: string;
+export interface TenantDto {
+  tenancyName: string | null;
+  name: string | null;
   isActive?: boolean;
   id?: number;
-} | null;
+}
 
-export type TenantDtoPagedResultDto = {
+export interface TenantDtoPagedResultDto {
   totalCount?: number;
   items?: TenantDto[] | null;
-} | null;
+}
 
-export type AuthenticateModel = {
-  userNameOrEmailAddress: string;
-  password: string;
-} | null;
+export interface AuthenticateModel {
+  userNameOrEmailAddress: string | null;
+  password: string | null;
+}
 
-export type AuthenticateResultModel = {
+export interface AuthenticateResultModel {
   accessToken?: string | null;
   encryptedAccessToken?: string | null;
   expireInSeconds?: number;
   expireOn?: string;
   userId?: number;
-} | null;
+  personId?: string | null;
+}
 
-export type ExternalLoginProviderInfoModel = {
+export interface ExternalLoginProviderInfoModel {
   name?: string | null;
   clientId?: string | null;
-} | null;
+}
 
-export type ExternalAuthenticateModel = {
-  authProvider: string;
-  providerKey: string;
-  providerAccessCode: string;
-} | null;
+export interface ExternalAuthenticateModel {
+  authProvider: string | null;
+  providerKey: string | null;
+  providerAccessCode: string | null;
+}
 
-export type ExternalAuthenticateResultModel = {
+export interface ExternalAuthenticateResultModel {
   accessToken?: string | null;
   encryptedAccessToken?: string | null;
   expireInSeconds?: number;
   waitingForActivation?: boolean;
-} | null;
+}
 
-export type CreateUserDto = {
-  userName: string;
-  name: string;
-  surname: string;
-  emailAddress: string;
+export interface CreateUserDto {
+  userName: string | null;
+  name: string | null;
+  surname: string | null;
+  emailAddress: string | null;
   isActive?: boolean;
-  roleNames?: string | null[] | null;
-  password: string;
-} | null;
+  roleNames?: string[] | null;
+  password: string | null;
+}
 
-export type UserDto = {
-  userName: string;
-  name: string;
-  surname: string;
-  emailAddress: string;
+export interface UserDto {
+  userName: string | null;
+  name: string | null;
+  surname: string | null;
+  emailAddress: string | null;
   isActive?: boolean;
   fullName?: string | null;
   lastLoginTime?: string | null;
   creationTime?: string;
-  roleNames?: string | null[] | null;
+  roleNames?: string[] | null;
   id?: number;
-} | null;
+}
 
-export type RoleDtoListResultDto = {
+export interface RoleDtoListResultDto {
   items?: RoleDto[] | null;
-} | null;
+}
 
-export type ChangeUserLanguageDto = {
-  languageName: string;
-} | null;
+export interface ChangeUserLanguageDto {
+  languageName: string | null;
+}
 
-export type ResetPasswordSendOtpResponse = {
-  /**
-   * Unique runtime identifier of the operation. Is used for resending
-   */
+export interface ResetPasswordSendOtpResponse {
   operationId?: string;
-} | null;
+}
 
-export type ResetPasswordVerifyOtpInput = {
-  mobileNo: string;
-  /**
-   * Unique runtime identifier of the operation. Is used for resending
-   */
+export interface ResetPasswordVerifyOtpInput {
+  mobileNo: string | null;
   operationId?: string;
-  /**
-   * Value of the One Time Pin
-   */
   pin?: string | null;
-} | null;
+}
 
-export type ResetPasswordVerifyOtpResponse = {
+export interface ResetPasswordVerifyOtpResponse {
   token?: string | null;
   username?: string | null;
-  /**
-   * Indicates that the OTP matches to the sent one
-   */
   isSuccess?: boolean;
-  /**
-   * Error message
-   */
   errorMessage?: string | null;
-} | null;
+}
 
-export type ResetPasswordUsingTokenInput = {
-  username: string;
-  token: string;
-  newPassword: string;
-} | null;
+export interface ResetPasswordUsingTokenInput {
+  username: string | null;
+  token: string | null;
+  newPassword: string | null;
+}
 
-export type ChangePasswordDto = {
-  currentPassword: string;
-  newPassword: string;
-} | null;
+export interface ChangePasswordDto {
+  currentPassword: string | null;
+  newPassword: string | null;
+}
 
-export type ResetPasswordDto = {
-  adminPassword: string;
+export interface ResetPasswordDto {
+  adminPassword: string | null;
   userId: number;
-  newPassword: string;
-} | null;
+  newPassword: string | null;
+}
 
-export type UserDtoPagedResultDto = {
+export interface AbpUserAuthConfigDto {
+  allPermissions?: {
+    [key: string]: string;
+  } | null;
+  grantedPermissions?: {
+    [key: string]: string;
+  } | null;
+}
+
+export interface UserDtoPagedResultDto {
   totalCount?: number;
   items?: UserDto[] | null;
-} | null;
+}
 
 export type AccountIsTenantAvailableProps = Omit<
   MutateProps<IsTenantAvailableOutput, unknown, void, IsTenantAvailableInput>,
@@ -1197,35 +645,8 @@ export type UseAccountRegisterProps = Omit<UseMutateProps<RegisterOutput, void, 
 export const useAccountRegister = (props: UseAccountRegisterProps) =>
   useMutate<RegisterOutput, unknown, void, RegisterInput>('POST', `/api/services/app/Account/Register`, props);
 
-export interface AppointmentGetAllQueryParams {
-  input?: GetAppointmentsInput;
-}
-
-export type AppointmentGetAllProps = Omit<
-  GetProps<AppointmentDto[] | null, unknown, AppointmentGetAllQueryParams>,
-  'path'
->;
-
-export const AppointmentGetAll = (props: AppointmentGetAllProps) => (
-  <Get<AppointmentDto[] | null, unknown, AppointmentGetAllQueryParams>
-    path={`/api/services/propertyInspection/Appointment/GetAll`}
-    {...props}
-  />
-);
-
-export type UseAppointmentGetAllProps = Omit<
-  UseGetProps<AppointmentDto[] | null, AppointmentGetAllQueryParams>,
-  'path'
->;
-
-export const useAppointmentGetAll = (props: UseAppointmentGetAllProps) =>
-  useGet<AppointmentDto[] | null, unknown, AppointmentGetAllQueryParams>(
-    `/api/services/propertyInspection/Appointment/GetAll`,
-    props
-  );
-
 export interface AreaAutocompleteQueryParams {
-  term?: string | null;
+  term?: string;
 }
 
 export type AreaAutocompleteProps = Omit<
@@ -1267,7 +688,7 @@ export const useAreaGet = (props: UseAreaGetProps) =>
   useGet<AreaDtoAjaxResponse, AjaxResponseBase, AreaGetQueryParams>(`/api/services/app/Area/Get`, props);
 
 export interface AreaGetAllQueryParams {
-  Sorting?: string | null;
+  Sorting?: string;
   SkipCount?: number;
   MaxResultCount?: number;
 }
@@ -1331,8 +752,44 @@ export type UseAreaDeleteProps = Omit<UseMutateProps<void, AreaDeleteQueryParams
 export const useAreaDelete = (props: UseAreaDeleteProps) =>
   useMutate<void, AjaxResponseBase, AreaDeleteQueryParams, void>('DELETE', `/api/services/app/Area/Delete`, props);
 
+export type ClickatellUpdateSettingsProps = Omit<
+  MutateProps<AjaxResponse, unknown, void, ClickatellSettingDto>,
+  'path' | 'verb'
+>;
+
+export const ClickatellUpdateSettings = (props: ClickatellUpdateSettingsProps) => (
+  <Mutate<AjaxResponse, unknown, void, ClickatellSettingDto>
+    verb="POST"
+    path={`/api/services/app/Clickatell/UpdateSettings`}
+    {...props}
+  />
+);
+
+export type UseClickatellUpdateSettingsProps = Omit<
+  UseMutateProps<AjaxResponse, void, ClickatellSettingDto>,
+  'path' | 'verb'
+>;
+
+export const useClickatellUpdateSettings = (props: UseClickatellUpdateSettingsProps) =>
+  useMutate<AjaxResponse, unknown, void, ClickatellSettingDto>(
+    'POST',
+    `/api/services/app/Clickatell/UpdateSettings`,
+    props
+  );
+
+export type ClickatellGetSettingsProps = Omit<GetProps<ClickatellSettingDtoAjaxResponse, unknown, void>, 'path'>;
+
+export const ClickatellGetSettings = (props: ClickatellGetSettingsProps) => (
+  <Get<ClickatellSettingDtoAjaxResponse, unknown, void> path={`/api/services/app/Clickatell/GetSettings`} {...props} />
+);
+
+export type UseClickatellGetSettingsProps = Omit<UseGetProps<ClickatellSettingDtoAjaxResponse, void>, 'path'>;
+
+export const useClickatellGetSettings = (props: UseClickatellGetSettingsProps) =>
+  useGet<ClickatellSettingDtoAjaxResponse, unknown, void>(`/api/services/app/Clickatell/GetSettings`, props);
+
 export interface DataTableGetConfigurationQueryParams {
-  id?: string | null;
+  id?: string;
 }
 
 export type DataTableGetConfigurationProps = Omit<
@@ -1340,9 +797,6 @@ export type DataTableGetConfigurationProps = Omit<
   'path'
 >;
 
-/**
- * Returns configuration of the DataTable by id
- */
 export const DataTableGetConfiguration = (props: DataTableGetConfigurationProps) => (
   <Get<DataTableConfigDto, unknown, DataTableGetConfigurationQueryParams>
     path={`/api/DataTable/GetConfiguration`}
@@ -1355,9 +809,6 @@ export type UseDataTableGetConfigurationProps = Omit<
   'path'
 >;
 
-/**
- * Returns configuration of the DataTable by id
- */
 export const useDataTableGetConfiguration = (props: UseDataTableGetConfigurationProps) =>
   useGet<DataTableConfigDto, unknown, DataTableGetConfigurationQueryParams>(`/api/DataTable/GetConfiguration`, props);
 
@@ -1366,9 +817,6 @@ export type DataTableGetDataProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Returns data for the DateTable control
- */
 export const DataTableGetData = (props: DataTableGetDataProps) => (
   <Mutate<DataTableData, unknown, void, DataTableGetDataInput> verb="POST" path={`/api/DataTable/GetData`} {...props} />
 );
@@ -1378,9 +826,6 @@ export type UseDataTableGetDataProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Returns data for the DateTable control
- */
 export const useDataTableGetData = (props: UseDataTableGetDataProps) =>
   useMutate<DataTableData, unknown, void, DataTableGetDataInput>('POST', `/api/DataTable/GetData`, props);
 
@@ -1389,174 +834,162 @@ export type DataTableExportToExcelProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Exports DataTable to Excel
- */
 export const DataTableExportToExcel = (props: DataTableExportToExcelProps) => (
   <Mutate<void, unknown, void, DataTableGetDataInput> verb="POST" path={`/api/DataTable/ExportToExcel`} {...props} />
 );
 
 export type UseDataTableExportToExcelProps = Omit<UseMutateProps<void, void, DataTableGetDataInput>, 'path' | 'verb'>;
 
-/**
- * Exports DataTable to Excel
- */
 export const useDataTableExportToExcel = (props: UseDataTableExportToExcelProps) =>
   useMutate<void, unknown, void, DataTableGetDataInput>('POST', `/api/DataTable/ExportToExcel`, props);
 
-export type EmailSenderConfigureSmtpProps = Omit<
-  MutateProps<boolean, unknown, void, SmtpSettingsInput>,
+export type EmailSenderUpdateSmtpSettingsProps = Omit<
+  MutateProps<AjaxResponse, unknown, void, SmtpSettingsDto>,
   'path' | 'verb'
 >;
 
-export const EmailSenderConfigureSmtp = (props: EmailSenderConfigureSmtpProps) => (
-  <Mutate<boolean, unknown, void, SmtpSettingsInput> verb="POST" path={`/api/EmailSender/ConfigureSmtp`} {...props} />
+export const EmailSenderUpdateSmtpSettings = (props: EmailSenderUpdateSmtpSettingsProps) => (
+  <Mutate<AjaxResponse, unknown, void, SmtpSettingsDto>
+    verb="POST"
+    path={`/api/services/app/EmailSender/UpdateSmtpSettings`}
+    {...props}
+  />
 );
 
-export type UseEmailSenderConfigureSmtpProps = Omit<UseMutateProps<boolean, void, SmtpSettingsInput>, 'path' | 'verb'>;
-
-export const useEmailSenderConfigureSmtp = (props: UseEmailSenderConfigureSmtpProps) =>
-  useMutate<boolean, unknown, void, SmtpSettingsInput>('POST', `/api/EmailSender/ConfigureSmtp`, props);
-
-export type EmailSenderConfigureEmailProps = Omit<
-  MutateProps<boolean, unknown, void, EmailSettingsInput>,
+export type UseEmailSenderUpdateSmtpSettingsProps = Omit<
+  UseMutateProps<AjaxResponse, void, SmtpSettingsDto>,
   'path' | 'verb'
 >;
 
-export const EmailSenderConfigureEmail = (props: EmailSenderConfigureEmailProps) => (
-  <Mutate<boolean, unknown, void, EmailSettingsInput> verb="POST" path={`/api/EmailSender/ConfigureEmail`} {...props} />
+export const useEmailSenderUpdateSmtpSettings = (props: UseEmailSenderUpdateSmtpSettingsProps) =>
+  useMutate<AjaxResponse, unknown, void, SmtpSettingsDto>(
+    'POST',
+    `/api/services/app/EmailSender/UpdateSmtpSettings`,
+    props
+  );
+
+export type EmailSenderGetSmtpSettingsProps = Omit<GetProps<SmtpSettingsDtoAjaxResponse, unknown, void>, 'path'>;
+
+export const EmailSenderGetSmtpSettings = (props: EmailSenderGetSmtpSettingsProps) => (
+  <Get<SmtpSettingsDtoAjaxResponse, unknown, void> path={`/api/services/app/EmailSender/GetSmtpSettings`} {...props} />
 );
 
-export type UseEmailSenderConfigureEmailProps = Omit<
-  UseMutateProps<boolean, void, EmailSettingsInput>,
-  'path' | 'verb'
->;
+export type UseEmailSenderGetSmtpSettingsProps = Omit<UseGetProps<SmtpSettingsDtoAjaxResponse, void>, 'path'>;
 
-export const useEmailSenderConfigureEmail = (props: UseEmailSenderConfigureEmailProps) =>
-  useMutate<boolean, unknown, void, EmailSettingsInput>('POST', `/api/EmailSender/ConfigureEmail`, props);
+export const useEmailSenderGetSmtpSettings = (props: UseEmailSenderGetSmtpSettingsProps) =>
+  useGet<SmtpSettingsDtoAjaxResponse, unknown, void>(`/api/services/app/EmailSender/GetSmtpSettings`, props);
 
 export type EmailSenderSendEmailProps = Omit<
-  MutateProps<SendTestEmailDto, unknown, void, SendTestEmailInput>,
+  MutateProps<SendTestEmailDtoAjaxResponse, unknown, void, SendTestEmailInput>,
   'path' | 'verb'
 >;
 
 export const EmailSenderSendEmail = (props: EmailSenderSendEmailProps) => (
-  <Mutate<SendTestEmailDto, unknown, void, SendTestEmailInput>
+  <Mutate<SendTestEmailDtoAjaxResponse, unknown, void, SendTestEmailInput>
     verb="POST"
-    path={`/api/EmailSender/SendEmail`}
+    path={`/api/services/app/EmailSender/SendEmail`}
     {...props}
   />
 );
 
 export type UseEmailSenderSendEmailProps = Omit<
-  UseMutateProps<SendTestEmailDto, void, SendTestEmailInput>,
+  UseMutateProps<SendTestEmailDtoAjaxResponse, void, SendTestEmailInput>,
   'path' | 'verb'
 >;
 
 export const useEmailSenderSendEmail = (props: UseEmailSenderSendEmailProps) =>
-  useMutate<SendTestEmailDto, unknown, void, SendTestEmailInput>('POST', `/api/EmailSender/SendEmail`, props);
+  useMutate<SendTestEmailDtoAjaxResponse, unknown, void, SendTestEmailInput>(
+    'POST',
+    `/api/services/app/EmailSender/SendEmail`,
+    props
+  );
 
-export type FrameworkTestDynamicRepoProps = Omit<GetProps<string | null, unknown, void>, 'path'>;
+export type FormListProps = Omit<GetProps<FormDto[], unknown, void>, 'path'>;
 
-/**
- * NOTE: to be removed
- */
+export const FormList = (props: FormListProps) => <Get<FormDto[], unknown, void> path={`/api/Form/List`} {...props} />;
+
+export type UseFormListProps = Omit<UseGetProps<FormDto[], void>, 'path'>;
+
+export const useFormList = (props: UseFormListProps) => useGet<FormDto[], unknown, void>(`/api/Form/List`, props);
+
+export type FormList2Props = Omit<GetProps<FormDto[], unknown, void>, 'path'>;
+
+export const FormList2 = (props: FormList2Props) => (
+  <Get<FormDto[], unknown, void> path={`/api/Form/List2`} {...props} />
+);
+
+export type UseFormList2Props = Omit<UseGetProps<FormDto[], void>, 'path'>;
+
+export const useFormList2 = (props: UseFormList2Props) => useGet<FormDto[], unknown, void>(`/api/Form/List2`, props);
+
+export type FrameworkTestDynamicRepoProps = Omit<GetProps<string, unknown, void>, 'path'>;
+
 export const FrameworkTestDynamicRepo = (props: FrameworkTestDynamicRepoProps) => (
-  <Get<string | null, unknown, void> path={`/api/Framework/TestDynamicRepo`} {...props} />
+  <Get<string, unknown, void> path={`/api/Framework/TestDynamicRepo`} {...props} />
 );
 
-export type UseFrameworkTestDynamicRepoProps = Omit<UseGetProps<string | null, void>, 'path'>;
+export type UseFrameworkTestDynamicRepoProps = Omit<UseGetProps<string, void>, 'path'>;
 
-/**
- * NOTE: to be removed
- */
 export const useFrameworkTestDynamicRepo = (props: UseFrameworkTestDynamicRepoProps) =>
-  useGet<string | null, unknown, void>(`/api/Framework/TestDynamicRepo`, props);
+  useGet<string, unknown, void>(`/api/Framework/TestDynamicRepo`, props);
 
-export type FrameworkTestSettingsProps = Omit<GetProps<string | null, unknown, void>, 'path'>;
+export type FrameworkTestSettingsProps = Omit<GetProps<string, unknown, void>, 'path'>;
 
-/**
- * NOTE: to be removed
- */
 export const FrameworkTestSettings = (props: FrameworkTestSettingsProps) => (
-  <Get<string | null, unknown, void> path={`/api/Framework/TestSettings`} {...props} />
+  <Get<string, unknown, void> path={`/api/Framework/TestSettings`} {...props} />
 );
 
-export type UseFrameworkTestSettingsProps = Omit<UseGetProps<string | null, void>, 'path'>;
+export type UseFrameworkTestSettingsProps = Omit<UseGetProps<string, void>, 'path'>;
 
-/**
- * NOTE: to be removed
- */
 export const useFrameworkTestSettings = (props: UseFrameworkTestSettingsProps) =>
-  useGet<string | null, unknown, void>(`/api/Framework/TestSettings`, props);
+  useGet<string, unknown, void>(`/api/Framework/TestSettings`, props);
 
 export type FrameworkConfigureTestLdapProps = Omit<MutateProps<void, unknown, void, void>, 'path' | 'verb'>;
 
-/**
- * NOTE: to be removed
- */
 export const FrameworkConfigureTestLdap = (props: FrameworkConfigureTestLdapProps) => (
   <Mutate<void, unknown, void, void> verb="POST" path={`/api/Framework/ConfigureTestLdap`} {...props} />
 );
 
 export type UseFrameworkConfigureTestLdapProps = Omit<UseMutateProps<void, void, void>, 'path' | 'verb'>;
 
-/**
- * NOTE: to be removed
- */
 export const useFrameworkConfigureTestLdap = (props: UseFrameworkConfigureTestLdapProps) =>
   useMutate<void, unknown, void, void>('POST', `/api/Framework/ConfigureTestLdap`, props);
 
 export type FrameworkConfigureTestAzureADProps = Omit<MutateProps<void, unknown, void, void>, 'path' | 'verb'>;
 
-/**
- * NOTE: to be removed
- */
 export const FrameworkConfigureTestAzureAD = (props: FrameworkConfigureTestAzureADProps) => (
   <Mutate<void, unknown, void, void> verb="POST" path={`/api/Framework/ConfigureTestAzureAD`} {...props} />
 );
 
 export type UseFrameworkConfigureTestAzureADProps = Omit<UseMutateProps<void, void, void>, 'path' | 'verb'>;
 
-/**
- * NOTE: to be removed
- */
 export const useFrameworkConfigureTestAzureAD = (props: UseFrameworkConfigureTestAzureADProps) =>
   useMutate<void, unknown, void, void>('POST', `/api/Framework/ConfigureTestAzureAD`, props);
 
-export type FrameworkTestEntitiesProps = Omit<GetProps<string | null, unknown, void>, 'path'>;
+export type FrameworkTestEntitiesProps = Omit<GetProps<string, unknown, void>, 'path'>;
 
-/**
- * NOTE: to be removed
- */
 export const FrameworkTestEntities = (props: FrameworkTestEntitiesProps) => (
-  <Get<string | null, unknown, void> path={`/api/Framework/TestEntities`} {...props} />
+  <Get<string, unknown, void> path={`/api/Framework/TestEntities`} {...props} />
 );
 
-export type UseFrameworkTestEntitiesProps = Omit<UseGetProps<string | null, void>, 'path'>;
+export type UseFrameworkTestEntitiesProps = Omit<UseGetProps<string, void>, 'path'>;
 
-/**
- * NOTE: to be removed
- */
 export const useFrameworkTestEntities = (props: UseFrameworkTestEntitiesProps) =>
-  useGet<string | null, unknown, void>(`/api/Framework/TestEntities`, props);
+  useGet<string, unknown, void>(`/api/Framework/TestEntities`, props);
 
-export type FrameworkBootstrapReferenceListsProps = Omit<
-  MutateProps<string | null, unknown, void, void>,
-  'path' | 'verb'
->;
+export type FrameworkBootstrapReferenceListsProps = Omit<MutateProps<string, unknown, void, void>, 'path' | 'verb'>;
 
 export const FrameworkBootstrapReferenceLists = (props: FrameworkBootstrapReferenceListsProps) => (
-  <Mutate<string | null, unknown, void, void> verb="POST" path={`/api/Framework/BootstrapReferenceLists`} {...props} />
+  <Mutate<string, unknown, void, void> verb="POST" path={`/api/Framework/BootstrapReferenceLists`} {...props} />
 );
 
-export type UseFrameworkBootstrapReferenceListsProps = Omit<UseMutateProps<string | null, void, void>, 'path' | 'verb'>;
+export type UseFrameworkBootstrapReferenceListsProps = Omit<UseMutateProps<string, void, void>, 'path' | 'verb'>;
 
 export const useFrameworkBootstrapReferenceLists = (props: UseFrameworkBootstrapReferenceListsProps) =>
-  useMutate<string | null, unknown, void, void>('POST', `/api/Framework/BootstrapReferenceLists`, props);
+  useMutate<string, unknown, void, void>('POST', `/api/Framework/BootstrapReferenceLists`, props);
 
 export interface FrameworkConfigureUploadFolderQueryParams {
-  folder?: string | null;
+  folder?: string;
 }
 
 export type FrameworkConfigureUploadFolderProps = Omit<
@@ -1564,9 +997,6 @@ export type FrameworkConfigureUploadFolderProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * NOTE: to be removed
- */
 export const FrameworkConfigureUploadFolder = (props: FrameworkConfigureUploadFolderProps) => (
   <Mutate<void, unknown, FrameworkConfigureUploadFolderQueryParams, void>
     verb="POST"
@@ -1580,1155 +1010,10 @@ export type UseFrameworkConfigureUploadFolderProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * NOTE: to be removed
- */
 export const useFrameworkConfigureUploadFolder = (props: UseFrameworkConfigureUploadFolderProps) =>
   useMutate<void, unknown, FrameworkConfigureUploadFolderQueryParams, void>(
     'POST',
     `/api/Framework/ConfigureUploadFolder`,
-    props
-  );
-
-export type InspectionBatchGetAllProps = Omit<
-  GetProps<InspectionBatchWithStatisticDto[] | null, unknown, void>,
-  'path'
->;
-
-export const InspectionBatchGetAll = (props: InspectionBatchGetAllProps) => (
-  <Get<InspectionBatchWithStatisticDto[] | null, unknown, void>
-    path={`/api/services/propertyInspection/InspectionBatch/GetAll`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchGetAllProps = Omit<UseGetProps<InspectionBatchWithStatisticDto[] | null, void>, 'path'>;
-
-export const useInspectionBatchGetAll = (props: UseInspectionBatchGetAllProps) =>
-  useGet<InspectionBatchWithStatisticDto[] | null, unknown, void>(
-    `/api/services/propertyInspection/InspectionBatch/GetAll`,
-    props
-  );
-
-export interface InspectionBatchGetPropertiesQueryParams {
-  /**
-   * Id of the InspectionBatchAssignment
-   */
-  Id?: string;
-}
-
-export type InspectionBatchGetPropertiesProps = Omit<
-  GetProps<InspectionBatchPropertyDto[] | null, unknown, InspectionBatchGetPropertiesQueryParams>,
-  'path'
->;
-
-export const InspectionBatchGetProperties = (props: InspectionBatchGetPropertiesProps) => (
-  <Get<InspectionBatchPropertyDto[] | null, unknown, InspectionBatchGetPropertiesQueryParams>
-    path={`/api/services/propertyInspection/InspectionBatch/GetProperties`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchGetPropertiesProps = Omit<
-  UseGetProps<InspectionBatchPropertyDto[] | null, InspectionBatchGetPropertiesQueryParams>,
-  'path'
->;
-
-export const useInspectionBatchGetProperties = (props: UseInspectionBatchGetPropertiesProps) =>
-  useGet<InspectionBatchPropertyDto[] | null, unknown, InspectionBatchGetPropertiesQueryParams>(
-    `/api/services/propertyInspection/InspectionBatch/GetProperties`,
-    props
-  );
-
-export type InspectionBatchCreateProps = Omit<
-  MutateProps<PropertyGroupDto, unknown, void, PropertyGroupCreateDto>,
-  'path' | 'verb'
->;
-
-export const InspectionBatchCreate = (props: InspectionBatchCreateProps) => (
-  <Mutate<PropertyGroupDto, unknown, void, PropertyGroupCreateDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionBatch/Create`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchCreateProps = Omit<
-  UseMutateProps<PropertyGroupDto, void, PropertyGroupCreateDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionBatchCreate = (props: UseInspectionBatchCreateProps) =>
-  useMutate<PropertyGroupDto, unknown, void, PropertyGroupCreateDto>(
-    'POST',
-    `/api/services/propertyInspection/InspectionBatch/Create`,
-    props
-  );
-
-export type InspectionBatchVerifyTransformerProps = Omit<
-  MutateProps<void, unknown, void, UpdateTransformerDetailsInput>,
-  'path' | 'verb'
->;
-
-export const InspectionBatchVerifyTransformer = (props: InspectionBatchVerifyTransformerProps) => (
-  <Mutate<void, unknown, void, UpdateTransformerDetailsInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionBatch/VerifyTransformer`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchVerifyTransformerProps = Omit<
-  UseMutateProps<void, void, UpdateTransformerDetailsInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionBatchVerifyTransformer = (props: UseInspectionBatchVerifyTransformerProps) =>
-  useMutate<void, unknown, void, UpdateTransformerDetailsInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionBatch/VerifyTransformer`,
-    props
-  );
-
-export interface InspectionBatchAssignmentGetQueryParams {
-  Id?: string;
-}
-
-export type InspectionBatchAssignmentGetProps = Omit<
-  GetProps<InspectionBatchAssignmentDtoAjaxResponse, AjaxResponseBase, InspectionBatchAssignmentGetQueryParams>,
-  'path'
->;
-
-export const InspectionBatchAssignmentGet = (props: InspectionBatchAssignmentGetProps) => (
-  <Get<InspectionBatchAssignmentDtoAjaxResponse, AjaxResponseBase, InspectionBatchAssignmentGetQueryParams>
-    path={`/api/services/propertyInspection/InspectionBatchAssignment/Get`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchAssignmentGetProps = Omit<
-  UseGetProps<InspectionBatchAssignmentDtoAjaxResponse, InspectionBatchAssignmentGetQueryParams>,
-  'path'
->;
-
-export const useInspectionBatchAssignmentGet = (props: UseInspectionBatchAssignmentGetProps) =>
-  useGet<InspectionBatchAssignmentDtoAjaxResponse, AjaxResponseBase, InspectionBatchAssignmentGetQueryParams>(
-    `/api/services/propertyInspection/InspectionBatchAssignment/Get`,
-    props
-  );
-
-export type InspectionBatchAssignmentCreateProps = Omit<
-  MutateProps<InspectionBatchAssignmentDtoAjaxResponse, AjaxResponseBase, void, InspectionBatchAssignmentCreateDto>,
-  'path' | 'verb'
->;
-
-export const InspectionBatchAssignmentCreate = (props: InspectionBatchAssignmentCreateProps) => (
-  <Mutate<InspectionBatchAssignmentDtoAjaxResponse, AjaxResponseBase, void, InspectionBatchAssignmentCreateDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionBatchAssignment/Create`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchAssignmentCreateProps = Omit<
-  UseMutateProps<InspectionBatchAssignmentDtoAjaxResponse, void, InspectionBatchAssignmentCreateDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionBatchAssignmentCreate = (props: UseInspectionBatchAssignmentCreateProps) =>
-  useMutate<InspectionBatchAssignmentDtoAjaxResponse, AjaxResponseBase, void, InspectionBatchAssignmentCreateDto>(
-    'POST',
-    `/api/services/propertyInspection/InspectionBatchAssignment/Create`,
-    props
-  );
-
-export type InspectionBatchAssignmentUpdateProps = Omit<
-  MutateProps<InspectionBatchAssignmentDto, AjaxResponseBase, void, InspectionBatchAssignmentDto>,
-  'path' | 'verb'
->;
-
-export const InspectionBatchAssignmentUpdate = (props: InspectionBatchAssignmentUpdateProps) => (
-  <Mutate<InspectionBatchAssignmentDto, AjaxResponseBase, void, InspectionBatchAssignmentDto>
-    verb="PUT"
-    path={`/api/services/propertyInspection/InspectionBatchAssignment/Update`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchAssignmentUpdateProps = Omit<
-  UseMutateProps<InspectionBatchAssignmentDto, void, InspectionBatchAssignmentDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionBatchAssignmentUpdate = (props: UseInspectionBatchAssignmentUpdateProps) =>
-  useMutate<InspectionBatchAssignmentDto, AjaxResponseBase, void, InspectionBatchAssignmentDto>(
-    'PUT',
-    `/api/services/propertyInspection/InspectionBatchAssignment/Update`,
-    props
-  );
-
-export interface InspectionBatchAssignmentGetAllQueryParams {
-  Sorting?: string | null;
-  SkipCount?: number;
-  MaxResultCount?: number;
-}
-
-export type InspectionBatchAssignmentGetAllProps = Omit<
-  GetProps<InspectionBatchAssignmentDtoPagedResultDto, AjaxResponseBase, InspectionBatchAssignmentGetAllQueryParams>,
-  'path'
->;
-
-export const InspectionBatchAssignmentGetAll = (props: InspectionBatchAssignmentGetAllProps) => (
-  <Get<InspectionBatchAssignmentDtoPagedResultDto, AjaxResponseBase, InspectionBatchAssignmentGetAllQueryParams>
-    path={`/api/services/propertyInspection/InspectionBatchAssignment/GetAll`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchAssignmentGetAllProps = Omit<
-  UseGetProps<InspectionBatchAssignmentDtoPagedResultDto, InspectionBatchAssignmentGetAllQueryParams>,
-  'path'
->;
-
-export const useInspectionBatchAssignmentGetAll = (props: UseInspectionBatchAssignmentGetAllProps) =>
-  useGet<InspectionBatchAssignmentDtoPagedResultDto, AjaxResponseBase, InspectionBatchAssignmentGetAllQueryParams>(
-    `/api/services/propertyInspection/InspectionBatchAssignment/GetAll`,
-    props
-  );
-
-export interface InspectionBatchAssignmentDeleteQueryParams {
-  Id?: string;
-}
-
-export type InspectionBatchAssignmentDeleteProps = Omit<
-  MutateProps<void, AjaxResponseBase, InspectionBatchAssignmentDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const InspectionBatchAssignmentDelete = (props: InspectionBatchAssignmentDeleteProps) => (
-  <Mutate<void, AjaxResponseBase, InspectionBatchAssignmentDeleteQueryParams, void>
-    verb="DELETE"
-    path={`/api/services/propertyInspection/InspectionBatchAssignment/Delete`}
-    {...props}
-  />
-);
-
-export type UseInspectionBatchAssignmentDeleteProps = Omit<
-  UseMutateProps<void, InspectionBatchAssignmentDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const useInspectionBatchAssignmentDelete = (props: UseInspectionBatchAssignmentDeleteProps) =>
-  useMutate<void, AjaxResponseBase, InspectionBatchAssignmentDeleteQueryParams, void>(
-    'DELETE',
-    `/api/services/propertyInspection/InspectionBatchAssignment/Delete`,
-    props
-  );
-
-export type InspectionProjectGetProjectsProps = Omit<
-  GetProps<InspectionProjectDto[] | null, AjaxResponseBase, void>,
-  'path'
->;
-
-export const InspectionProjectGetProjects = (props: InspectionProjectGetProjectsProps) => (
-  <Get<InspectionProjectDto[] | null, AjaxResponseBase, void>
-    path={`/api/services/propertyInspection/InspectionProject/GetProjects`}
-    {...props}
-  />
-);
-
-export type UseInspectionProjectGetProjectsProps = Omit<UseGetProps<InspectionProjectDto[] | null, void>, 'path'>;
-
-export const useInspectionProjectGetProjects = (props: UseInspectionProjectGetProjectsProps) =>
-  useGet<InspectionProjectDto[] | null, AjaxResponseBase, void>(
-    `/api/services/propertyInspection/InspectionProject/GetProjects`,
-    props
-  );
-
-export interface InspectionProjectAutocompleteQueryParams {
-  term?: string | null;
-}
-
-export type InspectionProjectAutocompleteProps = Omit<
-  GetProps<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, InspectionProjectAutocompleteQueryParams>,
-  'path'
->;
-
-export const InspectionProjectAutocomplete = (props: InspectionProjectAutocompleteProps) => (
-  <Get<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, InspectionProjectAutocompleteQueryParams>
-    path={`/api/services/propertyInspection/InspectionProject/Autocomplete`}
-    {...props}
-  />
-);
-
-export type UseInspectionProjectAutocompleteProps = Omit<
-  UseGetProps<AutocompleteItemDtoListAjaxResponse, InspectionProjectAutocompleteQueryParams>,
-  'path'
->;
-
-export const useInspectionProjectAutocomplete = (props: UseInspectionProjectAutocompleteProps) =>
-  useGet<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, InspectionProjectAutocompleteQueryParams>(
-    `/api/services/propertyInspection/InspectionProject/Autocomplete`,
-    props
-  );
-
-export interface InspectionProjectGetQueryParams {
-  Id?: string;
-}
-
-export type InspectionProjectGetProps = Omit<
-  GetProps<InspectionProjectDtoAjaxResponse, AjaxResponseBase, InspectionProjectGetQueryParams>,
-  'path'
->;
-
-export const InspectionProjectGet = (props: InspectionProjectGetProps) => (
-  <Get<InspectionProjectDtoAjaxResponse, AjaxResponseBase, InspectionProjectGetQueryParams>
-    path={`/api/services/propertyInspection/InspectionProject/Get`}
-    {...props}
-  />
-);
-
-export type UseInspectionProjectGetProps = Omit<
-  UseGetProps<InspectionProjectDtoAjaxResponse, InspectionProjectGetQueryParams>,
-  'path'
->;
-
-export const useInspectionProjectGet = (props: UseInspectionProjectGetProps) =>
-  useGet<InspectionProjectDtoAjaxResponse, AjaxResponseBase, InspectionProjectGetQueryParams>(
-    `/api/services/propertyInspection/InspectionProject/Get`,
-    props
-  );
-
-export interface InspectionProjectGetAllQueryParams {
-  Sorting?: string | null;
-  SkipCount?: number;
-  MaxResultCount?: number;
-}
-
-export type InspectionProjectGetAllProps = Omit<
-  GetProps<InspectionProjectDtoPagedResultDto, AjaxResponseBase, InspectionProjectGetAllQueryParams>,
-  'path'
->;
-
-export const InspectionProjectGetAll = (props: InspectionProjectGetAllProps) => (
-  <Get<InspectionProjectDtoPagedResultDto, AjaxResponseBase, InspectionProjectGetAllQueryParams>
-    path={`/api/services/propertyInspection/InspectionProject/GetAll`}
-    {...props}
-  />
-);
-
-export type UseInspectionProjectGetAllProps = Omit<
-  UseGetProps<InspectionProjectDtoPagedResultDto, InspectionProjectGetAllQueryParams>,
-  'path'
->;
-
-export const useInspectionProjectGetAll = (props: UseInspectionProjectGetAllProps) =>
-  useGet<InspectionProjectDtoPagedResultDto, AjaxResponseBase, InspectionProjectGetAllQueryParams>(
-    `/api/services/propertyInspection/InspectionProject/GetAll`,
-    props
-  );
-
-export type InspectionProjectCreateProps = Omit<
-  MutateProps<InspectionProjectDto, AjaxResponseBase, void, InspectionProjectCreateDto>,
-  'path' | 'verb'
->;
-
-export const InspectionProjectCreate = (props: InspectionProjectCreateProps) => (
-  <Mutate<InspectionProjectDto, AjaxResponseBase, void, InspectionProjectCreateDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProject/Create`}
-    {...props}
-  />
-);
-
-export type UseInspectionProjectCreateProps = Omit<
-  UseMutateProps<InspectionProjectDto, void, InspectionProjectCreateDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionProjectCreate = (props: UseInspectionProjectCreateProps) =>
-  useMutate<InspectionProjectDto, AjaxResponseBase, void, InspectionProjectCreateDto>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProject/Create`,
-    props
-  );
-
-export type InspectionProjectUpdateProps = Omit<
-  MutateProps<InspectionProjectDto, AjaxResponseBase, void, InspectionProjectDto>,
-  'path' | 'verb'
->;
-
-export const InspectionProjectUpdate = (props: InspectionProjectUpdateProps) => (
-  <Mutate<InspectionProjectDto, AjaxResponseBase, void, InspectionProjectDto>
-    verb="PUT"
-    path={`/api/services/propertyInspection/InspectionProject/Update`}
-    {...props}
-  />
-);
-
-export type UseInspectionProjectUpdateProps = Omit<
-  UseMutateProps<InspectionProjectDto, void, InspectionProjectDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionProjectUpdate = (props: UseInspectionProjectUpdateProps) =>
-  useMutate<InspectionProjectDto, AjaxResponseBase, void, InspectionProjectDto>(
-    'PUT',
-    `/api/services/propertyInspection/InspectionProject/Update`,
-    props
-  );
-
-export interface InspectionProjectDeleteQueryParams {
-  Id?: string;
-}
-
-export type InspectionProjectDeleteProps = Omit<
-  MutateProps<void, AjaxResponseBase, InspectionProjectDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const InspectionProjectDelete = (props: InspectionProjectDeleteProps) => (
-  <Mutate<void, AjaxResponseBase, InspectionProjectDeleteQueryParams, void>
-    verb="DELETE"
-    path={`/api/services/propertyInspection/InspectionProject/Delete`}
-    {...props}
-  />
-);
-
-export type UseInspectionProjectDeleteProps = Omit<
-  UseMutateProps<void, InspectionProjectDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const useInspectionProjectDelete = (props: UseInspectionProjectDeleteProps) =>
-  useMutate<void, AjaxResponseBase, InspectionProjectDeleteQueryParams, void>(
-    'DELETE',
-    `/api/services/propertyInspection/InspectionProject/Delete`,
-    props
-  );
-
-export interface InspectionPropertyGetQueryParams {
-  id?: string;
-}
-
-export type InspectionPropertyGetProps = Omit<
-  GetProps<InspectionPropertyDto, unknown, InspectionPropertyGetQueryParams>,
-  'path'
->;
-
-export const InspectionPropertyGet = (props: InspectionPropertyGetProps) => (
-  <Get<InspectionPropertyDto, unknown, InspectionPropertyGetQueryParams>
-    path={`/api/services/propertyInspection/InspectionProperty/Get`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyGetProps = Omit<
-  UseGetProps<InspectionPropertyDto, InspectionPropertyGetQueryParams>,
-  'path'
->;
-
-export const useInspectionPropertyGet = (props: UseInspectionPropertyGetProps) =>
-  useGet<InspectionPropertyDto, unknown, InspectionPropertyGetQueryParams>(
-    `/api/services/propertyInspection/InspectionProperty/Get`,
-    props
-  );
-
-export type InspectionPropertyCreateProps = Omit<
-  MutateProps<InspectionPropertyDto, unknown, void, CreateInspectionPropertyDto>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyCreate = (props: InspectionPropertyCreateProps) => (
-  <Mutate<InspectionPropertyDto, unknown, void, CreateInspectionPropertyDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/Create`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyCreateProps = Omit<
-  UseMutateProps<InspectionPropertyDto, void, CreateInspectionPropertyDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyCreate = (props: UseInspectionPropertyCreateProps) =>
-  useMutate<InspectionPropertyDto, unknown, void, CreateInspectionPropertyDto>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/Create`,
-    props
-  );
-
-export type InspectionPropertyUpdatePropertyDetailsProps = Omit<
-  MutateProps<InspectionPropertyDto, unknown, void, UpdatePropertyDetailsInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyUpdatePropertyDetails = (props: InspectionPropertyUpdatePropertyDetailsProps) => (
-  <Mutate<InspectionPropertyDto, unknown, void, UpdatePropertyDetailsInput>
-    verb="PUT"
-    path={`/api/services/propertyInspection/InspectionProperty/UpdatePropertyDetails`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyUpdatePropertyDetailsProps = Omit<
-  UseMutateProps<InspectionPropertyDto, void, UpdatePropertyDetailsInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyUpdatePropertyDetails = (props: UseInspectionPropertyUpdatePropertyDetailsProps) =>
-  useMutate<InspectionPropertyDto, unknown, void, UpdatePropertyDetailsInput>(
-    'PUT',
-    `/api/services/propertyInspection/InspectionProperty/UpdatePropertyDetails`,
-    props
-  );
-
-export type InspectionPropertyVerifyPropertyProps = Omit<
-  MutateProps<void, unknown, void, UpdateInspectionPropertyDetailsInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyVerifyProperty = (props: InspectionPropertyVerifyPropertyProps) => (
-  <Mutate<void, unknown, void, UpdateInspectionPropertyDetailsInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/VerifyProperty`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyVerifyPropertyProps = Omit<
-  UseMutateProps<void, void, UpdateInspectionPropertyDetailsInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyVerifyProperty = (props: UseInspectionPropertyVerifyPropertyProps) =>
-  useMutate<void, unknown, void, UpdateInspectionPropertyDetailsInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/VerifyProperty`,
-    props
-  );
-
-export type InspectionPropertyUpdateCustomerDetailsProps = Omit<
-  MutateProps<InspectionPropertyDto, unknown, void, UpdateCustomerDetailsInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyUpdateCustomerDetails = (props: InspectionPropertyUpdateCustomerDetailsProps) => (
-  <Mutate<InspectionPropertyDto, unknown, void, UpdateCustomerDetailsInput>
-    verb="PUT"
-    path={`/api/services/propertyInspection/InspectionProperty/UpdateCustomerDetails`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyUpdateCustomerDetailsProps = Omit<
-  UseMutateProps<InspectionPropertyDto, void, UpdateCustomerDetailsInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyUpdateCustomerDetails = (props: UseInspectionPropertyUpdateCustomerDetailsProps) =>
-  useMutate<InspectionPropertyDto, unknown, void, UpdateCustomerDetailsInput>(
-    'PUT',
-    `/api/services/propertyInspection/InspectionProperty/UpdateCustomerDetails`,
-    props
-  );
-
-export type InspectionPropertyUpdateInspectionStatusProps = Omit<
-  MutateProps<InspectionPropertyDto, unknown, void, UpdateInspectionStatusInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyUpdateInspectionStatus = (props: InspectionPropertyUpdateInspectionStatusProps) => (
-  <Mutate<InspectionPropertyDto, unknown, void, UpdateInspectionStatusInput>
-    verb="PUT"
-    path={`/api/services/propertyInspection/InspectionProperty/UpdateInspectionStatus`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyUpdateInspectionStatusProps = Omit<
-  UseMutateProps<InspectionPropertyDto, void, UpdateInspectionStatusInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyUpdateInspectionStatus = (props: UseInspectionPropertyUpdateInspectionStatusProps) =>
-  useMutate<InspectionPropertyDto, unknown, void, UpdateInspectionStatusInput>(
-    'PUT',
-    `/api/services/propertyInspection/InspectionProperty/UpdateInspectionStatus`,
-    props
-  );
-
-export type InspectionPropertyCheckInProps = Omit<
-  MutateProps<InspectionPropertyCheckInDto, unknown, void, InspectionPropertyCheckInInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyCheckIn = (props: InspectionPropertyCheckInProps) => (
-  <Mutate<InspectionPropertyCheckInDto, unknown, void, InspectionPropertyCheckInInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/CheckIn`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyCheckInProps = Omit<
-  UseMutateProps<InspectionPropertyCheckInDto, void, InspectionPropertyCheckInInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyCheckIn = (props: UseInspectionPropertyCheckInProps) =>
-  useMutate<InspectionPropertyCheckInDto, unknown, void, InspectionPropertyCheckInInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/CheckIn`,
-    props
-  );
-
-export type InspectionPropertyAssignInspectorProps = Omit<
-  MutateProps<void, unknown, void, AssignInspectorInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyAssignInspector = (props: InspectionPropertyAssignInspectorProps) => (
-  <Mutate<void, unknown, void, AssignInspectorInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/AssignInspector`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyAssignInspectorProps = Omit<
-  UseMutateProps<void, void, AssignInspectorInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyAssignInspector = (props: UseInspectionPropertyAssignInspectorProps) =>
-  useMutate<void, unknown, void, AssignInspectorInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/AssignInspector`,
-    props
-  );
-
-export type InspectionPropertyNoAccessProps = Omit<MutateProps<void, unknown, void, NoAccessInput>, 'path' | 'verb'>;
-
-export const InspectionPropertyNoAccess = (props: InspectionPropertyNoAccessProps) => (
-  <Mutate<void, unknown, void, NoAccessInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/NoAccess`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyNoAccessProps = Omit<UseMutateProps<void, void, NoAccessInput>, 'path' | 'verb'>;
-
-export const useInspectionPropertyNoAccess = (props: UseInspectionPropertyNoAccessProps) =>
-  useMutate<void, unknown, void, NoAccessInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/NoAccess`,
-    props
-  );
-
-export type InspectionPropertyUnElectrifiedHouseProps = Omit<
-  MutateProps<void, unknown, void, PropertyVisitInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyUnElectrifiedHouse = (props: InspectionPropertyUnElectrifiedHouseProps) => (
-  <Mutate<void, unknown, void, PropertyVisitInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/UnElectrifiedHouse`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyUnElectrifiedHouseProps = Omit<
-  UseMutateProps<void, void, PropertyVisitInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyUnElectrifiedHouse = (props: UseInspectionPropertyUnElectrifiedHouseProps) =>
-  useMutate<void, unknown, void, PropertyVisitInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/UnElectrifiedHouse`,
-    props
-  );
-
-export type InspectionPropertyAccessGrantedProps = Omit<
-  MutateProps<void, unknown, void, PropertyVisitInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyAccessGranted = (props: InspectionPropertyAccessGrantedProps) => (
-  <Mutate<void, unknown, void, PropertyVisitInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/AccessGranted`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyAccessGrantedProps = Omit<
-  UseMutateProps<void, void, PropertyVisitInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyAccessGranted = (props: UseInspectionPropertyAccessGrantedProps) =>
-  useMutate<void, unknown, void, PropertyVisitInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/AccessGranted`,
-    props
-  );
-
-export type InspectionPropertyReportVisitFindingsProps = Omit<
-  MutateProps<void, unknown, void, ReportFindingsInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyReportVisitFindings = (props: InspectionPropertyReportVisitFindingsProps) => (
-  <Mutate<void, unknown, void, ReportFindingsInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/ReportVisitFindings`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyReportVisitFindingsProps = Omit<
-  UseMutateProps<void, void, ReportFindingsInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyReportVisitFindings = (props: UseInspectionPropertyReportVisitFindingsProps) =>
-  useMutate<void, unknown, void, ReportFindingsInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/ReportVisitFindings`,
-    props
-  );
-
-export type InspectionPropertyReassignProps = Omit<
-  MutateProps<void, unknown, void, ReassignPropertyInput>,
-  'path' | 'verb'
->;
-
-export const InspectionPropertyReassign = (props: InspectionPropertyReassignProps) => (
-  <Mutate<void, unknown, void, ReassignPropertyInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionProperty/Reassign`}
-    {...props}
-  />
-);
-
-export type UseInspectionPropertyReassignProps = Omit<
-  UseMutateProps<void, void, ReassignPropertyInput>,
-  'path' | 'verb'
->;
-
-export const useInspectionPropertyReassign = (props: UseInspectionPropertyReassignProps) =>
-  useMutate<void, unknown, void, ReassignPropertyInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionProperty/Reassign`,
-    props
-  );
-
-export type InspectionTeamGetMyTeamsProps = Omit<GetProps<InspectionTeamDto[] | null, AjaxResponseBase, void>, 'path'>;
-
-export const InspectionTeamGetMyTeams = (props: InspectionTeamGetMyTeamsProps) => (
-  <Get<InspectionTeamDto[] | null, AjaxResponseBase, void>
-    path={`/api/services/propertyInspection/InspectionTeam/GetMyTeams`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamGetMyTeamsProps = Omit<UseGetProps<InspectionTeamDto[] | null, void>, 'path'>;
-
-export const useInspectionTeamGetMyTeams = (props: UseInspectionTeamGetMyTeamsProps) =>
-  useGet<InspectionTeamDto[] | null, AjaxResponseBase, void>(
-    `/api/services/propertyInspection/InspectionTeam/GetMyTeams`,
-    props
-  );
-
-export interface InspectionTeamGetTeamMembersQueryParams {
-  id?: string;
-}
-
-export type InspectionTeamGetTeamMembersProps = Omit<
-  GetProps<TeamMemberDto[] | null, AjaxResponseBase, InspectionTeamGetTeamMembersQueryParams>,
-  'path'
->;
-
-export const InspectionTeamGetTeamMembers = (props: InspectionTeamGetTeamMembersProps) => (
-  <Get<TeamMemberDto[] | null, AjaxResponseBase, InspectionTeamGetTeamMembersQueryParams>
-    path={`/api/services/propertyInspection/InspectionTeam/GetTeamMembers`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamGetTeamMembersProps = Omit<
-  UseGetProps<TeamMemberDto[] | null, InspectionTeamGetTeamMembersQueryParams>,
-  'path'
->;
-
-export const useInspectionTeamGetTeamMembers = (props: UseInspectionTeamGetTeamMembersProps) =>
-  useGet<TeamMemberDto[] | null, AjaxResponseBase, InspectionTeamGetTeamMembersQueryParams>(
-    `/api/services/propertyInspection/InspectionTeam/GetTeamMembers`,
-    props
-  );
-
-export type InspectionTeamCreateProps = Omit<
-  MutateProps<InspectionTeamDto, AjaxResponseBase, void, InspectionTeamCreateDto>,
-  'path' | 'verb'
->;
-
-export const InspectionTeamCreate = (props: InspectionTeamCreateProps) => (
-  <Mutate<InspectionTeamDto, AjaxResponseBase, void, InspectionTeamCreateDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionTeam/Create`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamCreateProps = Omit<
-  UseMutateProps<InspectionTeamDto, void, InspectionTeamCreateDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionTeamCreate = (props: UseInspectionTeamCreateProps) =>
-  useMutate<InspectionTeamDto, AjaxResponseBase, void, InspectionTeamCreateDto>(
-    'POST',
-    `/api/services/propertyInspection/InspectionTeam/Create`,
-    props
-  );
-
-export interface InspectionTeamAutocompleteQueryParams {
-  term?: string | null;
-}
-
-export type InspectionTeamAutocompleteProps = Omit<
-  GetProps<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, InspectionTeamAutocompleteQueryParams>,
-  'path'
->;
-
-export const InspectionTeamAutocomplete = (props: InspectionTeamAutocompleteProps) => (
-  <Get<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, InspectionTeamAutocompleteQueryParams>
-    path={`/api/services/propertyInspection/InspectionTeam/Autocomplete`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamAutocompleteProps = Omit<
-  UseGetProps<AutocompleteItemDtoListAjaxResponse, InspectionTeamAutocompleteQueryParams>,
-  'path'
->;
-
-export const useInspectionTeamAutocomplete = (props: UseInspectionTeamAutocompleteProps) =>
-  useGet<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, InspectionTeamAutocompleteQueryParams>(
-    `/api/services/propertyInspection/InspectionTeam/Autocomplete`,
-    props
-  );
-
-export interface InspectionTeamGetQueryParams {
-  Id?: string;
-}
-
-export type InspectionTeamGetProps = Omit<
-  GetProps<InspectionTeamDtoAjaxResponse, AjaxResponseBase, InspectionTeamGetQueryParams>,
-  'path'
->;
-
-export const InspectionTeamGet = (props: InspectionTeamGetProps) => (
-  <Get<InspectionTeamDtoAjaxResponse, AjaxResponseBase, InspectionTeamGetQueryParams>
-    path={`/api/services/propertyInspection/InspectionTeam/Get`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamGetProps = Omit<
-  UseGetProps<InspectionTeamDtoAjaxResponse, InspectionTeamGetQueryParams>,
-  'path'
->;
-
-export const useInspectionTeamGet = (props: UseInspectionTeamGetProps) =>
-  useGet<InspectionTeamDtoAjaxResponse, AjaxResponseBase, InspectionTeamGetQueryParams>(
-    `/api/services/propertyInspection/InspectionTeam/Get`,
-    props
-  );
-
-export type InspectionTeamAddMemberProps = Omit<
-  MutateProps<void, AjaxResponseBase, void, AddInspectionTeamMemberInput>,
-  'path' | 'verb'
->;
-
-/**
- * Adds team member
- */
-export const InspectionTeamAddMember = (props: InspectionTeamAddMemberProps) => (
-  <Mutate<void, AjaxResponseBase, void, AddInspectionTeamMemberInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionTeam/AddMember`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamAddMemberProps = Omit<
-  UseMutateProps<void, void, AddInspectionTeamMemberInput>,
-  'path' | 'verb'
->;
-
-/**
- * Adds team member
- */
-export const useInspectionTeamAddMember = (props: UseInspectionTeamAddMemberProps) =>
-  useMutate<void, AjaxResponseBase, void, AddInspectionTeamMemberInput>(
-    'POST',
-    `/api/services/propertyInspection/InspectionTeam/AddMember`,
-    props
-  );
-
-export type InspectionTeamRemoveMemberProps = Omit<
-  MutateProps<void, AjaxResponseBase, void, GuidEntityDto>,
-  'path' | 'verb'
->;
-
-/**
- * Removes team member
- */
-export const InspectionTeamRemoveMember = (props: InspectionTeamRemoveMemberProps) => (
-  <Mutate<void, AjaxResponseBase, void, GuidEntityDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/InspectionTeam/RemoveMember`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamRemoveMemberProps = Omit<UseMutateProps<void, void, GuidEntityDto>, 'path' | 'verb'>;
-
-/**
- * Removes team member
- */
-export const useInspectionTeamRemoveMember = (props: UseInspectionTeamRemoveMemberProps) =>
-  useMutate<void, AjaxResponseBase, void, GuidEntityDto>(
-    'POST',
-    `/api/services/propertyInspection/InspectionTeam/RemoveMember`,
-    props
-  );
-
-export interface InspectionTeamGetTeamCalendarQueryParams {
-  /**
-   * Id of the inspection team
-   */
-  id?: string;
-  currentEventId?: string | null;
-  start?: string;
-  end?: string;
-}
-
-export type InspectionTeamGetTeamCalendarProps = Omit<
-  GetProps<CalendarEventDto[] | null, AjaxResponseBase, InspectionTeamGetTeamCalendarQueryParams>,
-  'path'
->;
-
-/**
- * Returns calendar events for the inspection team
- */
-export const InspectionTeamGetTeamCalendar = (props: InspectionTeamGetTeamCalendarProps) => (
-  <Get<CalendarEventDto[] | null, AjaxResponseBase, InspectionTeamGetTeamCalendarQueryParams>
-    path={`/api/services/propertyInspection/InspectionTeam/GetTeamCalendar`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamGetTeamCalendarProps = Omit<
-  UseGetProps<CalendarEventDto[] | null, InspectionTeamGetTeamCalendarQueryParams>,
-  'path'
->;
-
-/**
- * Returns calendar events for the inspection team
- */
-export const useInspectionTeamGetTeamCalendar = (props: UseInspectionTeamGetTeamCalendarProps) =>
-  useGet<CalendarEventDto[] | null, AjaxResponseBase, InspectionTeamGetTeamCalendarQueryParams>(
-    `/api/services/propertyInspection/InspectionTeam/GetTeamCalendar`,
-    props
-  );
-
-export type InspectionTeamUpdateProps = Omit<
-  MutateProps<InspectionTeamDto, AjaxResponseBase, void, InspectionTeamDto>,
-  'path' | 'verb'
->;
-
-export const InspectionTeamUpdate = (props: InspectionTeamUpdateProps) => (
-  <Mutate<InspectionTeamDto, AjaxResponseBase, void, InspectionTeamDto>
-    verb="PUT"
-    path={`/api/services/propertyInspection/InspectionTeam/Update`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamUpdateProps = Omit<
-  UseMutateProps<InspectionTeamDto, void, InspectionTeamDto>,
-  'path' | 'verb'
->;
-
-export const useInspectionTeamUpdate = (props: UseInspectionTeamUpdateProps) =>
-  useMutate<InspectionTeamDto, AjaxResponseBase, void, InspectionTeamDto>(
-    'PUT',
-    `/api/services/propertyInspection/InspectionTeam/Update`,
-    props
-  );
-
-export interface InspectionTeamGetAllQueryParams {
-  Sorting?: string | null;
-  SkipCount?: number;
-  MaxResultCount?: number;
-}
-
-export type InspectionTeamGetAllProps = Omit<
-  GetProps<InspectionTeamDtoPagedResultDto, AjaxResponseBase, InspectionTeamGetAllQueryParams>,
-  'path'
->;
-
-export const InspectionTeamGetAll = (props: InspectionTeamGetAllProps) => (
-  <Get<InspectionTeamDtoPagedResultDto, AjaxResponseBase, InspectionTeamGetAllQueryParams>
-    path={`/api/services/propertyInspection/InspectionTeam/GetAll`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamGetAllProps = Omit<
-  UseGetProps<InspectionTeamDtoPagedResultDto, InspectionTeamGetAllQueryParams>,
-  'path'
->;
-
-export const useInspectionTeamGetAll = (props: UseInspectionTeamGetAllProps) =>
-  useGet<InspectionTeamDtoPagedResultDto, AjaxResponseBase, InspectionTeamGetAllQueryParams>(
-    `/api/services/propertyInspection/InspectionTeam/GetAll`,
-    props
-  );
-
-export interface InspectionTeamDeleteQueryParams {
-  Id?: string;
-}
-
-export type InspectionTeamDeleteProps = Omit<
-  MutateProps<void, AjaxResponseBase, InspectionTeamDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const InspectionTeamDelete = (props: InspectionTeamDeleteProps) => (
-  <Mutate<void, AjaxResponseBase, InspectionTeamDeleteQueryParams, void>
-    verb="DELETE"
-    path={`/api/services/propertyInspection/InspectionTeam/Delete`}
-    {...props}
-  />
-);
-
-export type UseInspectionTeamDeleteProps = Omit<
-  UseMutateProps<void, InspectionTeamDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const useInspectionTeamDelete = (props: UseInspectionTeamDeleteProps) =>
-  useMutate<void, AjaxResponseBase, InspectionTeamDeleteQueryParams, void>(
-    'DELETE',
-    `/api/services/propertyInspection/InspectionTeam/Delete`,
-    props
-  );
-
-export interface MeterGetMetersQueryParams {
-  id?: string;
-}
-
-export type MeterGetMetersProps = Omit<
-  GetProps<MeterWithInspectionDto[] | null, unknown, MeterGetMetersQueryParams>,
-  'path'
->;
-
-export const MeterGetMeters = (props: MeterGetMetersProps) => (
-  <Get<MeterWithInspectionDto[] | null, unknown, MeterGetMetersQueryParams>
-    path={`/api/services/meterInspection/Meter/GetMeters`}
-    {...props}
-  />
-);
-
-export type UseMeterGetMetersProps = Omit<
-  UseGetProps<MeterWithInspectionDto[] | null, MeterGetMetersQueryParams>,
-  'path'
->;
-
-export const useMeterGetMeters = (props: UseMeterGetMetersProps) =>
-  useGet<MeterWithInspectionDto[] | null, unknown, MeterGetMetersQueryParams>(
-    `/api/services/meterInspection/Meter/GetMeters`,
-    props
-  );
-
-export type MeterCreateProps = Omit<MutateProps<MeterDto, unknown, void, CreateMeterDto>, 'path' | 'verb'>;
-
-/**
- * Creates new meter
- */
-export const MeterCreate = (props: MeterCreateProps) => (
-  <Mutate<MeterDto, unknown, void, CreateMeterDto>
-    verb="POST"
-    path={`/api/services/meterInspection/Meter/Create`}
-    {...props}
-  />
-);
-
-export type UseMeterCreateProps = Omit<UseMutateProps<MeterDto, void, CreateMeterDto>, 'path' | 'verb'>;
-
-/**
- * Creates new meter
- */
-export const useMeterCreate = (props: UseMeterCreateProps) =>
-  useMutate<MeterDto, unknown, void, CreateMeterDto>('POST', `/api/services/meterInspection/Meter/Create`, props);
-
-export interface MeterGetQueryParams {
-  id?: string;
-}
-
-export type MeterGetProps = Omit<GetProps<MeterDto, unknown, MeterGetQueryParams>, 'path'>;
-
-/**
- * Returns details of the meter with selected id
- */
-export const MeterGet = (props: MeterGetProps) => (
-  <Get<MeterDto, unknown, MeterGetQueryParams> path={`/api/services/meterInspection/Meter/Get`} {...props} />
-);
-
-export type UseMeterGetProps = Omit<UseGetProps<MeterDto, MeterGetQueryParams>, 'path'>;
-
-/**
- * Returns details of the meter with selected id
- */
-export const useMeterGet = (props: UseMeterGetProps) =>
-  useGet<MeterDto, unknown, MeterGetQueryParams>(`/api/services/meterInspection/Meter/Get`, props);
-
-export type MeterSubmitInspectionResultProps = Omit<
-  MutateProps<MeterInspectionDto, unknown, void, MeterInspectionInput>,
-  'path' | 'verb'
->;
-
-/**
- * Submits meter inspection results
- */
-export const MeterSubmitInspectionResult = (props: MeterSubmitInspectionResultProps) => (
-  <Mutate<MeterInspectionDto, unknown, void, MeterInspectionInput>
-    verb="POST"
-    path={`/api/services/meterInspection/Meter/SubmitInspectionResult`}
-    {...props}
-  />
-);
-
-export type UseMeterSubmitInspectionResultProps = Omit<
-  UseMutateProps<MeterInspectionDto, void, MeterInspectionInput>,
-  'path' | 'verb'
->;
-
-/**
- * Submits meter inspection results
- */
-export const useMeterSubmitInspectionResult = (props: UseMeterSubmitInspectionResultProps) =>
-  useMutate<MeterInspectionDto, unknown, void, MeterInspectionInput>(
-    'POST',
-    `/api/services/meterInspection/Meter/SubmitInspectionResult`,
     props
   );
 
@@ -2805,7 +1090,7 @@ export const usePersonGet = (props: UsePersonGetProps) =>
   useGet<PersonAccountDtoAjaxResponse, AjaxResponseBase, PersonGetQueryParams>(`/api/services/app/Person/Get`, props);
 
 export interface PersonAutocompleteByNameQueryParams {
-  term?: string | null;
+  term?: string;
 }
 
 export type PersonAutocompleteByNameProps = Omit<
@@ -2832,7 +1117,7 @@ export const usePersonAutocompleteByName = (props: UsePersonAutocompleteByNamePr
   );
 
 export interface PersonGetAllQueryParams {
-  Sorting?: string | null;
+  Sorting?: string;
   SkipCount?: number;
   MaxResultCount?: number;
 }
@@ -2901,466 +1186,6 @@ export type UsePersonDeleteProps = Omit<UseMutateProps<void, PersonDeleteQueryPa
 export const usePersonDelete = (props: UsePersonDeleteProps) =>
   useMutate<void, AjaxResponseBase, PersonDeleteQueryParams, void>('DELETE', `/api/services/app/Person/Delete`, props);
 
-export interface PropertyGroupAutocompleteQueryParams {
-  term?: string | null;
-}
-
-export type PropertyGroupAutocompleteProps = Omit<
-  GetProps<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, PropertyGroupAutocompleteQueryParams>,
-  'path'
->;
-
-export const PropertyGroupAutocomplete = (props: PropertyGroupAutocompleteProps) => (
-  <Get<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, PropertyGroupAutocompleteQueryParams>
-    path={`/api/services/propertyInspection/PropertyGroup/Autocomplete`}
-    {...props}
-  />
-);
-
-export type UsePropertyGroupAutocompleteProps = Omit<
-  UseGetProps<AutocompleteItemDtoListAjaxResponse, PropertyGroupAutocompleteQueryParams>,
-  'path'
->;
-
-export const usePropertyGroupAutocomplete = (props: UsePropertyGroupAutocompleteProps) =>
-  useGet<AutocompleteItemDtoListAjaxResponse, AjaxResponseBase, PropertyGroupAutocompleteQueryParams>(
-    `/api/services/propertyInspection/PropertyGroup/Autocomplete`,
-    props
-  );
-
-export interface PropertyGroupGetQueryParams {
-  Id?: string;
-}
-
-export type PropertyGroupGetProps = Omit<
-  GetProps<PropertyGroupDto, AjaxResponseBase, PropertyGroupGetQueryParams>,
-  'path'
->;
-
-export const PropertyGroupGet = (props: PropertyGroupGetProps) => (
-  <Get<PropertyGroupDto, AjaxResponseBase, PropertyGroupGetQueryParams>
-    path={`/api/services/propertyInspection/PropertyGroup/Get`}
-    {...props}
-  />
-);
-
-export type UsePropertyGroupGetProps = Omit<UseGetProps<PropertyGroupDto, PropertyGroupGetQueryParams>, 'path'>;
-
-export const usePropertyGroupGet = (props: UsePropertyGroupGetProps) =>
-  useGet<PropertyGroupDto, AjaxResponseBase, PropertyGroupGetQueryParams>(
-    `/api/services/propertyInspection/PropertyGroup/Get`,
-    props
-  );
-
-export interface PropertyGroupGetAllQueryParams {
-  Sorting?: string | null;
-  SkipCount?: number;
-  MaxResultCount?: number;
-}
-
-export type PropertyGroupGetAllProps = Omit<
-  GetProps<PropertyGroupDtoPagedResultDto, AjaxResponseBase, PropertyGroupGetAllQueryParams>,
-  'path'
->;
-
-export const PropertyGroupGetAll = (props: PropertyGroupGetAllProps) => (
-  <Get<PropertyGroupDtoPagedResultDto, AjaxResponseBase, PropertyGroupGetAllQueryParams>
-    path={`/api/services/propertyInspection/PropertyGroup/GetAll`}
-    {...props}
-  />
-);
-
-export type UsePropertyGroupGetAllProps = Omit<
-  UseGetProps<PropertyGroupDtoPagedResultDto, PropertyGroupGetAllQueryParams>,
-  'path'
->;
-
-export const usePropertyGroupGetAll = (props: UsePropertyGroupGetAllProps) =>
-  useGet<PropertyGroupDtoPagedResultDto, AjaxResponseBase, PropertyGroupGetAllQueryParams>(
-    `/api/services/propertyInspection/PropertyGroup/GetAll`,
-    props
-  );
-
-export type PropertyGroupCreateProps = Omit<
-  MutateProps<PropertyGroupDto, AjaxResponseBase, void, PropertyGroupCreateDto>,
-  'path' | 'verb'
->;
-
-export const PropertyGroupCreate = (props: PropertyGroupCreateProps) => (
-  <Mutate<PropertyGroupDto, AjaxResponseBase, void, PropertyGroupCreateDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/PropertyGroup/Create`}
-    {...props}
-  />
-);
-
-export type UsePropertyGroupCreateProps = Omit<
-  UseMutateProps<PropertyGroupDto, void, PropertyGroupCreateDto>,
-  'path' | 'verb'
->;
-
-export const usePropertyGroupCreate = (props: UsePropertyGroupCreateProps) =>
-  useMutate<PropertyGroupDto, AjaxResponseBase, void, PropertyGroupCreateDto>(
-    'POST',
-    `/api/services/propertyInspection/PropertyGroup/Create`,
-    props
-  );
-
-export type PropertyGroupUpdateProps = Omit<
-  MutateProps<PropertyGroupDto, AjaxResponseBase, void, PropertyGroupDto>,
-  'path' | 'verb'
->;
-
-export const PropertyGroupUpdate = (props: PropertyGroupUpdateProps) => (
-  <Mutate<PropertyGroupDto, AjaxResponseBase, void, PropertyGroupDto>
-    verb="PUT"
-    path={`/api/services/propertyInspection/PropertyGroup/Update`}
-    {...props}
-  />
-);
-
-export type UsePropertyGroupUpdateProps = Omit<
-  UseMutateProps<PropertyGroupDto, void, PropertyGroupDto>,
-  'path' | 'verb'
->;
-
-export const usePropertyGroupUpdate = (props: UsePropertyGroupUpdateProps) =>
-  useMutate<PropertyGroupDto, AjaxResponseBase, void, PropertyGroupDto>(
-    'PUT',
-    `/api/services/propertyInspection/PropertyGroup/Update`,
-    props
-  );
-
-export interface PropertyGroupDeleteQueryParams {
-  Id?: string;
-}
-
-export type PropertyGroupDeleteProps = Omit<
-  MutateProps<void, AjaxResponseBase, PropertyGroupDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const PropertyGroupDelete = (props: PropertyGroupDeleteProps) => (
-  <Mutate<void, AjaxResponseBase, PropertyGroupDeleteQueryParams, void>
-    verb="DELETE"
-    path={`/api/services/propertyInspection/PropertyGroup/Delete`}
-    {...props}
-  />
-);
-
-export type UsePropertyGroupDeleteProps = Omit<
-  UseMutateProps<void, PropertyGroupDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const usePropertyGroupDelete = (props: UsePropertyGroupDeleteProps) =>
-  useMutate<void, AjaxResponseBase, PropertyGroupDeleteQueryParams, void>(
-    'DELETE',
-    `/api/services/propertyInspection/PropertyGroup/Delete`,
-    props
-  );
-
-export interface PropertyInspectionGetQueryParams {
-  Id?: string;
-}
-
-export type PropertyInspectionGetProps = Omit<
-  GetProps<PropertyInspectionDtoAjaxResponse, AjaxResponseBase, PropertyInspectionGetQueryParams>,
-  'path'
->;
-
-export const PropertyInspectionGet = (props: PropertyInspectionGetProps) => (
-  <Get<PropertyInspectionDtoAjaxResponse, AjaxResponseBase, PropertyInspectionGetQueryParams>
-    path={`/api/services/propertyInspection/PropertyInspection/Get`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionGetProps = Omit<
-  UseGetProps<PropertyInspectionDtoAjaxResponse, PropertyInspectionGetQueryParams>,
-  'path'
->;
-
-export const usePropertyInspectionGet = (props: UsePropertyInspectionGetProps) =>
-  useGet<PropertyInspectionDtoAjaxResponse, AjaxResponseBase, PropertyInspectionGetQueryParams>(
-    `/api/services/propertyInspection/PropertyInspection/Get`,
-    props
-  );
-
-export interface PropertyInspectionGetLastVisitQueryParams {
-  id?: string;
-}
-
-export type PropertyInspectionGetLastVisitProps = Omit<
-  GetProps<PropertyVisitDto, AjaxResponseBase, PropertyInspectionGetLastVisitQueryParams>,
-  'path'
->;
-
-export const PropertyInspectionGetLastVisit = (props: PropertyInspectionGetLastVisitProps) => (
-  <Get<PropertyVisitDto, AjaxResponseBase, PropertyInspectionGetLastVisitQueryParams>
-    path={`/api/services/propertyInspection/PropertyInspection/GetLastVisit`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionGetLastVisitProps = Omit<
-  UseGetProps<PropertyVisitDto, PropertyInspectionGetLastVisitQueryParams>,
-  'path'
->;
-
-export const usePropertyInspectionGetLastVisit = (props: UsePropertyInspectionGetLastVisitProps) =>
-  useGet<PropertyVisitDto, AjaxResponseBase, PropertyInspectionGetLastVisitQueryParams>(
-    `/api/services/propertyInspection/PropertyInspection/GetLastVisit`,
-    props
-  );
-
-export interface PropertyInspectionGetDetailsQueryParams {
-  Id?: string;
-}
-
-export type PropertyInspectionGetDetailsProps = Omit<
-  GetProps<PropertyInspectionDetailsDtoAjaxResponse, AjaxResponseBase, PropertyInspectionGetDetailsQueryParams>,
-  'path'
->;
-
-export const PropertyInspectionGetDetails = (props: PropertyInspectionGetDetailsProps) => (
-  <Get<PropertyInspectionDetailsDtoAjaxResponse, AjaxResponseBase, PropertyInspectionGetDetailsQueryParams>
-    path={`/api/services/propertyInspection/PropertyInspection/GetDetails`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionGetDetailsProps = Omit<
-  UseGetProps<PropertyInspectionDetailsDtoAjaxResponse, PropertyInspectionGetDetailsQueryParams>,
-  'path'
->;
-
-export const usePropertyInspectionGetDetails = (props: UsePropertyInspectionGetDetailsProps) =>
-  useGet<PropertyInspectionDetailsDtoAjaxResponse, AjaxResponseBase, PropertyInspectionGetDetailsQueryParams>(
-    `/api/services/propertyInspection/PropertyInspection/GetDetails`,
-    props
-  );
-
-export type PropertyInspectionUpdateProps = Omit<
-  MutateProps<PropertyInspectionDtoAjaxResponse, AjaxResponseBase, void, PropertyInspectionDetailsDto>,
-  'path' | 'verb'
->;
-
-export const PropertyInspectionUpdate = (props: PropertyInspectionUpdateProps) => (
-  <Mutate<PropertyInspectionDtoAjaxResponse, AjaxResponseBase, void, PropertyInspectionDetailsDto>
-    verb="PUT"
-    path={`/api/services/propertyInspection/PropertyInspection/Update`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionUpdateProps = Omit<
-  UseMutateProps<PropertyInspectionDtoAjaxResponse, void, PropertyInspectionDetailsDto>,
-  'path' | 'verb'
->;
-
-export const usePropertyInspectionUpdate = (props: UsePropertyInspectionUpdateProps) =>
-  useMutate<PropertyInspectionDtoAjaxResponse, AjaxResponseBase, void, PropertyInspectionDetailsDto>(
-    'PUT',
-    `/api/services/propertyInspection/PropertyInspection/Update`,
-    props
-  );
-
-export interface PropertyInspectionGetVisitsPhotosQueryParams {
-  Id?: string;
-}
-
-export type PropertyInspectionGetVisitsPhotosProps = Omit<
-  GetProps<StoredFileDtoListAjaxResponse, AjaxResponseBase, PropertyInspectionGetVisitsPhotosQueryParams>,
-  'path'
->;
-
-/**
- * Returns list of images attached to property visits
- */
-export const PropertyInspectionGetVisitsPhotos = (props: PropertyInspectionGetVisitsPhotosProps) => (
-  <Get<StoredFileDtoListAjaxResponse, AjaxResponseBase, PropertyInspectionGetVisitsPhotosQueryParams>
-    path={`/api/services/propertyInspection/PropertyInspection/GetVisitsPhotos`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionGetVisitsPhotosProps = Omit<
-  UseGetProps<StoredFileDtoListAjaxResponse, PropertyInspectionGetVisitsPhotosQueryParams>,
-  'path'
->;
-
-/**
- * Returns list of images attached to property visits
- */
-export const usePropertyInspectionGetVisitsPhotos = (props: UsePropertyInspectionGetVisitsPhotosProps) =>
-  useGet<StoredFileDtoListAjaxResponse, AjaxResponseBase, PropertyInspectionGetVisitsPhotosQueryParams>(
-    `/api/services/propertyInspection/PropertyInspection/GetVisitsPhotos`,
-    props
-  );
-
-export interface PropertyInspectionGetMeterInspectionsPhotosQueryParams {
-  Id?: string;
-}
-
-export type PropertyInspectionGetMeterInspectionsPhotosProps = Omit<
-  GetProps<StoredFileDtoListAjaxResponse, AjaxResponseBase, PropertyInspectionGetMeterInspectionsPhotosQueryParams>,
-  'path'
->;
-
-/**
- * Returns list of images attached to meter inspections
- */
-export const PropertyInspectionGetMeterInspectionsPhotos = (
-  props: PropertyInspectionGetMeterInspectionsPhotosProps
-) => (
-  <Get<StoredFileDtoListAjaxResponse, AjaxResponseBase, PropertyInspectionGetMeterInspectionsPhotosQueryParams>
-    path={`/api/services/propertyInspection/PropertyInspection/GetMeterInspectionsPhotos`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionGetMeterInspectionsPhotosProps = Omit<
-  UseGetProps<StoredFileDtoListAjaxResponse, PropertyInspectionGetMeterInspectionsPhotosQueryParams>,
-  'path'
->;
-
-/**
- * Returns list of images attached to meter inspections
- */
-export const usePropertyInspectionGetMeterInspectionsPhotos = (
-  props: UsePropertyInspectionGetMeterInspectionsPhotosProps
-) =>
-  useGet<StoredFileDtoListAjaxResponse, AjaxResponseBase, PropertyInspectionGetMeterInspectionsPhotosQueryParams>(
-    `/api/services/propertyInspection/PropertyInspection/GetMeterInspectionsPhotos`,
-    props
-  );
-
-export type PropertyInspectionUpdateRevisitProps = Omit<
-  MutateProps<void, AjaxResponseBase, void, UpdateRevisitInput>,
-  'path' | 'verb'
->;
-
-/**
- * Updates date of revisit
- */
-export const PropertyInspectionUpdateRevisit = (props: PropertyInspectionUpdateRevisitProps) => (
-  <Mutate<void, AjaxResponseBase, void, UpdateRevisitInput>
-    verb="POST"
-    path={`/api/services/propertyInspection/PropertyInspection/UpdateRevisit`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionUpdateRevisitProps = Omit<
-  UseMutateProps<void, void, UpdateRevisitInput>,
-  'path' | 'verb'
->;
-
-/**
- * Updates date of revisit
- */
-export const usePropertyInspectionUpdateRevisit = (props: UsePropertyInspectionUpdateRevisitProps) =>
-  useMutate<void, AjaxResponseBase, void, UpdateRevisitInput>(
-    'POST',
-    `/api/services/propertyInspection/PropertyInspection/UpdateRevisit`,
-    props
-  );
-
-export interface PropertyInspectionGetAllQueryParams {
-  Sorting?: string | null;
-  SkipCount?: number;
-  MaxResultCount?: number;
-}
-
-export type PropertyInspectionGetAllProps = Omit<
-  GetProps<PropertyInspectionDtoPagedResultDto, AjaxResponseBase, PropertyInspectionGetAllQueryParams>,
-  'path'
->;
-
-export const PropertyInspectionGetAll = (props: PropertyInspectionGetAllProps) => (
-  <Get<PropertyInspectionDtoPagedResultDto, AjaxResponseBase, PropertyInspectionGetAllQueryParams>
-    path={`/api/services/propertyInspection/PropertyInspection/GetAll`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionGetAllProps = Omit<
-  UseGetProps<PropertyInspectionDtoPagedResultDto, PropertyInspectionGetAllQueryParams>,
-  'path'
->;
-
-export const usePropertyInspectionGetAll = (props: UsePropertyInspectionGetAllProps) =>
-  useGet<PropertyInspectionDtoPagedResultDto, AjaxResponseBase, PropertyInspectionGetAllQueryParams>(
-    `/api/services/propertyInspection/PropertyInspection/GetAll`,
-    props
-  );
-
-export type PropertyInspectionCreateProps = Omit<
-  MutateProps<PropertyInspectionDto, AjaxResponseBase, void, PropertyInspectionCreateDto>,
-  'path' | 'verb'
->;
-
-export const PropertyInspectionCreate = (props: PropertyInspectionCreateProps) => (
-  <Mutate<PropertyInspectionDto, AjaxResponseBase, void, PropertyInspectionCreateDto>
-    verb="POST"
-    path={`/api/services/propertyInspection/PropertyInspection/Create`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionCreateProps = Omit<
-  UseMutateProps<PropertyInspectionDto, void, PropertyInspectionCreateDto>,
-  'path' | 'verb'
->;
-
-export const usePropertyInspectionCreate = (props: UsePropertyInspectionCreateProps) =>
-  useMutate<PropertyInspectionDto, AjaxResponseBase, void, PropertyInspectionCreateDto>(
-    'POST',
-    `/api/services/propertyInspection/PropertyInspection/Create`,
-    props
-  );
-
-export interface PropertyInspectionDeleteQueryParams {
-  Id?: string;
-}
-
-export type PropertyInspectionDeleteProps = Omit<
-  MutateProps<void, AjaxResponseBase, PropertyInspectionDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const PropertyInspectionDelete = (props: PropertyInspectionDeleteProps) => (
-  <Mutate<void, AjaxResponseBase, PropertyInspectionDeleteQueryParams, void>
-    verb="DELETE"
-    path={`/api/services/propertyInspection/PropertyInspection/Delete`}
-    {...props}
-  />
-);
-
-export type UsePropertyInspectionDeleteProps = Omit<
-  UseMutateProps<void, PropertyInspectionDeleteQueryParams, void>,
-  'path' | 'verb'
->;
-
-export const usePropertyInspectionDelete = (props: UsePropertyInspectionDeleteProps) =>
-  useMutate<void, AjaxResponseBase, PropertyInspectionDeleteQueryParams, void>(
-    'DELETE',
-    `/api/services/propertyInspection/PropertyInspection/Delete`,
-    props
-  );
-
-export type RevisitGetAllProps = Omit<GetProps<RevisitDto[] | null, unknown, void>, 'path'>;
-
-export const RevisitGetAll = (props: RevisitGetAllProps) => (
-  <Get<RevisitDto[] | null, unknown, void> path={`/api/services/propertyInspection/Revisit/GetAll`} {...props} />
-);
-
-export type UseRevisitGetAllProps = Omit<UseGetProps<RevisitDto[] | null, void>, 'path'>;
-
-export const useRevisitGetAll = (props: UseRevisitGetAllProps) =>
-  useGet<RevisitDto[] | null, unknown, void>(`/api/services/propertyInspection/Revisit/GetAll`, props);
-
 export type RoleCreateProps = Omit<MutateProps<RoleDto, unknown, void, CreateRoleDto>, 'path' | 'verb'>;
 
 export const RoleCreate = (props: RoleCreateProps) => (
@@ -3373,7 +1198,7 @@ export const useRoleCreate = (props: UseRoleCreateProps) =>
   useMutate<RoleDto, unknown, void, CreateRoleDto>('POST', `/api/services/app/Role/Create`, props);
 
 export interface RoleGetRolesQueryParams {
-  Permission?: string | null;
+  Permission?: string;
 }
 
 export type RoleGetRolesProps = Omit<GetProps<RoleListDtoListResultDto, unknown, RoleGetRolesQueryParams>, 'path'>;
@@ -3464,7 +1289,7 @@ export const useRoleGet = (props: UseRoleGetProps) =>
   useGet<RoleDto, unknown, RoleGetQueryParams>(`/api/services/app/Role/Get`, props);
 
 export interface RoleGetAllQueryParams {
-  Keyword?: string | null;
+  Keyword?: string;
   SkipCount?: number;
   MaxResultCount?: number;
 }
@@ -3503,9 +1328,240 @@ export const useSessionGetCurrentLoginInformations = (props: UseSessionGetCurren
     props
   );
 
+export type ShaRoleCreateProps = Omit<
+  MutateProps<ShaRoleDto, AjaxResponseBase, void, CreateShaRoleDto>,
+  'path' | 'verb'
+>;
+
+export const ShaRoleCreate = (props: ShaRoleCreateProps) => (
+  <Mutate<ShaRoleDto, AjaxResponseBase, void, CreateShaRoleDto>
+    verb="POST"
+    path={`/api/services/app/ShaRole/Create`}
+    {...props}
+  />
+);
+
+export type UseShaRoleCreateProps = Omit<UseMutateProps<ShaRoleDto, void, CreateShaRoleDto>, 'path' | 'verb'>;
+
+export const useShaRoleCreate = (props: UseShaRoleCreateProps) =>
+  useMutate<ShaRoleDto, AjaxResponseBase, void, CreateShaRoleDto>('POST', `/api/services/app/ShaRole/Create`, props);
+
+export type ShaRoleUpdateProps = Omit<MutateProps<ShaRoleDto, AjaxResponseBase, void, ShaRoleDto>, 'path' | 'verb'>;
+
+export const ShaRoleUpdate = (props: ShaRoleUpdateProps) => (
+  <Mutate<ShaRoleDto, AjaxResponseBase, void, ShaRoleDto>
+    verb="PUT"
+    path={`/api/services/app/ShaRole/Update`}
+    {...props}
+  />
+);
+
+export type UseShaRoleUpdateProps = Omit<UseMutateProps<ShaRoleDto, void, ShaRoleDto>, 'path' | 'verb'>;
+
+export const useShaRoleUpdate = (props: UseShaRoleUpdateProps) =>
+  useMutate<ShaRoleDto, AjaxResponseBase, void, ShaRoleDto>('PUT', `/api/services/app/ShaRole/Update`, props);
+
+export interface ShaRoleDeleteQueryParams {
+  Id?: string;
+}
+
+export type ShaRoleDeleteProps = Omit<
+  MutateProps<void, AjaxResponseBase, ShaRoleDeleteQueryParams, void>,
+  'path' | 'verb'
+>;
+
+export const ShaRoleDelete = (props: ShaRoleDeleteProps) => (
+  <Mutate<void, AjaxResponseBase, ShaRoleDeleteQueryParams, void>
+    verb="DELETE"
+    path={`/api/services/app/ShaRole/Delete`}
+    {...props}
+  />
+);
+
+export type UseShaRoleDeleteProps = Omit<UseMutateProps<void, ShaRoleDeleteQueryParams, void>, 'path' | 'verb'>;
+
+export const useShaRoleDelete = (props: UseShaRoleDeleteProps) =>
+  useMutate<void, AjaxResponseBase, ShaRoleDeleteQueryParams, void>(
+    'DELETE',
+    `/api/services/app/ShaRole/Delete`,
+    props
+  );
+
+export interface ShaRoleGetQueryParams {
+  Id?: string;
+}
+
+export type ShaRoleGetProps = Omit<GetProps<ShaRoleDtoAjaxResponse, AjaxResponseBase, ShaRoleGetQueryParams>, 'path'>;
+
+export const ShaRoleGet = (props: ShaRoleGetProps) => (
+  <Get<ShaRoleDtoAjaxResponse, AjaxResponseBase, ShaRoleGetQueryParams>
+    path={`/api/services/app/ShaRole/Get`}
+    {...props}
+  />
+);
+
+export type UseShaRoleGetProps = Omit<UseGetProps<ShaRoleDtoAjaxResponse, ShaRoleGetQueryParams>, 'path'>;
+
+export const useShaRoleGet = (props: UseShaRoleGetProps) =>
+  useGet<ShaRoleDtoAjaxResponse, AjaxResponseBase, ShaRoleGetQueryParams>(`/api/services/app/ShaRole/Get`, props);
+
+export interface ShaRoleGetAllQueryParams {
+  Keyword?: string;
+  SkipCount?: number;
+  MaxResultCount?: number;
+}
+
+export type ShaRoleGetAllProps = Omit<
+  GetProps<ShaRoleDtoPagedResultDto, AjaxResponseBase, ShaRoleGetAllQueryParams>,
+  'path'
+>;
+
+export const ShaRoleGetAll = (props: ShaRoleGetAllProps) => (
+  <Get<ShaRoleDtoPagedResultDto, AjaxResponseBase, ShaRoleGetAllQueryParams>
+    path={`/api/services/app/ShaRole/GetAll`}
+    {...props}
+  />
+);
+
+export type UseShaRoleGetAllProps = Omit<UseGetProps<ShaRoleDtoPagedResultDto, ShaRoleGetAllQueryParams>, 'path'>;
+
+export const useShaRoleGetAll = (props: UseShaRoleGetAllProps) =>
+  useGet<ShaRoleDtoPagedResultDto, AjaxResponseBase, ShaRoleGetAllQueryParams>(
+    `/api/services/app/ShaRole/GetAll`,
+    props
+  );
+
+export type ShaRoleAppointedPersonCreateProps = Omit<
+  MutateProps<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, void, CreateShaRoleAppointedPersonDto>,
+  'path' | 'verb'
+>;
+
+export const ShaRoleAppointedPersonCreate = (props: ShaRoleAppointedPersonCreateProps) => (
+  <Mutate<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, void, CreateShaRoleAppointedPersonDto>
+    verb="POST"
+    path={`/api/services/app/ShaRoleAppointedPerson/Create`}
+    {...props}
+  />
+);
+
+export type UseShaRoleAppointedPersonCreateProps = Omit<
+  UseMutateProps<ShaRoleAppointedPersonDtoAjaxResponse, void, CreateShaRoleAppointedPersonDto>,
+  'path' | 'verb'
+>;
+
+export const useShaRoleAppointedPersonCreate = (props: UseShaRoleAppointedPersonCreateProps) =>
+  useMutate<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, void, CreateShaRoleAppointedPersonDto>(
+    'POST',
+    `/api/services/app/ShaRoleAppointedPerson/Create`,
+    props
+  );
+
+export type ShaRoleAppointedPersonUpdateProps = Omit<
+  MutateProps<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, void, ShaRoleAppointedPersonDto>,
+  'path' | 'verb'
+>;
+
+export const ShaRoleAppointedPersonUpdate = (props: ShaRoleAppointedPersonUpdateProps) => (
+  <Mutate<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, void, ShaRoleAppointedPersonDto>
+    verb="PUT"
+    path={`/api/services/app/ShaRoleAppointedPerson/Update`}
+    {...props}
+  />
+);
+
+export type UseShaRoleAppointedPersonUpdateProps = Omit<
+  UseMutateProps<ShaRoleAppointedPersonDtoAjaxResponse, void, ShaRoleAppointedPersonDto>,
+  'path' | 'verb'
+>;
+
+export const useShaRoleAppointedPersonUpdate = (props: UseShaRoleAppointedPersonUpdateProps) =>
+  useMutate<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, void, ShaRoleAppointedPersonDto>(
+    'PUT',
+    `/api/services/app/ShaRoleAppointedPerson/Update`,
+    props
+  );
+
+export type ShaRoleAppointedPersonDeleteProps = Omit<
+  MutateProps<void, AjaxResponseBase, void, GuidEntityDto>,
+  'path' | 'verb'
+>;
+
+export const ShaRoleAppointedPersonDelete = (props: ShaRoleAppointedPersonDeleteProps) => (
+  <Mutate<void, AjaxResponseBase, void, GuidEntityDto>
+    verb="POST"
+    path={`/api/services/app/ShaRoleAppointedPerson/Delete`}
+    {...props}
+  />
+);
+
+export type UseShaRoleAppointedPersonDeleteProps = Omit<UseMutateProps<void, void, GuidEntityDto>, 'path' | 'verb'>;
+
+export const useShaRoleAppointedPersonDelete = (props: UseShaRoleAppointedPersonDeleteProps) =>
+  useMutate<void, AjaxResponseBase, void, GuidEntityDto>(
+    'POST',
+    `/api/services/app/ShaRoleAppointedPerson/Delete`,
+    props
+  );
+
+export interface ShaRoleAppointedPersonGetQueryParams {
+  Id?: string;
+}
+
+export type ShaRoleAppointedPersonGetProps = Omit<
+  GetProps<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, ShaRoleAppointedPersonGetQueryParams>,
+  'path'
+>;
+
+export const ShaRoleAppointedPersonGet = (props: ShaRoleAppointedPersonGetProps) => (
+  <Get<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, ShaRoleAppointedPersonGetQueryParams>
+    path={`/api/services/app/ShaRoleAppointedPerson/Get`}
+    {...props}
+  />
+);
+
+export type UseShaRoleAppointedPersonGetProps = Omit<
+  UseGetProps<ShaRoleAppointedPersonDtoAjaxResponse, ShaRoleAppointedPersonGetQueryParams>,
+  'path'
+>;
+
+export const useShaRoleAppointedPersonGet = (props: UseShaRoleAppointedPersonGetProps) =>
+  useGet<ShaRoleAppointedPersonDtoAjaxResponse, AjaxResponseBase, ShaRoleAppointedPersonGetQueryParams>(
+    `/api/services/app/ShaRoleAppointedPerson/Get`,
+    props
+  );
+
+export interface ShaRoleAppointedPersonGetAllQueryParams {
+  Keyword?: string;
+  SkipCount?: number;
+  MaxResultCount?: number;
+}
+
+export type ShaRoleAppointedPersonGetAllProps = Omit<
+  GetProps<void, AjaxResponseBase, ShaRoleAppointedPersonGetAllQueryParams>,
+  'path'
+>;
+
+export const ShaRoleAppointedPersonGetAll = (props: ShaRoleAppointedPersonGetAllProps) => (
+  <Get<void, AjaxResponseBase, ShaRoleAppointedPersonGetAllQueryParams>
+    path={`/api/services/app/ShaRoleAppointedPerson/GetAll`}
+    {...props}
+  />
+);
+
+export type UseShaRoleAppointedPersonGetAllProps = Omit<
+  UseGetProps<void, ShaRoleAppointedPersonGetAllQueryParams>,
+  'path'
+>;
+
+export const useShaRoleAppointedPersonGetAll = (props: UseShaRoleAppointedPersonGetAllProps) =>
+  useGet<void, AjaxResponseBase, ShaRoleAppointedPersonGetAllQueryParams>(
+    `/api/services/app/ShaRoleAppointedPerson/GetAll`,
+    props
+  );
+
 export interface StoredFileDownloadQueryParams {
   id?: string;
-  versionNo?: number | null;
+  versionNo?: number;
 }
 
 export type StoredFileDownloadProps = Omit<GetProps<void, unknown, StoredFileDownloadQueryParams>, 'path'>;
@@ -3543,10 +1599,10 @@ export const useStoredFileDelete = (props: UseStoredFileDeleteProps) =>
 
 export interface StoredFileDownloadZipQueryParams {
   AllCategories?: boolean;
-  OwnerId?: string | null;
-  OwnerType?: string | null;
-  FilesCategory?: number | null;
-  PropertyName?: string | null;
+  OwnerId: string;
+  OwnerType: string;
+  FilesCategory?: number;
+  PropertyName?: string;
 }
 
 export type StoredFileDownloadZipProps = Omit<GetProps<void, unknown, StoredFileDownloadZipQueryParams>, 'path'>;
@@ -3561,29 +1617,23 @@ export const useStoredFileDownloadZip = (props: UseStoredFileDownloadZipProps) =
   useGet<void, unknown, StoredFileDownloadZipQueryParams>(`/api/StoredFile/DownloadZip`, props);
 
 export interface StoredFileFilesListQueryParams {
-  OwnerId?: string | null;
-  OwnerType?: string | null;
-  FilesCategory?: number | null;
-  PropertyName?: string | null;
+  OwnerId: string;
+  OwnerType: string;
+  FilesCategory?: number;
+  PropertyName?: string;
   AllCategories?: boolean;
 }
 
-export type StoredFileFilesListProps = Omit<
-  GetProps<StoredFileDto[] | null, unknown, StoredFileFilesListQueryParams>,
-  'path'
->;
+export type StoredFileFilesListProps = Omit<GetProps<StoredFileDto[], unknown, StoredFileFilesListQueryParams>, 'path'>;
 
 export const StoredFileFilesList = (props: StoredFileFilesListProps) => (
-  <Get<StoredFileDto[] | null, unknown, StoredFileFilesListQueryParams> path={`/api/StoredFile/FilesList`} {...props} />
+  <Get<StoredFileDto[], unknown, StoredFileFilesListQueryParams> path={`/api/StoredFile/FilesList`} {...props} />
 );
 
-export type UseStoredFileFilesListProps = Omit<
-  UseGetProps<StoredFileDto[] | null, StoredFileFilesListQueryParams>,
-  'path'
->;
+export type UseStoredFileFilesListProps = Omit<UseGetProps<StoredFileDto[], StoredFileFilesListQueryParams>, 'path'>;
 
 export const useStoredFileFilesList = (props: UseStoredFileFilesListProps) =>
-  useGet<StoredFileDto[] | null, unknown, StoredFileFilesListQueryParams>(`/api/StoredFile/FilesList`, props);
+  useGet<StoredFileDto[], unknown, StoredFileFilesListQueryParams>(`/api/StoredFile/FilesList`, props);
 
 export type TenantCreateProps = Omit<MutateProps<TenantDto, unknown, void, CreateTenantDto>, 'path' | 'verb'>;
 
@@ -3631,8 +1681,8 @@ export const useTenantGet = (props: UseTenantGetProps) =>
   useGet<TenantDto, unknown, TenantGetQueryParams>(`/api/services/app/Tenant/Get`, props);
 
 export interface TenantGetAllQueryParams {
-  Keyword?: string | null;
-  IsActive?: boolean | null;
+  Keyword?: string;
+  IsActive?: boolean;
   SkipCount?: number;
   MaxResultCount?: number;
 }
@@ -3692,31 +1742,28 @@ export const useTokenAuthSignOff = (props: UseTokenAuthSignOffProps) =>
   useMutate<boolean, unknown, void, void>('POST', `/api/TokenAuth/SignOff`, props);
 
 export type TokenAuthGetExternalAuthenticationProvidersProps = Omit<
-  GetProps<ExternalLoginProviderInfoModel[] | null, unknown, void>,
+  GetProps<ExternalLoginProviderInfoModel[], unknown, void>,
   'path'
 >;
 
 export const TokenAuthGetExternalAuthenticationProviders = (
   props: TokenAuthGetExternalAuthenticationProvidersProps
 ) => (
-  <Get<ExternalLoginProviderInfoModel[] | null, unknown, void>
+  <Get<ExternalLoginProviderInfoModel[], unknown, void>
     path={`/api/TokenAuth/GetExternalAuthenticationProviders`}
     {...props}
   />
 );
 
 export type UseTokenAuthGetExternalAuthenticationProvidersProps = Omit<
-  UseGetProps<ExternalLoginProviderInfoModel[] | null, void>,
+  UseGetProps<ExternalLoginProviderInfoModel[], void>,
   'path'
 >;
 
 export const useTokenAuthGetExternalAuthenticationProviders = (
   props: UseTokenAuthGetExternalAuthenticationProvidersProps
 ) =>
-  useGet<ExternalLoginProviderInfoModel[] | null, unknown, void>(
-    `/api/TokenAuth/GetExternalAuthenticationProviders`,
-    props
-  );
+  useGet<ExternalLoginProviderInfoModel[], unknown, void>(`/api/TokenAuth/GetExternalAuthenticationProviders`, props);
 
 export type TokenAuthExternalAuthenticateProps = Omit<
   MutateProps<ExternalAuthenticateResultModel, unknown, void, ExternalAuthenticateModel>,
@@ -3807,10 +1854,7 @@ export const useUserChangeLanguage = (props: UseUserChangeLanguageProps) =>
   useMutate<void, unknown, void, ChangeUserLanguageDto>('POST', `/api/services/app/User/ChangeLanguage`, props);
 
 export interface UserResetPasswordSendOtpQueryParams {
-  /**
-   * mobile number of the user
-   */
-  mobileNo?: string | null;
+  mobileNo?: string;
 }
 
 export type UserResetPasswordSendOtpProps = Omit<
@@ -3818,9 +1862,6 @@ export type UserResetPasswordSendOtpProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Send One-time pin for password reset
- */
 export const UserResetPasswordSendOtp = (props: UserResetPasswordSendOtpProps) => (
   <Mutate<ResetPasswordSendOtpResponse, unknown, UserResetPasswordSendOtpQueryParams, void>
     verb="POST"
@@ -3834,9 +1875,6 @@ export type UseUserResetPasswordSendOtpProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Send One-time pin for password reset
- */
 export const useUserResetPasswordSendOtp = (props: UseUserResetPasswordSendOtpProps) =>
   useMutate<ResetPasswordSendOtpResponse, unknown, UserResetPasswordSendOtpQueryParams, void>(
     'POST',
@@ -3849,9 +1887,6 @@ export type UserResetPasswordVerifyOtpProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Verify one-time pin that was used for password reset. Returns a token that should be used for password update
- */
 export const UserResetPasswordVerifyOtp = (props: UserResetPasswordVerifyOtpProps) => (
   <Mutate<ResetPasswordVerifyOtpResponse, unknown, void, ResetPasswordVerifyOtpInput>
     verb="POST"
@@ -3865,9 +1900,6 @@ export type UseUserResetPasswordVerifyOtpProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Verify one-time pin that was used for password reset. Returns a token that should be used for password update
- */
 export const useUserResetPasswordVerifyOtp = (props: UseUserResetPasswordVerifyOtpProps) =>
   useMutate<ResetPasswordVerifyOtpResponse, unknown, void, ResetPasswordVerifyOtpInput>(
     'POST',
@@ -3880,9 +1912,6 @@ export type UserResetPasswordUsingTokenProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Resets a password of the user using token
- */
 export const UserResetPasswordUsingToken = (props: UserResetPasswordUsingTokenProps) => (
   <Mutate<boolean, unknown, void, ResetPasswordUsingTokenInput>
     verb="POST"
@@ -3896,9 +1925,6 @@ export type UseUserResetPasswordUsingTokenProps = Omit<
   'path' | 'verb'
 >;
 
-/**
- * Resets a password of the user using token
- */
 export const useUserResetPasswordUsingToken = (props: UseUserResetPasswordUsingTokenProps) =>
   useMutate<boolean, unknown, void, ResetPasswordUsingTokenInput>(
     'POST',
@@ -3936,6 +1962,17 @@ export type UseUserResetPasswordProps = Omit<UseMutateProps<boolean, void, Reset
 export const useUserResetPassword = (props: UseUserResetPasswordProps) =>
   useMutate<boolean, unknown, void, ResetPasswordDto>('POST', `/api/services/app/User/ResetPassword`, props);
 
+export type UserGetUserAuthConfigProps = Omit<GetProps<AbpUserAuthConfigDto, unknown, void>, 'path'>;
+
+export const UserGetUserAuthConfig = (props: UserGetUserAuthConfigProps) => (
+  <Get<AbpUserAuthConfigDto, unknown, void> path={`/api/services/app/User/GetUserAuthConfig`} {...props} />
+);
+
+export type UseUserGetUserAuthConfigProps = Omit<UseGetProps<AbpUserAuthConfigDto, void>, 'path'>;
+
+export const useUserGetUserAuthConfig = (props: UseUserGetUserAuthConfigProps) =>
+  useGet<AbpUserAuthConfigDto, unknown, void>(`/api/services/app/User/GetUserAuthConfig`, props);
+
 export interface UserGetQueryParams {
   Id?: number;
 }
@@ -3952,8 +1989,8 @@ export const useUserGet = (props: UseUserGetProps) =>
   useGet<UserDto, unknown, UserGetQueryParams>(`/api/services/app/User/Get`, props);
 
 export interface UserGetAllQueryParams {
-  Keyword?: string | null;
-  IsActive?: boolean | null;
+  Keyword?: string;
+  IsActive?: boolean;
   SkipCount?: number;
   MaxResultCount?: number;
 }

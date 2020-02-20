@@ -1,0 +1,1465 @@
+{
+  "x-generator": "NSwag v13.2.2.0 (NJsonSchema v10.1.4.0 (Newtonsoft.Json v11.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "host": "localhost:44352",
+  "schemes": ["https"],
+  "paths": {
+    "/api/Values": {
+      "get": {
+        "tags": ["Values"],
+        "operationId": "Values_GetAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Values"],
+        "operationId": "Values_Post",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Values/{id}": {
+      "get": {
+        "tags": ["Values"],
+        "operationId": "Values_Get",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Values"],
+        "operationId": "Values_Put",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Values"],
+        "operationId": "Values_Delete",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Articles": {
+      "get": {
+        "tags": ["Articles"],
+        "operationId": "Articles_GetArticlesAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Articles"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Articles"],
+        "operationId": "Articles_PostArticles",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "articles",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Articles"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Articles/{id}": {
+      "get": {
+        "tags": ["Articles"],
+        "operationId": "Articles_GetArticles",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Articles"],
+        "operationId": "Articles_PutArticles",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "articles",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Articles"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Articles"],
+        "operationId": "Articles_DeleteArticles",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Authors": {
+      "get": {
+        "tags": ["Authors"],
+        "operationId": "Authors_GetAuthorAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Author"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Authors"],
+        "operationId": "Authors_PostAuthor",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "author",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Author"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Authors/{id}": {
+      "get": {
+        "tags": ["Authors"],
+        "operationId": "Authors_GetAuthor",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Authors"],
+        "operationId": "Authors_PutAuthor",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "author",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Author"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Authors"],
+        "operationId": "Authors_DeleteAuthor",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Comments": {
+      "get": {
+        "tags": ["Comments"],
+        "operationId": "Comments_GetCommentsAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Comments"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Comments"],
+        "operationId": "Comments_PostComments",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "comments",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Comments"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Comments/{id}": {
+      "get": {
+        "tags": ["Comments"],
+        "operationId": "Comments_GetComments",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Comments"],
+        "operationId": "Comments_PutComments",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "comments",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Comments"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Comments"],
+        "operationId": "Comments_DeleteComments",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/FeedBacks": {
+      "get": {
+        "tags": ["FeedBacks"],
+        "operationId": "FeedBacks_GetFeedBackAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FeedBack"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["FeedBacks"],
+        "operationId": "FeedBacks_PostFeedBack",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "feedBack",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FeedBack"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/FeedBacks/{id}": {
+      "get": {
+        "tags": ["FeedBacks"],
+        "operationId": "FeedBacks_GetFeedBack",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["FeedBacks"],
+        "operationId": "FeedBacks_PutFeedBack",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "feedBack",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FeedBack"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["FeedBacks"],
+        "operationId": "FeedBacks_DeleteFeedBack",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/FuelWises": {
+      "get": {
+        "tags": ["FuelWises"],
+        "operationId": "FuelWises_GetFuelWiseAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FuelWise"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["FuelWises"],
+        "operationId": "FuelWises_PostFuelWise",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "fuelWise",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FuelWise"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/FuelWises/{id}": {
+      "get": {
+        "tags": ["FuelWises"],
+        "operationId": "FuelWises_GetFuelWise",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["FuelWises"],
+        "operationId": "FuelWises_PutFuelWise",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "fuelWise",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FuelWise"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["FuelWises"],
+        "operationId": "FuelWises_DeleteFuelWise",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Likes": {
+      "get": {
+        "tags": ["Likes"],
+        "operationId": "Likes_GetLikesAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Likes"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Likes"],
+        "operationId": "Likes_PostLikes",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "likes",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Likes"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Likes/{id}": {
+      "get": {
+        "tags": ["Likes"],
+        "operationId": "Likes_GetLikes",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Likes"],
+        "operationId": "Likes_PutLikes",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "likes",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Likes"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Likes"],
+        "operationId": "Likes_DeleteLikes",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/TipsForEveryOnes": {
+      "get": {
+        "tags": ["TipsForEveryOnes"],
+        "operationId": "TipsForEveryOnes_GetTipsForEveryOneAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TipsForEveryOne"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["TipsForEveryOnes"],
+        "operationId": "TipsForEveryOnes_PostTipsForEveryOne",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "tipsForEveryOne",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipsForEveryOne"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/TipsForEveryOnes/{id}": {
+      "get": {
+        "tags": ["TipsForEveryOnes"],
+        "operationId": "TipsForEveryOnes_GetTipsForEveryOne",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["TipsForEveryOnes"],
+        "operationId": "TipsForEveryOnes_PutTipsForEveryOne",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "tipsForEveryOne",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipsForEveryOne"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["TipsForEveryOnes"],
+        "operationId": "TipsForEveryOnes_DeleteTipsForEveryOne",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Users": {
+      "get": {
+        "tags": ["Users"],
+        "operationId": "Users_GetUserAll",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "operationId": "Users_PostUser",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/{id}": {
+      "get": {
+        "tags": ["Users"],
+        "operationId": "Users_GetUser",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "operationId": "Users_PutUser",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "operationId": "Users_DeleteUser",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "guid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Account/Login": {
+      "post": {
+        "tags": ["Account"],
+        "operationId": "Account_Login",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginViewModel"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Account/Logout": {
+      "post": {
+        "tags": ["Account"],
+        "operationId": "Account_Logout",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Account/Register": {
+      "post": {
+        "tags": ["Account"],
+        "operationId": "Account_Register",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterViewModel"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Account/Password": {
+      "put": {
+        "tags": ["Account"],
+        "operationId": "Account_ChangePassword",
+        "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangePasswordViewModel"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/Account/Authenticated": {
+      "get": {
+        "tags": ["Account"],
+        "operationId": "Account_IsAuthenticated",
+        "produces": ["text/plain", "application/json", "text/json"],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Articles": {
+      "type": "object",
+      "required": ["id", "createdAt", "authorId"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "authorId": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "Author": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "jobTitle": {
+          "type": "string"
+        },
+        "driverExperience": {
+          "type": "string"
+        }
+      }
+    },
+    "Comments": {
+      "type": "object",
+      "required": ["id", "articleId", "userId"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string",
+          "format": "byte"
+        },
+        "articleId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "userId": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "FeedBack": {
+      "type": "object",
+      "required": ["id", "authorId", "userId"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "authorId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "userId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "messages": {
+          "type": "string"
+        }
+      }
+    },
+    "FuelWise": {
+      "type": "object",
+      "required": ["id", "authorId"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "authorId": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "Likes": {
+      "type": "object",
+      "required": ["id", "userId", "articleId"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "userId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "articleId": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "TipsForEveryOne": {
+      "type": "object",
+      "required": ["id", "userId"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "content": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "LoginViewModel": {
+      "type": "object",
+      "required": ["email", "password", "rememberMe"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 1
+        },
+        "password": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rememberMe": {
+          "title": "Remember me?",
+          "type": "boolean"
+        }
+      }
+    },
+    "RegisterViewModel": {
+      "type": "object",
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email",
+          "minLength": 1
+        },
+        "password": {
+          "title": "Password",
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 6
+        },
+        "confirmPassword": {
+          "title": "Confirm password",
+          "type": "string"
+        }
+      }
+    },
+    "ChangePasswordViewModel": {
+      "type": "object",
+      "required": ["oldPassword", "newPassword"],
+      "properties": {
+        "oldPassword": {
+          "title": "Current password",
+          "type": "string",
+          "minLength": 1
+        },
+        "newPassword": {
+          "title": "New password",
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 6
+        },
+        "confirmPassword": {
+          "title": "Confirm new password",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
