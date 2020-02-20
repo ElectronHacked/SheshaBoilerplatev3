@@ -38,7 +38,9 @@ export default class Main extends App<{}, {}, IState> {
 
   setRequestHeaders() {
     import('utils/requestHeaders').then(({ requestHeaders }) => {
-      this.setState({ headers: requestHeaders() });
+      const headers = requestHeaders();
+
+      this.setState({ headers: requestHeaders(), tokenIsSet: !!headers.Authorization });
     });
   }
 
