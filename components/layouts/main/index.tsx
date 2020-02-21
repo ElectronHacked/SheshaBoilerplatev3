@@ -1,100 +1,69 @@
-import React, { ReactNode, Fragment, useState, useContext } from 'react';
-import { Layout, Icon, Tooltip } from 'antd';
+import React from 'react';
+import uuid from 'uuid/v4';
+import { Layout, Menu } from 'antd';
+import Link from 'next/link';
 import Head from './head';
-import { useRouter } from 'next/router';
-import { appRoutes } from 'routes';
-import { IDispatchable } from 'models';
-import LayoutHeader from './layoutHeader';
-import './styles.scss';
-import { GlobalStateContext, AuthContext } from 'contexts';
-import { LayoutSideMenu } from 'components';
+// import {CustomNProgress} from 'components';
+import { compose } from 'recompose';
+import '../../../styles/main.scss';
+import { withRouter, RouterProps } from 'next/router';
 
-const { Sider, Content } = Layout;
+const { Header, Content, Footer } = Layout;
+const MenuItem = Menu.Item;
 
-interface IProps extends React.HTMLAttributes<any>, IDispatchable {
+interface Props extends React.HTMLAttributes<any> {
   readonly children?: React.ReactNode;
   readonly description?: string;
   readonly ogImage?: string;
   readonly url?: string;
-  readonly headerControls?: ReactNode;
-  readonly toolbar?: ReactNode;
-  readonly showHeading?: boolean;
+  readonly router?: RouterProps;
 }
 
-const MainLayout: React.FC<IProps> = ({
-  title,
-  description,
-  ogImage,
-  url,
-  children,
-  className,
-  headerControls,
-  toolbar,
-  showHeading = true,
-}) => {
-  const { isHeaderShown } = useContext(GlobalStateContext);
-  const { asPath } = useRouter();
-  const { loginInfo } = useContext(AuthContext);
+const activeClass = 'ant-menu-item-selected';
 
-  const grantedPermissions = loginInfo?.user?.grantedPermissions || [];
-  const availableAppRoutes = appRoutes.filter(
-    i => !Boolean(i.permissionName) || grantedPermissions.indexOf(i.permissionName) > -1
-  );
-
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+const MainLayout: React.SFC<Props> = ({ title, description, ogImage, url, router, children }) => {
+  const { asPath } = router;
 
   return (
-    <div className={`layout-container ${isHeaderShown ? '' : 'header-collapsed'}`}>
-      <Head title={title} description={description} ogImage={ogImage} url={url} />
-      <LayoutHeader />
+    <>
+      {/* <CustomNProgress /> */}
+      <Head title={`TransportWise | ${title}`} description={description} ogImage={ogImage} url={url} />
       <Layout className="layout">
-        <Sider theme="light" trigger={null} collapsible collapsed={isCollapsed}>
-          <div className={`sidebar-toggle ${isCollapsed ? 'collapsed' : ''}`} onClick={toggleCollapse}>
-            <Tooltip title={`${isCollapsed ? 'Expand' : 'Collapse'} sidebar`} placement="right">
-              <a className="toggle">
-                <Icon type={isCollapsed ? 'double-right' : 'double-left'} />
-              </a>
-            </Tooltip>
-          </div>
-          <LayoutSideMenu links={availableAppRoutes} isCollapsed={isCollapsed} />
+        <div className="header">TransportWise</div>
+        <div className="header2">Thee actual blog</div>
+        <Header>
+          <div className="logo" />
+          <Menu theme="light" mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '64px' }}>
+            <MenuItem key={uuid()} className={asPath === '/fuel-wise' ? activeClass : ''}>
+              <Link href="/fuel-wise">
+                <a>FuelWise</a>
+              </Link>
+            </MenuItem>
 
-          <div className="creator-logo">
-            <img src="/static/images/creator_logo.png" alt="Creator" />
-          </div>
-        </Sider>
+            <MenuItem key={uuid()} className={asPath === '/public-transport' ? activeClass : ''}>
+              <Link href="/public-transport">
+                <a>PublicTransport</a>
+              </Link>
+            </MenuItem>
 
+            <MenuItem key={uuid()} className={asPath === '/about' ? activeClass : ''}>
+              <Link href="/about">
+                <a>About Us</a>
+              </Link>
+            </MenuItem>
+
+            {/* new-menu-item */}
+          </Menu>
+        </Header>
+        <hr />
+        <hr />
         <Content>
-          {showHeading && (
-            <Fragment>
-              <div className="content-heading">
-                <h1 className="heading">{title}</h1>
-
-                {headerControls && <div className="header-controls">{headerControls}</div>}
-              </div>
-            </Fragment>
-          )}
-
-          {toolbar && (
-            <Fragment>
-              <div className="content-toolbar">{toolbar}</div>
-            </Fragment>
-          )}
-
-          <div
-            className={`content-body ${className || ''} ${
-              ['/', '/#'].includes(asPath) ? 'content-body-no-padding' : ''
-            }`.trim()}
-          >
-            {children}
-          </div>
+          <div className="content-body">{children}</div>
         </Content>
+        <Footer>projectone @{new Date().getFullYear()} Created by</Footer>
       </Layout>
-    </div>
+    </>
   );
 };
 
-export default MainLayout;
+export default compose<Props, Props>(withRouter)(MainLayout);

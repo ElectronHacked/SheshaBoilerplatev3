@@ -1,8 +1,16 @@
 {
   "generator-nextjs-typescript-antd": {
-    "pages": [{
-      "name": "index",
-      "path": "index"
-    }]
+    "pages": [
+      {
+        "name": "index",
+        "path": "index"
+      }
+    ]
+  },
+  "generator-create-next-app-reloaded": {
+    "promptValues": {
+      "fullname": "DanielKganyago",
+      "email": "maserukganyago@gmail.com"
+    }
   }
 }

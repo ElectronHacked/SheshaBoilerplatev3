@@ -1,10 +1,48 @@
-.home-page {
-  padding: 12px;
-
-  .collapsible-sha-panel {
-
-    .ant-collapse {
-      
-    }
+// .home-page {}
+.container{
+  text-align: center;
+  width: 100%;
+  padding-top: 13%;
+  height: 100%;
+  background-image: url("/static/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  .BigTitle{
+      font-size: 60px;
+      color: rgba(255, 255, 255, 0.69);
   }
+  .SubTitle{
+      margin-top: -45px;
+      margin-bottom: 1em;
+      color: rgba(255, 255, 255, 5);
+      font-size: 50px;
+  }
+
+}
+
+.btn1 {
+  font-size: 30px;
+  padding: 10px 20px;
+  border: 0;
+  background-color: rgba(52, 152, 219, 0.5882352941176471);
+  color: #fff;
+  border-radius: 3px;
+  width: 20%;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.btn2 {
+  font-size: 30px;
+  padding: 10px 20px;
+  width: 25%;
+  border: 0;
+  background-color: rgba(202, 50, 12, 0.85);
+  color: #fff;
+  border-radius: 3px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  &:hover {
+      background-color: #328b0f;
+    }
 }

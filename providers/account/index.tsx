@@ -17,9 +17,10 @@ const AccountProvider: FC<IProps> = ({ children }) => {
     loginUserHttp(payload)
       .then(data => {
         dispatch(loginUserSuccessAction(data));
+        window.location.href = 'public-transport';
       })
       .catch(() => {
-        dispatch(loginUserErrorAction('Oops'));
+        dispatch(loginUserErrorAction('Invalide Email or Password, please check your details and try again.'));
       });
   };
 

@@ -1,0 +1,212 @@
+@import 'styles/variables';
+@import 'styles/mixins';
+@import 'styles/main';
+
+$white: #ffffff;
+$sider-collapsed-width: 40px;
+$sider-expanded-width: 200px;
+$sider-bg: #f6f6f6;
+$ant-menu-item: 10px;
+$body-padding: 8px;
+$header-sides-spadding: $ant-menu-item;
+
+.layout-container {
+  @include transition;
+  flex: 1;
+  background: $background-color;
+
+  &.header-collapsed {
+    margin-top: -$header-height;
+    height: calc(100vh + 37.5px);
+  }
+
+  .layout {
+    min-height: 100vh;
+
+    .ant-layout-sider {
+      margin-top: $header-height;
+      background-color: $sider-bg;
+      flex: 0 0 $sider-expanded-width !important;
+      max-width: $sider-expanded-width !important;
+      min-width: $sider-expanded-width !important;
+      width: $sider-expanded-width !important;
+      border-right: 1px solid #e8e8e8;
+
+      &.ant-layout-sider-collapsed {
+        flex: 0 0 $sider-collapsed-width !important;
+        max-width: $sider-collapsed-width !important;
+        min-width: $sider-collapsed-width !important;
+        width: $sider-collapsed-width !important;
+
+        .ant-layout-sider-children {
+          width: $sider-collapsed-width !important;
+        }
+      }
+
+      .ant-layout-sider-children {
+        position: fixed;
+        width: $sider-expanded-width !important;
+        transition: $transition-all;
+
+        .sidebar-toggle {
+          padding: 5px;
+          display: flex;
+          background: darken($color: $sider-bg, $amount: 15%);
+          height: 25px;
+          align-items: center;
+          justify-content: flex-end;
+          padding-right: 10px;
+          cursor: pointer;
+
+          &:hover {
+            background: darken($color: $sider-bg, $amount: 7.5%);
+          }
+
+          .toggle {
+            color: black;
+
+            :hover {
+              color: $primary-color;
+            }
+          }
+
+          .anticon {
+            font-size: 12px;
+            margin-left: -2px;
+            transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1),
+              margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+          }
+
+          &.collapsed {
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+          }
+
+          border-bottom: 1px solid $kznims-light-grey;
+        }
+      }
+    }
+
+    .ant-layout-sider-children {
+
+
+      .creator-logo {
+        position: fixed;
+        bottom: 0;
+        width: $sider-collapsed-width;
+        height: $sider-collapsed-width;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: $sider-collapsed-width - 15px;
+          height: $sider-collapsed-width - 15px;
+        }
+      }
+    }
+
+    .ant-layout-content {
+      overflow: hidden !important;
+      margin-top: $header-height;
+
+      .content-heading {
+        padding: 4px $padding-lg;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-height: $content-heading-height;
+        background-color: white;
+        box-shadow: $box-shadow;
+        margin-bottom: 1px;
+
+        .heading {
+          margin: unset;
+          font-size: 16px;
+          font-weight: 700;
+        }
+
+        .header-controls {}
+      }
+
+      .content-toolbar {}
+
+      .content-body {
+        padding: $padding-lg;
+        padding-bottom: unset;
+        height: 100%;
+
+        &.content-body-no-padding {
+          padding: 0;
+        }
+      }
+    }
+
+    .ant-layout-footer {
+      text-align: center;
+    }
+  }
+}
+
+.ant-layout-header {
+  height: $header-height !important;
+  z-index: 1000;
+  position: fixed;
+  width: 100%; // width: 80%;
+  padding: 0 $header-sides-spadding;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  // background: #1f1f54; // background: lighten($primary-color, 33%) !important;
+  background: #1f1f54; // background: lighten($primary-color, 33%) !important;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+
+  .logo {
+    margin-left: -6px;
+
+    img {
+      height: 100%;
+      float: left;
+    }
+  }
+
+  .account-info {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    line-height: unset;
+    justify-items: center;
+
+    .header-icon,
+    .username {
+      @include textHoverEffect;
+      margin-left: $padding-lg;
+    }
+
+    div.username {
+      .ant-dropdown-link {
+        color: $white;
+        text-align: right;
+      }
+    }
+
+    div.user-avatar {
+      :hover {
+        cursor: pointer;
+      }
+
+      i.anticon.anticon-user {
+        background: $white; // color: #005881;
+        padding: 7px;
+        margin-left: 10px;
+        border-radius: 36px;
+        font-size: 15px;
+      }
+    }
+  }
+}
