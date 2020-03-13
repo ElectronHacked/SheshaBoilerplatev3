@@ -1,18 +1,26 @@
 const TENANT_KEY = 'TENANT';
 
-export const setTenantId = function (tenantId) {
-    if (tenantId) {
-        localStorage.setItem(TENANT_KEY, tenantId);
-    } else {
-        localStorage.removeItem(TENANT_KEY);
-    }
+/**
+ * Sets the tenant id
+ * @param tenantId - the tenant id
+ */
+export const setTenantId = function(tenantId: string) {
+  if (tenantId) {
+    localStorage.setItem(TENANT_KEY, tenantId);
+  } else {
+    localStorage.removeItem(TENANT_KEY);
+  }
 };
 
-export const getTenantId = function () {
-    var value = localStorage.getItem(TENANT_KEY);
-    if (!value) {
-        return null;
-    }
+/**
+ * Gets the tenant id
+ * @returns tenantId
+ */
+export const getTenantId = function() {
+  const value = localStorage.getItem(TENANT_KEY);
+  if (!value) {
+    return null;
+  }
 
-    return parseInt(value);
-}
+  return parseInt(value);
+};

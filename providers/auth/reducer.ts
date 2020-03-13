@@ -1,5 +1,5 @@
 import { AuthActionEnums } from './actions';
-import { IAuthStateContext } from 'contexts/authContext';
+import { IAuthStateContext } from 'providers/auth/contexts';
 
 export function authReducer(
   state: IAuthStateContext,

@@ -2,6 +2,9 @@ import { getAccessToken } from './auth';
 import { getLocalizationOrDefault } from './localization';
 import { getTenantId } from './multitenancy';
 
+/**
+ * Retrieves the request headers for the application
+ */
 export const requestHeaders = (): { [key: string]: string } => {
   const headers: { [key: string]: string } = {};
 

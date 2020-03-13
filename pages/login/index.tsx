@@ -3,7 +3,7 @@ import { AuthContext, AuthActionsContext } from 'contexts';
 import { DASHBOARD_PAGE_URL, FORGOT_PASSWORD_PAGE_URL } from 'routes';
 import './styles.scss';
 import { useRouter } from 'next/router';
-import { AuthStateContext } from 'contexts/authContext';
+import { AuthStateContext } from 'providers/auth/contexts';
 import { useFormState } from 'react-use-form-state';
 import { ILoginForm } from 'models';
 import { Form, Alert, Input, Icon, Checkbox, Button } from 'antd';

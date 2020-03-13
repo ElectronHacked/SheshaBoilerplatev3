@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { IAuthStateContext } from 'contexts/authContext';
+import { IAuthStateContext } from 'providers/auth/contexts';
 
 import { ILoginForm, ILoginInfo } from 'models';
 import {

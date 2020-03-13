@@ -3,7 +3,7 @@ import './styles.scss';
 import { UnAuthedAccountPageLayout } from 'components/layouts';
 import FormItem from 'antd/lib/form/FormItem';
 import { Form, Button, Result, Alert, notification, Icon } from 'antd';
-import { AuthStateContext, AuthActionsContext } from 'contexts/authContext';
+import { AuthStateContext, AuthActionsContext } from 'providers/auth/contexts';
 import { PasswordInputCombo } from 'components';
 import { useRouter } from 'next/router';
 import { LOGIN_PAGE_URL } from 'routes';
@@ -49,13 +49,14 @@ export const ResetPasssword: FC = () => {
 
     resetPassword({ username, newPassword: password, token });
   };
+
   return (
     <UnAuthedAccountPageLayout
       className="reset-passsword-page"
       heading="Reset Your Password"
       hint="Please enter your new password below"
     >
-     <Alert message="OTP verication was successful!" type="success" showIcon />
+      <Alert message="OTP verication was successful!" type="success" showIcon />
 
       <Form>
         <PasswordInputCombo {...{ password, confirmPassword, setPassword, setConfirmPassword }} />

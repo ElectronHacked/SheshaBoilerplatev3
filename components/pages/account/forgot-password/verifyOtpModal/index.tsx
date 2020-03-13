@@ -1,7 +1,7 @@
 import React, { FC, useContext, useState } from 'react';
 import './styles.scss';
 import { Modal, Form, Button, Input, Alert } from 'antd';
-import { AuthStateContext, AuthActionsContext } from 'contexts/authContext';
+import { AuthStateContext, AuthActionsContext } from 'providers/auth/contexts';
 
 const FormItem = Form.Item;
 interface IProps {}

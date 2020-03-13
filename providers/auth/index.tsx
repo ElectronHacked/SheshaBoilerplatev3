@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useReducer, useContext, useEffect } from 'react';
 import { authReducer } from './reducer';
-import { AuthStateContext } from 'contexts/authContext';
-import { AuthActionsContext } from 'contexts';
+import { AuthStateContext, AuthActionsContext } from './contexts';
+
 import {
   checkAuthAction,
   loginUserAction,
@@ -47,7 +47,7 @@ interface IQueryParams {
 
 const AuthProvider: FC<IQueryParams> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {});
-  
+
   const router = useRouter();
 
   const { nextRoute } = useRouteState();
