@@ -1,6 +1,6 @@
-import React, { FC, ReactNode, useReducer } from 'react';
+import React, { FC, ReactNode, useReducer, useContext } from 'react';
 import { routeReducer } from './reducer';
-import { RouteStateContext, RouteActionsContext } from 'providers/route/routeStateContext';
+import { RouteStateContext, RouteActionsContext } from 'providers/route/contexts';
 import { goingToRouteAction } from './actions';
 
 interface IProps {
@@ -20,18 +20,26 @@ const RouteProvider: FC<IProps> = ({ children }) => {
 };
 
 function useRouteState() {
-  const context = React.useContext(RouteStateContext);
+  const context = useContext(RouteStateContext);
+
   if (context === undefined) {
     throw new Error('useRouteState must be used within a CountProvider');
   }
   return context;
 }
+
 function useRouteActions() {
-  const context = React.useContext(RouteActionsContext);
+  const context = useContext(RouteActionsContext);
+
   if (context === undefined) {
     throw new Error('useRouteActions must be used within a CountProvider');
   }
+
   return context;
 }
 
-export { RouteProvider, useRouteState, useRouteActions };
+function useRoute() {
+  return { ...useRouteState(), ...useRouteActions() };
+}
+
+export { RouteProvider, useRouteState, useRouteActions, useRoute };

@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { IGlobalStateContext } from 'contexts/globalContext';
+import { IGlobalStateContext } from './contexts';
 
 export enum GlobalActionEnums {
   ToggleHeaderVisibility = 'TOGGLE_HEADER_VISIBILITY',

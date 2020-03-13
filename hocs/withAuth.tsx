@@ -3,7 +3,7 @@ import { AuthContext, AuthActionsContext } from 'contexts';
 import { LOGIN_PAGE_URL, DASHBOARD_PAGE_URL } from 'routes';
 import { OverlayLoader } from 'components';
 import { useRouter } from 'next/router';
-import { RouteActionsContext } from 'providers/route/routeStateContext';
+import { RouteActionsContext } from 'providers/route/contexts';
 
 /**
  *
@@ -53,6 +53,6 @@ export const withAuth = <P extends object>(Component: ComponentType<P>): FC<P> =
   return isCheckingAuth || !user ? (
     <OverlayLoader loading={true} loadingText="Initializing..." />
   ) : (
-    <Component {...props as P} id={router.query.id} />
+    <Component {...(props as P)} id={router.query.id} />
   );
 };

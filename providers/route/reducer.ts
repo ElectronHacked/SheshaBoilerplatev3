@@ -1,7 +1,7 @@
-import { IRouteStateContext } from 'providers/route/routeStateContext';
+import { IRouteStateContext } from 'providers/route/contexts';
 import { RouteActionEnums } from './actions';
 
-export function routeReducer (
+export function routeReducer(
   state: IRouteStateContext,
   { type, payload }: ReduxActions.Action<IRouteStateContext>
 ): IRouteStateContext {

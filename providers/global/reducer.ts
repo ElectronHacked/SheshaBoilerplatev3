@@ -1,5 +1,5 @@
 import { GlobalActionEnums } from './actions';
-import { IGlobalStateContext } from 'contexts/globalContext';
+import { IGlobalStateContext } from 'providers/global/contexts';
 
 export function globalReducer(
   state: IGlobalStateContext,

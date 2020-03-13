@@ -2,7 +2,7 @@ import React, { FC, ReactNode, useReducer, useContext } from 'react';
 import { globalReducer } from './reducer';
 import { toggleHeaderVisibilityAction } from './actions';
 import { GlobalStateContext } from 'contexts';
-import { GlobalActionsContext, defaultGlobalStateContext } from 'contexts/globalContext';
+import { GlobalActionsContext, defaultGlobalStateContext } from './contexts';
 
 interface IProps {
   children?: ReactNode;
@@ -20,19 +20,27 @@ const GlobalProvider: FC<IProps> = ({ children }) => {
   );
 };
 
-function useGlobalState() {
+const useGlobalState = () => {
   const context = useContext(GlobalStateContext);
+
   if (context === undefined) {
     throw new Error('useGlobalState must be used within a CountProvider');
   }
   return context;
-}
-function useGlobalActions() {
+};
+
+const useGlobalActions = () => {
   const context = useContext(GlobalActionsContext);
+
   if (context === undefined) {
     throw new Error('useGlobalActions must be used within a CountProvider');
   }
-  return context;
-}
 
-export { GlobalProvider, useGlobalState, useGlobalActions };
+  return context;
+};
+
+const useGlobal = () => {
+  return { ...useGlobalState(), ...useGlobalActions() };
+};
+
+export { GlobalProvider, useGlobalState, useGlobalActions, useGlobal };
