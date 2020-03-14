@@ -3,9 +3,7 @@ import App from 'next/app';
 import { CustomNProgress } from 'components';
 import { RestfulProvider } from 'restful-react';
 import { BASE_URL } from 'api/utils/constants';
-import { RouteProvider, AuthProvider, GlobalProvider } from 'providers';
-import { DesignContext } from 'contexts';
-import { defaultDesignContext } from 'contexts/designContext';
+import { RouteProvider, AuthProvider, GlobalProvider, UiProvider } from 'providers';
 
 interface IState {
   headers: { [key: string]: string };
@@ -59,9 +57,9 @@ export default class Main extends App<{}, {}, IState> {
 
           <RouteProvider>
             <AuthProvider>
-              <DesignContext.Provider value={defaultDesignContext}>
+              <UiProvider>
                 <Component {...pageProps} />
-              </DesignContext.Provider>
+              </UiProvider>
             </AuthProvider>
           </RouteProvider>
         </GlobalProvider>

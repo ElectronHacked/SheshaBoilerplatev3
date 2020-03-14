@@ -2,15 +2,21 @@ import { createContext } from 'react';
 import { FormProps } from 'antd/lib/form';
 import { ColProps } from 'antd/lib/col';
 
-interface IDesignContext {
-  size?: 'large' | 'default' | 'small';
+export type ControlSize = 'large' | 'default' | 'small';
+
+export interface IUiStateContext {
+  size?: ControlSize;
   formItemLayout?: FormProps;
   dateFormat?: string;
   monthFormat?: string;
   accountFormCols?: ColProps;
 }
 
-export const defaultDesignContext: IDesignContext = {
+export interface IUiActionsContext {
+  setControlsSize: (size: ControlSize) => void;
+}
+
+export const uiContext: IUiStateContext = {
   size: 'default',
   formItemLayout: {
     labelCol: {
@@ -34,4 +40,6 @@ export const defaultDesignContext: IDesignContext = {
   },
 };
 
-export const DesignContext = createContext<IDesignContext>(defaultDesignContext);
+export const UiStateContext = createContext<IUiStateContext>(uiContext);
+
+export const UiActionsContext = createContext<IUiActionsContext>(undefined);

@@ -1,13 +1,9 @@
-import React, { FC, ReactNode, useReducer, useContext } from 'react';
+import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { routeReducer } from './reducer';
 import { RouteStateContext, RouteActionsContext } from 'providers/route/contexts';
 import { goingToRouteAction } from './actions';
 
-interface IProps {
-  children?: ReactNode;
-}
-
-const RouteProvider: FC<IProps> = ({ children }) => {
+const RouteProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(routeReducer, {});
 
   const goingToRoute = (route: string) => dispatch(goingToRouteAction(route));

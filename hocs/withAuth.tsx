@@ -1,9 +1,9 @@
 import React, { FC, useContext, useEffect, ComponentType } from 'react';
-import { AuthContext, AuthActionsContext } from 'contexts';
 import { LOGIN_PAGE_URL, DASHBOARD_PAGE_URL } from 'routes';
 import { OverlayLoader } from 'components';
 import { useRouter } from 'next/router';
 import { RouteActionsContext } from 'providers/route/contexts';
+import { useAuth } from 'providers/auth';
 
 /**
  *
@@ -13,8 +13,8 @@ import { RouteActionsContext } from 'providers/route/contexts';
  */
 
 export const withAuth = <P extends object>(Component: ComponentType<P>): FC<P> => (...props) => {
-  const { isCheckingAuth, hasCheckedReauth, loginInfo } = useContext(AuthContext);
-  const { checkAuth } = useContext(AuthActionsContext);
+  const { isCheckingAuth, hasCheckedReauth, loginInfo, checkAuth } = useAuth();
+
   const { goingToRoute } = useContext(RouteActionsContext);
   const user = loginInfo && loginInfo.user;
 

@@ -1,7 +1,2 @@
-export { DesignContext } from './designContext';
-export { AuthStateContext as AuthContext, AuthActionsContext } from '../providers/auth/contexts';
-export { RouteStateContext as RouteContext, RouteActionsContext } from '../providers/route/contexts';
-export { GlobalStateContext } from '../providers/global/contexts';
-export { IndexViewStateContext, IndexViewActionsContext } from './indexViewContext';
-
+export default {}; // Remove it once you have an export
 /* new-context-import-goes-here */

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useReducer, useContext, useEffect } from 'react';
+import React, { FC, useReducer, useContext, useEffect, PropsWithChildren } from 'react';
 import { authReducer } from './reducer';
 import { AuthStateContext, AuthActionsContext } from './contexts';
 
@@ -41,11 +41,7 @@ import axios from 'axios';
 import { BASE_URL } from 'api/utils/constants';
 import { useRouteState } from 'providers/route';
 
-interface IQueryParams {
-  children?: ReactNode;
-}
-
-const AuthProvider: FC<IQueryParams> = ({ children }) => {
+const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {});
 
   const router = useRouter();
@@ -268,4 +264,8 @@ function useAuthActions() {
   return context;
 }
 
-export { AuthProvider, useAuthState, useAuthActions };
+function useAuth() {
+  return { ...useAuthActions(), ...useAuthState() };
+}
+
+export { AuthProvider, useAuthState, useAuthActions, useAuth };

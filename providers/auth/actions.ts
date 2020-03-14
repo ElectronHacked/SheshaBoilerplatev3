@@ -60,11 +60,6 @@ export const loginUserSuccessAction = createAction<IAuthStateContext, ILoginInfo
     loginInfo,
     username: '',
     password: '',
-    // resetPasswordUsingTokenReqPayload: null,
-    // sendOtpReqPayload: null,
-    // sendOtpResPayload: null,
-    // verifyOtpReqPayload: null,
-    // verifyOtpResPayload: null,
   })
 );
 

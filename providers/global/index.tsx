@@ -1,14 +1,9 @@
-import React, { FC, ReactNode, useReducer, useContext } from 'react';
+import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { globalReducer } from './reducer';
 import { toggleHeaderVisibilityAction } from './actions';
-import { GlobalStateContext } from 'contexts';
-import { GlobalActionsContext, defaultGlobalStateContext } from './contexts';
+import { GlobalActionsContext, defaultGlobalStateContext, GlobalStateContext } from './contexts';
 
-interface IProps {
-  children?: ReactNode;
-}
-
-const GlobalProvider: FC<IProps> = ({ children }) => {
+const GlobalProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, defaultGlobalStateContext);
 
   const toggleHeaderVisibility = (value: boolean) => dispatch(toggleHeaderVisibilityAction(value));
