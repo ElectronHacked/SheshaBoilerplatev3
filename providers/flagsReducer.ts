@@ -18,34 +18,11 @@ export const FAILED_FLAG = '_FAILURE';
 export const ACTIONED_FLAG = '_ACTION';
 //#endregion
 
-export interface IFlagsSetters<A extends string, B extends string, C extends string, D extends string> {
-  setIsInProgressFlag: (key: { [key in A]?: boolean }) => void;
-  setSucceededFlag: (key: { [key in B]?: boolean }) => void;
-  setFailedFlag: (key: { [key in C]?: boolean }) => void;
-  setActionedFlag: (key: { [key in D]?: boolean }) => void;
-  resetIsInProgressFlag: () => void;
-  resetSucceededFlag: () => void;
-  resetFailedFlag: () => void;
-  resetActionedFlag: () => void;
-  resetAllFlag: () => void;
-}
-
 // export const getFlagsActions = ()
-
-enum FlagsActionEnums {
-  SetIsInProgressFlag = 'SET_IS_IN_PROGRESS_FLAG',
-  SetSucceededFlag = 'SET_SUCCEEDED_FLAG',
-  SetFailedFlag = 'SET_FAILED_FLAG',
-  SetActionedFlag = 'SET_ACTIONED_FLAG',
-  ResetIsInProgressFlags = 'RESET_IS_IN_PROGRESS_FLAGS',
-  ResetSucceededFlags = 'RESET_SUCCEEDED_FLAGS',
-  ResetFailedFlags = 'RESET_FAILED_FLAGS',
-  ResetActionedFlags = 'RESET_ACTIONED_FLAGS',
-  ResetAllFlags = 'RESET_ALL_FLAGS',
-}
 
 import camelcase from 'camelcase';
 import { IFlagsState } from 'models';
+import { FlagsActionTypes } from 'enums';
 
 export const FLAGS_INITIAL_STATE: IFlagsState<any, any, any, any> = {
   isInProgress: {},
@@ -62,9 +39,9 @@ const flagsReducer = (
   state: IFlagsState<any, any, any, any> = FLAGS_INITIAL_STATE,
   { type, payload }: ReduxActions.Action<IFlagsState<any, any, any, any>>
 ) => {
-  console.log('flagsReducer :', state);
-
   const flaggableMatch = /__F__/.exec(type);
+
+  // debugger;
 
   if (flaggableMatch) {
     // debugger;
@@ -117,51 +94,51 @@ const flagsReducer = (
   }
 
   switch (type) {
-    case FlagsActionEnums.SetIsInProgressFlag: {
+    case FlagsActionTypes.SetIsInProgressFlag: {
       return {
         ...state,
         isInProgress: { ...state.isInProgress, ...payload.isInProgress },
       };
     }
-    case FlagsActionEnums.SetSucceededFlag: {
+    case FlagsActionTypes.SetSucceededFlag: {
       return {
         ...state,
         succeeded: { ...state.succeeded, ...payload.succeeded },
       };
     }
-    case FlagsActionEnums.SetFailedFlag: {
+    case FlagsActionTypes.SetFailedFlag: {
       return {
         ...state,
         failed: { ...state.failed, ...payload.failed },
       };
     }
-    case FlagsActionEnums.SetActionedFlag: {
+    case FlagsActionTypes.SetActionedFlag: {
       return {
         ...state,
         actioned: { ...state.actioned, ...payload.actioned },
       };
     }
-    case FlagsActionEnums.ResetIsInProgressFlags:
+    case FlagsActionTypes.ResetIsInProgressFlags:
       return {
         ...state,
         isInProgress: {},
       };
-    case FlagsActionEnums.ResetSucceededFlags:
+    case FlagsActionTypes.ResetSucceededFlags:
       return {
         ...state,
         succeeded: {},
       };
-    case FlagsActionEnums.ResetFailedFlags:
+    case FlagsActionTypes.ResetFailedFlags:
       return {
         ...state,
         failed: {},
       };
-    case FlagsActionEnums.ResetActionedFlags:
+    case FlagsActionTypes.ResetActionedFlags:
       return {
         ...state,
         actioned: {},
       };
-    case FlagsActionEnums.ResetAllFlags:
+    case FlagsActionTypes.ResetAllFlags:
       return {
         ...state,
         isInProgress: {},

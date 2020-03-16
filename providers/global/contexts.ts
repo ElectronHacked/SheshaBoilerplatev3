@@ -1,7 +1,7 @@
 import { createContext } from 'react';
-import { IFlagsState } from 'models';
+import { IFlagsState, IFlagsSetters } from 'models';
 
-export type IFlagProgressFlags = 'fetchPosts';
+export type IFlagProgressFlags = 'fetchPosts' | 'fetchUsers';
 export type IFlagSucceededFlags = 'fetchPosts';
 export type IFlagFailedFlags = 'fetchPosts';
 export type IFlagActionedFlags = 'fetchPosts';
@@ -11,7 +11,8 @@ export interface IGlobalStateContext
   readonly isHeaderShown?: boolean;
 }
 
-export interface IGlobalActionsContext {
+export interface IGlobalActionsContext
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   toggleHeaderVisibility: (value: boolean) => void;
 }
 

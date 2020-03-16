@@ -36,4 +36,5 @@ export { INavLink } from './navLink';
 export { ISuccessResponse } from './successResponse';
 export { IPasswordValidation } from './passwordValidation';
 export { IFlagsState } from './flagsState';
+export { IFlagsSetters } from './flagsSetters';
 /* new-interface-import-goes-here */

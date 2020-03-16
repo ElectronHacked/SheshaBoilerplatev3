@@ -2,15 +2,20 @@ import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { globalReducer } from './reducer';
 import { toggleHeaderVisibilityAction } from './actions';
 import { GlobalActionsContext, defaultGlobalStateContext, GlobalStateContext } from './contexts';
+import { getFlagSetters } from 'providers/flagsSetters';
 
 const GlobalProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, defaultGlobalStateContext);
 
   const toggleHeaderVisibility = (value: boolean) => dispatch(toggleHeaderVisibilityAction(value));
 
+  const flagSetters = getFlagSetters(dispatch);
+
   return (
     <GlobalStateContext.Provider value={state}>
-      <GlobalActionsContext.Provider value={{ toggleHeaderVisibility }}>{children}</GlobalActionsContext.Provider>
+      <GlobalActionsContext.Provider value={{ toggleHeaderVisibility, ...flagSetters }}>
+        {children}
+      </GlobalActionsContext.Provider>
     </GlobalStateContext.Provider>
   );
 };

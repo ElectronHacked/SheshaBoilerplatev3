@@ -1,10 +1,15 @@
 import { GlobalActionEnums } from './actions';
 import { IGlobalStateContext } from 'providers/global/contexts';
+import flagsReducer from '../flagsReducer';
 
 export function globalReducer(
-  state: IGlobalStateContext,
+  incomingState: IGlobalStateContext,
   { type, payload }: ReduxActions.Action<IGlobalStateContext>
 ): IGlobalStateContext {
+  const state = flagsReducer(incomingState, { type, payload });
+
+  console.log('globalReducer state :', state);
+
   switch (type) {
     case GlobalActionEnums.ToggleHeaderVisibility:
       return {
@@ -13,7 +18,8 @@ export function globalReducer(
       };
 
     default: {
-      throw new Error(`Unhandled action type: ${type}`);
+      return state;
+      // throw new Error(`Unhandled action type: ${type}`);
     }
   }
 }
