@@ -12,6 +12,7 @@
           "app-constants": "./app-constants",
           "contexts": "./contexts",
           "data": "./data",
+          "hooks": "./hooks",
           "providers": "./providers",
           "routes": "./routes",
           "styles": "./styles",

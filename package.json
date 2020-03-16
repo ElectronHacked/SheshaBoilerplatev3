@@ -90,6 +90,7 @@
     "qs": "^6.7.0",
     "react": "^16.13.0",
     "react-big-calendar": "^0.23.0",
+    "react-combine-reducers": "^1.0.3",
     "react-dom": "^16.13.0",
     "react-error-boundary": "^1.2.5",
     "react-hook-thunk-reducer": "^0.2.4",

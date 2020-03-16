@@ -1,6 +1,13 @@
 import { createContext } from 'react';
+import { IFlagsState } from 'models';
 
-export interface IGlobalStateContext {
+export type IFlagProgressFlags = 'fetchPosts';
+export type IFlagSucceededFlags = 'fetchPosts';
+export type IFlagFailedFlags = 'fetchPosts';
+export type IFlagActionedFlags = 'fetchPosts';
+
+export interface IGlobalStateContext
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   readonly isHeaderShown?: boolean;
 }
 

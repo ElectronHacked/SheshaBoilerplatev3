@@ -35,4 +35,5 @@ export { ITableFilter } from './tableFilter';
 export { INavLink } from './navLink';
 export { ISuccessResponse } from './successResponse';
 export { IPasswordValidation } from './passwordValidation';
+export { IFlagsState } from './flagsState';
 /* new-interface-import-goes-here */
