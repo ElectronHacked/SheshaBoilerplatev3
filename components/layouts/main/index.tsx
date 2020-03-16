@@ -1,4 +1,4 @@
-import React, { ReactNode, Fragment, useState, useContext } from 'react';
+import React, { ReactNode, Fragment, useState } from 'react';
 import { Layout, Icon, Tooltip } from 'antd';
 import Head from './head';
 import { useRouter } from 'next/router';
@@ -6,8 +6,9 @@ import { appRoutes } from 'routes';
 import { IDispatchable } from 'models';
 import LayoutHeader from './layoutHeader';
 import './styles.scss';
-import { GlobalStateContext, AuthContext } from 'contexts';
 import { LayoutSideMenu } from 'components';
+import { useGlobal } from 'providers';
+import { useAuth } from 'providers/auth';
 
 const { Sider, Content } = Layout;
 
@@ -32,10 +33,9 @@ const MainLayout: React.FC<IProps> = ({
   toolbar,
   showHeading = true,
 }) => {
-  const { isHeaderShown } = useContext(GlobalStateContext);
+  const { isHeaderShown } = useGlobal();
   const { asPath } = useRouter();
-  const { loginInfo } = useContext(AuthContext);
-
+  const { loginInfo } = useAuth();
   const grantedPermissions = loginInfo?.user?.grantedPermissions || [];
   const availableAppRoutes = appRoutes.filter(
     i => !Boolean(i.permissionName) || grantedPermissions.indexOf(i.permissionName) > -1

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { AuthContext, AuthActionsContext } from 'contexts';
 import { DASHBOARD_PAGE_URL, FORGOT_PASSWORD_PAGE_URL } from 'routes';
 import './styles.scss';
 import { useRouter } from 'next/router';
@@ -10,13 +9,12 @@ import { Form, Alert, Input, Icon, Checkbox, Button } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 import Link from 'next/link';
 import { UnAuthedAccountPageLayout } from 'components/layouts';
-import { useRouteState } from 'providers';
+import { useRouteState, useAuth } from 'providers';
 
 export const Login = () => {
-  const { loginInfo } = useContext(AuthContext);
+  const { loginInfo, loginUser } = useAuth();
   const { nextRoute } = useRouteState();
   const { isLoggingInUser, isReauth, authErrorMsg } = useContext(AuthStateContext);
-  const { loginUser } = useContext(AuthActionsContext);
 
   const [formState, { text, password }] = useFormState<ILoginForm>({});
 

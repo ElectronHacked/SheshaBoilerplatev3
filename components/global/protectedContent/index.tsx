@@ -1,18 +1,16 @@
-import React, { FC, ReactNode, useContext } from 'react';
-import { AuthContext } from 'contexts';
+import React, { FC, ReactNode } from 'react';
+import { useAuth } from 'providers/auth';
 
 interface IProps {
-    permissionName: string;
-    children?: ReactNode;
+  permissionName: string;
+  children?: ReactNode;
 }
 
 export const ProtectedContent: FC<IProps> = ({ permissionName, children }) => {
-    const { loginInfo } = useContext(AuthContext);
-    const grantedPermissions = loginInfo?.user?.grantedPermissions || [];
-    const hasRights = grantedPermissions.indexOf(permissionName) > 0;
-    return hasRights
-        ? <React.Fragment>{children}</React.Fragment>
-        : null;
-  };
-  
+  const { loginInfo } = useAuth();
+  const grantedPermissions = loginInfo?.user?.grantedPermissions || [];
+  const hasRights = grantedPermissions.indexOf(permissionName) > 0;
+  return hasRights ? <React.Fragment>{children}</React.Fragment> : null;
+};
+
 export default ProtectedContent;

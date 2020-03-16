@@ -1,7 +1,7 @@
-import React, { FC, ReactNode, useContext } from 'react';
+import React, { FC, ReactNode } from 'react';
 import './styles.scss';
-import { DesignContext } from 'contexts';
 import { Row, Col } from 'antd';
+import { useUi } from 'providers';
 
 interface IProps {
   className?: string;
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export const UnAuthedAccountPageLayout: FC<IProps> = ({ className, children, heading, hint }) => {
-  const { accountFormCols } = useContext(DesignContext);
+  const { accountFormCols } = useUi();
 
   return (
     <div className={`un-authed-account-page-layout ${className}`}>
