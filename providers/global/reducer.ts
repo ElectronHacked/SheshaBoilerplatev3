@@ -8,8 +8,6 @@ export function globalReducer(
 ): IGlobalStateContext {
   const state = flagsReducer(incomingState, { type, payload });
 
-  console.log('globalReducer state :', state);
-
   switch (type) {
     case GlobalActionEnums.ToggleHeaderVisibility:
       return {

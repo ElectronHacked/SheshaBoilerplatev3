@@ -12,6 +12,7 @@
           "app-constants": "./app-constants",
           "contexts": "./contexts",
           "data": "./data",
+          "enums": "./enums",
           "hooks": "./hooks",
           "providers": "./providers",
           "routes": "./routes",

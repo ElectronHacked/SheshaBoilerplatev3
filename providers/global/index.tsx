@@ -9,11 +9,9 @@ const GlobalProvider: FC<PropsWithChildren<any>> = ({ children }) => {
 
   const toggleHeaderVisibility = (value: boolean) => dispatch(toggleHeaderVisibilityAction(value));
 
-  const flagSetters = getFlagSetters(dispatch);
-
   return (
     <GlobalStateContext.Provider value={state}>
-      <GlobalActionsContext.Provider value={{ toggleHeaderVisibility, ...flagSetters }}>
+      <GlobalActionsContext.Provider value={{ ...getFlagSetters(dispatch), toggleHeaderVisibility }}>
         {children}
       </GlobalActionsContext.Provider>
     </GlobalStateContext.Provider>

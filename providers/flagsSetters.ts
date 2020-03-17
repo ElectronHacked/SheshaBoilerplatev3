@@ -1,11 +1,9 @@
 import { IFlagsSetters, IFlagsState } from 'models';
-import { Dispatch } from 'react';
-import { Action } from 'redux';
 import { FlagsActionTypes } from 'enums';
 import { createAction } from 'redux-actions';
 
 export function getFlagSetters<A extends string, B extends string, C extends string, D extends string>(
-  dispatch: Dispatch<Action<IFlagsState<A, B, C, D>>>
+  dispatch: Function
 ): IFlagsSetters<A, B, C, D> {
   type IState = IFlagsState<A, B, C, D>;
   //#region Set flags
@@ -45,6 +43,7 @@ export function getFlagSetters<A extends string, B extends string, C extends str
   const resetActionedFlagAction = createAction<IState>(FlagsActionTypes.ResetActionedFlags);
 
   const resetAllFlagAction = createAction<IState>(FlagsActionTypes.ResetAllFlags);
+
   //#endregion
 
   return {
@@ -52,10 +51,10 @@ export function getFlagSetters<A extends string, B extends string, C extends str
     setSucceededFlag: (val: { [key in B]?: boolean }) => dispatch(setSucceededFlagAction(val)),
     setFailedFlag: (val: { [key in C]?: boolean }) => dispatch(setFailedFlagAction(val)),
     setActionedFlag: (val: { [key in D]?: boolean }) => dispatch(setActionedFlagAction(val)),
-    resetIsInProgressFlag: () => dispatch(resetIsInProgressFlagAction()),
-    resetSucceededFlag: () => dispatch(resetSucceededFlagAction()),
-    resetFailedFlag: () => dispatch(resetFailedFlagAction()),
-    resetActionedFlag: () => dispatch(resetActionedFlagAction()),
-    resetAllFlag: () => dispatch(resetAllFlagAction()),
+    resetIsInProgressFlag: () => dispatch(resetIsInProgressFlagAction(null)), // These actions are not supposed to be receiving anything. But I get an error saying they do. Will fix them later
+    resetSucceededFlag: () => dispatch(resetSucceededFlagAction(null)), // These actions are not supposed to be receiving anything. But I get an error saying they do. Will fix them later
+    resetFailedFlag: () => dispatch(resetFailedFlagAction(null)), // These actions are not supposed to be receiving anything. But I get an error saying they do. Will fix them later
+    resetActionedFlag: () => dispatch(resetActionedFlagAction(null)), // These actions are not supposed to be receiving anything. But I get an error saying they do. Will fix them later
+    resetAllFlag: () => dispatch(resetAllFlagAction(null)), // These actions are not supposed to be receiving anything. But I get an error saying they do. Will fix them later
   };
 }

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.scss';
-import { withAuth } from 'hocs';
+// import { withAuth } from 'hocs';
 import { Collapse, Icon, Select } from 'antd';
 import { ExpandIconPosition } from 'antd/lib/collapse/Collapse';
 import { MainLayout } from 'components/layouts';
 import { useInspectionBatchAssignmentCreate } from 'api/inspectionBatchAssignments';
+import { useGlobal } from 'providers';
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -22,6 +23,15 @@ const text = `
 export const Home = () => {
   const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('right');
   const { mutate: createBatchAssignmentHttp } = useInspectionBatchAssignmentCreate({});
+  const { setIsInProgressFlag, resetAllFlag } = useGlobal();
+
+  useEffect(() => {
+    setIsInProgressFlag({ fetchPosts: true });
+
+    setTimeout(() => {
+      resetAllFlag();
+    }, 5000);
+  }, []);
 
   // @ts-ignore
   const createBatchAssignment = () => {
@@ -78,4 +88,5 @@ export const Home = () => {
   );
 };
 
-export default withAuth(Home);
+// export default withAuth(Home);
+export default Home;
