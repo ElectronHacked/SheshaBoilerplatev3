@@ -1,7 +1,6 @@
 import React, { FC, useReducer, useContext, useEffect, PropsWithChildren } from 'react';
 import { authReducer } from './reducer';
 import { AuthStateContext, AuthActionsContext } from './contexts';
-
 import {
   checkAuthAction,
   loginUserAction,
