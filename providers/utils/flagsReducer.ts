@@ -1,15 +1,3 @@
-//#region Identifiers
-export const IS_IN_PROGRESS_IDENTIFIER = 'I';
-
-export const SUCCEEDED_IDENTIFIER = 'S';
-
-export const FAILED_IDENTIFIER = 'F';
-
-export const ACTIONED_IDENTIFIER = 'A';
-//#endregion
-
-// FETCH_USERS_REQUEST
-
 //#region Flags
 export const IS_IN_PROGRESS_FLAG = '_REQUEST';
 
@@ -27,7 +15,7 @@ import { FlagsActionTypes } from 'enums';
 export const FLAGS_INITIAL_STATE: IFlagsState<any, any, any, any> = {
   isInProgress: {},
   succeeded: {},
-  failed: {},
+  error: {},
   actioned: {},
 };
 
@@ -45,7 +33,7 @@ const flagsReducer = (
 
     const FLAG_ACTION_KEY = camelcase((actionMatch && actionMatch[1]) || ''); //  "FETCH_USER" => fetchUser
 
-    const { isInProgress, succeeded, failed, actioned } = state;
+    const { isInProgress, succeeded, error, actioned } = state;
 
     let currentState = { ...state };
 
@@ -54,7 +42,7 @@ const flagsReducer = (
         ...state,
         isInProgress: { ...isInProgress, [FLAG_ACTION_KEY]: true },
         succeeded: { ...succeeded, [FLAG_ACTION_KEY]: false },
-        failed: { ...failed, [FLAG_ACTION_KEY]: false },
+        error: { ...error, [FLAG_ACTION_KEY]: false },
       };
     }
 
@@ -69,7 +57,7 @@ const flagsReducer = (
     if (isThisFlagInAction(type, ERROR_FLAG)) {
       currentState = {
         ...state,
-        failed: { ...failed, [FLAG_ACTION_KEY]: true },
+        error: { ...error, [FLAG_ACTION_KEY]: true },
         isInProgress: { ...isInProgress, [FLAG_ACTION_KEY]: false },
       };
     }
@@ -97,10 +85,10 @@ const flagsReducer = (
         succeeded: { ...state.succeeded, ...payload.succeeded },
       };
     }
-    case FlagsActionTypes.SetFailedFlag: {
+    case FlagsActionTypes.SetErrorFlag: {
       return {
         ...state,
-        failed: { ...state.failed, ...payload.failed },
+        error: { ...state.error, ...payload.error },
       };
     }
     case FlagsActionTypes.SetActionedFlag: {
@@ -119,10 +107,10 @@ const flagsReducer = (
         ...state,
         succeeded: {},
       };
-    case FlagsActionTypes.ResetFailedFlags:
+    case FlagsActionTypes.ResetErrorFlags:
       return {
         ...state,
-        failed: {},
+        error: {},
       };
     case FlagsActionTypes.ResetActionedFlags:
       return {
@@ -134,7 +122,7 @@ const flagsReducer = (
         ...state,
         isInProgress: {},
         succeeded: {},
-        failed: {},
+        error: {},
         actioned: {},
       };
     default:

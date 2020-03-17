@@ -7,11 +7,11 @@ export type ControlSize = 'large' | 'default' | 'small';
 
 export type IFlagProgressFlags = '__DEFAULT__';
 export type IFlagSucceededFlags = '__DEFAULT__';
-export type IFlagFailedFlags = '__DEFAULT__';
+export type IFlagErrorFlags = '__DEFAULT__';
 export type IFlagActionedFlags = '__DEFAULT__';
 
 export interface IUiStateContext
-  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   size?: ControlSize;
   formItemLayout?: FormProps;
   dateFormat?: string;
@@ -20,7 +20,7 @@ export interface IUiStateContext
 }
 
 export interface IUiActionsContext
-  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   setControlsSize: (size: ControlSize) => void;
 }
 

@@ -21,8 +21,8 @@ export function getFlagSetters<A extends string, B extends string, C extends str
     })
   );
 
-  const setFailedFlagAction = createAction<IState, { [key in C]?: boolean }>(FlagsActionTypes.SetFailedFlag, key => ({
-    failed: key,
+  const setFailedFlagAction = createAction<IState, { [key in C]?: boolean }>(FlagsActionTypes.SetErrorFlag, key => ({
+    error: key,
   }));
 
   const setActionedFlagAction = createAction<IState, { [key in D]?: boolean }>(
@@ -38,7 +38,7 @@ export function getFlagSetters<A extends string, B extends string, C extends str
 
   const resetSucceededFlagAction = createAction<IState>(FlagsActionTypes.ResetSucceededFlags);
 
-  const resetFailedFlagAction = createAction<IState>(FlagsActionTypes.ResetFailedFlags);
+  const resetFailedFlagAction = createAction<IState>(FlagsActionTypes.ResetErrorFlags);
 
   const resetActionedFlagAction = createAction<IState>(FlagsActionTypes.ResetActionedFlags);
 

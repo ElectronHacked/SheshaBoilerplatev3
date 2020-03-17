@@ -3,16 +3,16 @@ import { IFlagsState, IFlagsSetters } from 'models';
 
 export type IFlagProgressFlags = '__DEFAULT__';
 export type IFlagSucceededFlags = '__DEFAULT__';
-export type IFlagFailedFlags = '__DEFAULT__';
+export type IFlagErrorFlags = '__DEFAULT__';
 export type IFlagActionedFlags = '__DEFAULT__';
 
 export interface IRouteStateContext
-  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   readonly nextRoute?: string;
 }
 
 export interface IRouteActionsContext
-  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   goingToRoute?: (route: string) => void;
 }
 

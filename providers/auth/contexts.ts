@@ -26,7 +26,7 @@ export type IFlagSucceededFlags =
   | 'sendOtp'
   | 'verifyOtp'
   | 'resetPassword';
-export type IFlagFailedFlags =
+export type IFlagErrorFlags =
   | 'isVerifyOtpModalVisible'
   | 'loginUser'
   | 'logoutUser'
@@ -44,7 +44,7 @@ export type IFlagActionedFlags =
   | 'resetPassword';
 
 export interface IAuthStateContext
-  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   userNameOrEmailAddress?: string;
   password?: string;
   isLoggingInUser?: boolean;
@@ -79,7 +79,7 @@ export interface IAuthStateContext
 }
 
 export interface IAuthActionsContext
-  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   checkAuth?: () => void;
   loginUser?: (loginFormData: ILoginForm) => void;
   // loginUserSuccess?: (loginInfo: ILoginInfo) => void;

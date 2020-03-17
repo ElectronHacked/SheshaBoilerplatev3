@@ -4,16 +4,16 @@ import { FLAGS_INITIAL_STATE } from 'providers/utils/flagsReducer';
 
 export type IFlagProgressFlags = 'fetchPosts';
 export type IFlagSucceededFlags = 'fetchPosts';
-export type IFlagFailedFlags = 'fetchPosts';
+export type IFlagErrorFlags = 'fetchPosts';
 export type IFlagActionedFlags = 'fetchPosts';
 
 export interface IGlobalStateContext
-  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   readonly isHeaderShown?: boolean;
 }
 
 export interface IGlobalActionsContext
-  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {
   toggleHeaderVisibility: (value: boolean) => void;
   fetchPosts: () => void;
   fetchPostsSuccess: () => void;
