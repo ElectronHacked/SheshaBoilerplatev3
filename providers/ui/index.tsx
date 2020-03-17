@@ -3,6 +3,7 @@ import { uiReducer } from './reducer';
 
 import { setControlsSizeAction } from './actions';
 import { ControlSize, UiActionsContext, UiStateContext, UI_CONTEXT_INITIAL_STATE } from './contexts';
+import { getFlagSetters } from '../utils/flagsSetters';
 
 const UiProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(uiReducer, UI_CONTEXT_INITIAL_STATE);
@@ -13,7 +14,9 @@ const UiProvider: FC<PropsWithChildren<any>> = ({ children }) => {
 
   return (
     <UiStateContext.Provider value={state}>
-      <UiActionsContext.Provider value={{ setControlsSize }}>{children}</UiActionsContext.Provider>
+      <UiActionsContext.Provider value={{ ...getFlagSetters(dispatch), setControlsSize }}>
+        {children}
+      </UiActionsContext.Provider>
     </UiStateContext.Provider>
   );
 };

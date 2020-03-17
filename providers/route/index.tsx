@@ -2,6 +2,7 @@ import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { routeReducer } from './reducer';
 import { RouteStateContext, RouteActionsContext } from 'providers/route/contexts';
 import { goingToRouteAction } from './actions';
+import { getFlagSetters } from '../utils/flagsSetters';
 
 const RouteProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(routeReducer, {});
@@ -10,7 +11,9 @@ const RouteProvider: FC<PropsWithChildren<any>> = ({ children }) => {
 
   return (
     <RouteStateContext.Provider value={state}>
-      <RouteActionsContext.Provider value={{ goingToRoute }}>{children}</RouteActionsContext.Provider>
+      <RouteActionsContext.Provider value={{ ...getFlagSetters(dispatch), goingToRoute }}>
+        {children}
+      </RouteActionsContext.Provider>
     </RouteStateContext.Provider>
   );
 };

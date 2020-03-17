@@ -1,10 +1,17 @@
 import { createContext } from 'react';
 import { FormProps } from 'antd/lib/form';
 import { ColProps } from 'antd/lib/col';
+import { IFlagsState, IFlagsSetters } from 'models';
 
 export type ControlSize = 'large' | 'default' | 'small';
 
-export interface IUiStateContext {
+export type IFlagProgressFlags = '__DEFAULT__';
+export type IFlagSucceededFlags = '__DEFAULT__';
+export type IFlagFailedFlags = '__DEFAULT__';
+export type IFlagActionedFlags = '__DEFAULT__';
+
+export interface IUiStateContext
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   size?: ControlSize;
   formItemLayout?: FormProps;
   dateFormat?: string;
@@ -12,7 +19,8 @@ export interface IUiStateContext {
   accountFormCols?: ColProps;
 }
 
-export interface IUiActionsContext {
+export interface IUiActionsContext
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   setControlsSize: (size: ControlSize) => void;
 }
 

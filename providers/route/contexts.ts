@@ -1,10 +1,18 @@
 import { createContext } from 'react';
+import { IFlagsState, IFlagsSetters } from 'models';
 
-export interface IRouteStateContext {
+export type IFlagProgressFlags = '__DEFAULT__';
+export type IFlagSucceededFlags = '__DEFAULT__';
+export type IFlagFailedFlags = '__DEFAULT__';
+export type IFlagActionedFlags = '__DEFAULT__';
+
+export interface IRouteStateContext
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   readonly nextRoute?: string;
 }
 
-export interface IRouteActionsContext {
+export interface IRouteActionsContext
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   goingToRoute?: (route: string) => void;
 }
 

@@ -1,10 +1,17 @@
 import { IUiStateContext } from './contexts';
 import { UiActionsEnums } from './actions';
+import flagsReducer from 'providers/utils/flagsReducer';
 
 export function uiReducer(
-  state: IUiStateContext,
-  { type, payload }: ReduxActions.Action<IUiStateContext>
+  incomingState: IUiStateContext,
+  action: ReduxActions.Action<IUiStateContext>
 ): IUiStateContext {
+  //#region Register flags reducer
+  const state = flagsReducer(incomingState, action);
+
+  const { type, payload } = action;
+  //#endregion
+
   switch (type) {
     case UiActionsEnums.SetControlsSize:
       return {
