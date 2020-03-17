@@ -1,7 +1,45 @@
-// restful-react.config.js
+const camelCase = require('camel-case');
+const BASE_URL = 'http://ethekwinibackend.boxfusion.co.za';
+const ROOT_PATH = './api';
+
+const API_LIST = [
+  'Account',
+  'DataTable',
+  'Otp',
+  'TokenAuth',
+  'Person',
+  'InspectionBatchAssignment',
+  'InspectionProject',
+  'InspectionTeam',
+  'PropertyInspection',
+  'PropertyGroup',
+  'Area',
+  'ShaRole',
+  'ShaRoleAppointedPerson',
+  'User',
+  'Ldap',
+  'EmailSender',
+  'Clickatell',
+  'UtilManSettings',
+  'MobileDevice',
+  'ReferenceList',
+];
+
+function generateFetcher() {
+  let apiObj = {};
+
+  API_LIST.forEach(key => {
+    const camelCasedName = camelCase(key);
+
+    apiObj[`${camelCasedName}Api`] = {
+      output: `${ROOT_PATH}/${camelCasedName}.tsx`,
+      url: `${BASE_URL}/swagger/service:${key}/swagger.json`,
+    };
+  });
+
+  return apiObj;
+}
+
 module.exports = {
-  inspectionBatchAssignmentApi: {
-    output: './api/inspectionBatchAssignments.tsx',
-    url: 'http://ethekwinibackend.boxfusion.co.za/swagger/service:InspectionBatchAssignment/swagger.json',
-  },
+  ...generateFetcher(),
 };

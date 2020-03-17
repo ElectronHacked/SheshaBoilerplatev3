@@ -8,6 +8,8 @@ export const FAILED_IDENTIFIER = 'F';
 export const ACTIONED_IDENTIFIER = 'A';
 //#endregion
 
+// FETCH_USERS_REQUEST
+
 //#region Flags
 export const IS_IN_PROGRESS_FLAG = '_REQUEST';
 

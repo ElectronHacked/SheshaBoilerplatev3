@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "node server.js --inspect",
-    "swag": "restful-react import --url https://sheshabackend-demo.boxfusion.co.za/swagger/v1/swagger.json --output useApis/index.tsx",
+    "swag": "restful-react import --url ethekwinibackend.boxfusion.co.za/swagger/v1/swagger.json --output useApis/index.tsx",
     "build": "next build",
     "export": "npm run build && next export",
     "export-hack": "npm install next@^7.0.3 && npm run build && npm run export && npm install next@latest",
@@ -20,7 +20,7 @@
     "release": "git push origin --tags",
     "release-and-publish": "npm run release && npm publish",
     "generate-fetcher": "restful-react import --config restful-react.config.js",
-    "postgenerate-fetcher": "prettier ./api/person.tsx --write"
+    "postgenerate-fetcher": "prettier ./api/*.tsx --write"
   },
   "lint-staged": {
     "*.{js,jsx,json,css,ts,tsx}": [
@@ -90,7 +90,6 @@
     "qs": "^6.7.0",
     "react": "^16.13.0",
     "react-big-calendar": "^0.23.0",
-    "react-combine-reducers": "^1.0.3",
     "react-dom": "^16.13.0",
     "react-error-boundary": "^1.2.5",
     "react-hook-thunk-reducer": "^0.2.4",

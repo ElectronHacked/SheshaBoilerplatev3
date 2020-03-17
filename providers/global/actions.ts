@@ -5,6 +5,7 @@ export enum GlobalActionEnums {
   ToggleHeaderVisibility = 'TOGGLE_HEADER_VISIBILITY',
   FetchPosts = 'FETCH_POSTS_REQUEST',
   FetchPostsSuccess = 'FETCH_POSTS_SUCCESS',
+  RegisterUser = 'REGISTER_USER_REQUEST',
 }
 
 export const toggleHeaderVisibilityAction = createAction<IGlobalStateContext, boolean>(

@@ -2,10 +2,10 @@ import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { uiReducer } from './reducer';
 
 import { setControlsSizeAction } from './actions';
-import { ControlSize, UiActionsContext, UiStateContext } from './contexts';
+import { ControlSize, UiActionsContext, UiStateContext, UI_CONTEXT_INITIAL_STATE } from './contexts';
 
 const UiProvider: FC<PropsWithChildren<any>> = ({ children }) => {
-  const [state, dispatch] = useReducer(uiReducer, {});
+  const [state, dispatch] = useReducer(uiReducer, UI_CONTEXT_INITIAL_STATE);
 
   const setControlsSize = (size: ControlSize) => {
     dispatch(setControlsSizeAction(size));

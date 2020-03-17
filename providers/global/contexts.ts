@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { IFlagsState, IFlagsSetters } from 'models';
 import { FLAGS_INITIAL_STATE } from 'providers/utils/flagsReducer';
 
-export type IFlagProgressFlags = 'fetchPosts' | 'fetchUsers';
+export type IFlagProgressFlags = 'fetchPosts';
 export type IFlagSucceededFlags = 'fetchPosts';
 export type IFlagFailedFlags = 'fetchPosts';
 export type IFlagActionedFlags = 'fetchPosts';

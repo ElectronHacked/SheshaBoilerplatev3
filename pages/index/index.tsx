@@ -5,12 +5,20 @@ import { Collapse, Icon, Button } from 'antd';
 import { ExpandIconPosition } from 'antd/lib/collapse/Collapse';
 import { MainLayout } from 'components/layouts';
 import { useGlobal } from 'providers';
+import { withAuth } from 'hocs';
 
 const { Panel } = Collapse;
 
 function callback(key) {
   console.log(key);
 }
+
+// {
+//   isInProgress: {
+//     fetchPosts: false
+//     fetchUsers: false
+//   }
+// }
 
 const text = `
   A dog is a type of domesticated animal.
@@ -62,5 +70,5 @@ export const Home = () => {
   );
 };
 
-// export default withAuth(Home);
-export default Home;
+export default withAuth(Home);
+// export default Home;

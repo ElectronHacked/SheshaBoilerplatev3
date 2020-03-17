@@ -16,7 +16,7 @@ export interface IUiActionsContext {
   setControlsSize: (size: ControlSize) => void;
 }
 
-export const uiContext: IUiStateContext = {
+export const UI_CONTEXT_INITIAL_STATE: IUiStateContext = {
   size: 'default',
   formItemLayout: {
     labelCol: {
@@ -40,6 +40,6 @@ export const uiContext: IUiStateContext = {
   },
 };
 
-export const UiStateContext = createContext<IUiStateContext>(uiContext);
+export const UiStateContext = createContext<IUiStateContext>(UI_CONTEXT_INITIAL_STATE);
 
 export const UiActionsContext = createContext<IUiActionsContext>(undefined);
