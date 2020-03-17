@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './styles.scss';
 // import { withAuth } from 'hocs';
-import { Collapse, Icon, Select } from 'antd';
+import { Collapse, Icon, Button } from 'antd';
 import { ExpandIconPosition } from 'antd/lib/collapse/Collapse';
 import { MainLayout } from 'components/layouts';
-import { useInspectionBatchAssignmentCreate } from 'api/inspectionBatchAssignments';
 import { useGlobal } from 'providers';
 
 const { Panel } = Collapse;
-const { Option } = Select;
 
 function callback(key) {
   console.log(key);
@@ -21,33 +19,8 @@ const text = `
 `;
 
 export const Home = () => {
-  const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('right');
-  const { mutate: createBatchAssignmentHttp } = useInspectionBatchAssignmentCreate({});
-  const { setIsInProgressFlag, resetAllFlag } = useGlobal();
-
-  useEffect(() => {
-    setIsInProgressFlag({ fetchPosts: true });
-
-    setTimeout(() => {
-      resetAllFlag();
-    }, 5000);
-  }, []);
-
-  // @ts-ignore
-  const createBatchAssignment = () => {
-    createBatchAssignmentHttp({
-      projectId: '',
-      regionId: '',
-      propertyGroupId: '',
-      assignedTeamId: '',
-      plannedStartDate: '',
-      plannedCompletionDate: '',
-    })
-      .then(data => {
-        console.log('createBatchAssignment data :', data);
-      })
-      .catch(e => console.log('createBatchAssignment object :', e));
-  };
+  const [expandIconPosition] = useState<ExpandIconPosition>('right');
+  const { fetchPosts, fetchPostsSuccess, isInProgress } = useGlobal();
 
   const genExtra = () => {
     if (expandIconPosition) {
@@ -66,6 +39,13 @@ export const Home = () => {
 
   return (
     <MainLayout title="Home" description="This is the home page">
+      <Button onClick={fetchPosts} type="primary" loading={isInProgress.fetchPosts}>
+        Fetch Posts
+      </Button>
+      <Button onClick={fetchPostsSuccess} type="danger" disabled={!isInProgress.fetchPosts}>
+        Cancel Fetch Posts Request
+      </Button>
+      <br />
       <div className="home-page">
         <Collapse
           defaultActiveKey={['1']}
@@ -77,12 +57,6 @@ export const Home = () => {
             <div>{text}</div>
           </Panel>
         </Collapse>
-        <br />
-        <span>Expand Icon Position: </span>
-        <Select value={expandIconPosition} onChange={setExpandIconPosition}>
-          <Option value="left">left</Option>
-          <Option value="right">right</Option>
-        </Select>
       </div>
     </MainLayout>
   );

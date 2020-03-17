@@ -3,6 +3,8 @@ import { IGlobalStateContext } from './contexts';
 
 export enum GlobalActionEnums {
   ToggleHeaderVisibility = 'TOGGLE_HEADER_VISIBILITY',
+  FetchPosts = 'FETCH_POSTS_REQUEST',
+  FetchPostsSuccess = 'FETCH_POSTS_SUCCESS',
 }
 
 export const toggleHeaderVisibilityAction = createAction<IGlobalStateContext, boolean>(
@@ -10,4 +12,11 @@ export const toggleHeaderVisibilityAction = createAction<IGlobalStateContext, bo
   isHeaderShown => ({
     isHeaderShown,
   })
+);
+
+export const fetchPostsAction = createAction<IGlobalStateContext>(GlobalActionEnums.FetchPosts, () => ({}));
+
+export const fetchPostsSuccessAction = createAction<IGlobalStateContext>(
+  GlobalActionEnums.FetchPostsSuccess,
+  () => ({})
 );

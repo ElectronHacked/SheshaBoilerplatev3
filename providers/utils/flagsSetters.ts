@@ -3,7 +3,7 @@ import { FlagsActionTypes } from 'enums';
 import { createAction } from 'redux-actions';
 
 export function getFlagSetters<A extends string, B extends string, C extends string, D extends string>(
-  dispatch: Function
+  dispatch: (action: any) => void
 ): IFlagsSetters<A, B, C, D> {
   type IState = IFlagsState<A, B, C, D>;
   //#region Set flags

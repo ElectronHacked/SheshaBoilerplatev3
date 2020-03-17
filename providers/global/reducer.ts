@@ -1,6 +1,6 @@
 import { GlobalActionEnums } from './actions';
 import { IGlobalStateContext } from 'providers/global/contexts';
-import flagsReducer from '../flagsReducer';
+import flagsReducer from '../utils/flagsReducer';
 
 export function globalReducer(
   incomingState: IGlobalStateContext,
