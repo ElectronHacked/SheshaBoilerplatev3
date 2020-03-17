@@ -25,12 +25,11 @@ export const Login = () => {
   const getInputValidationMessage = key => {
     return formState.touched[key] && !formState.validity[key] ? 'error' : '';
   };
-  const user = loginInfo && loginInfo.user;
 
   const router = useRouter();
 
   // Make sure that you
-  if (user) {
+  if (loginInfo) {
     if (nextRoute) {
       router.push(nextRoute);
     } else {

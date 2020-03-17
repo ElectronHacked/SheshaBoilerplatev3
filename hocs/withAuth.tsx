@@ -16,7 +16,6 @@ export const withAuth = <P extends object>(Component: ComponentType<P>): FC<P> =
   const { isCheckingAuth, hasCheckedReauth, loginInfo, checkAuth } = useAuth();
 
   const { goingToRoute } = useContext(RouteActionsContext);
-  const user = loginInfo && loginInfo.user;
 
   const router = useRouter();
 
@@ -39,7 +38,7 @@ export const withAuth = <P extends object>(Component: ComponentType<P>): FC<P> =
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!loginInfo) {
       if (!hasCheckedReauth) {
         handleGoingToRoute();
 
@@ -50,7 +49,7 @@ export const withAuth = <P extends object>(Component: ComponentType<P>): FC<P> =
     }
   }, [hasCheckedReauth, isCheckingAuth]);
 
-  return isCheckingAuth || !user ? (
+  return isCheckingAuth || !loginInfo ? (
     <OverlayLoader loading={true} loadingText="Initializing..." />
   ) : (
     <Component {...(props as P)} id={router.query.id} />

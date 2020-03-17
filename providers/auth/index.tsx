@@ -25,8 +25,6 @@ import { ILoginForm, IHttpResponse, IAccessToken } from 'models';
 import { getAccessToken, removeAccessToken, saveUserToken } from 'utils/auth';
 import { useRouter } from 'next/router';
 import { LOGIN_PAGE_URL, DASHBOARD_PAGE_URL, CHANGE_PASSWORD_PAGE_URL, RESET_PASSWORD_PAGE_URL } from 'routes';
-import { useGet, useMutate } from 'restful-react';
-import { IResultOf } from 'models/resultOf';
 import {
   useUserResetPasswordVerifyOtp,
   useUserResetPasswordUsingToken,
@@ -40,6 +38,9 @@ import axios from 'axios';
 import { BASE_URL } from 'api/utils/constants';
 import { useRouteState } from 'providers/route';
 import { getFlagSetters } from 'providers/utils/flagsSetters';
+import { useTokenAuthAuthenticate, useTokenAuthSignOff } from 'api/tokenAuth';
+import { useSessionGetCurrentLoginInformations } from 'api/session';
+import { useMutateHttp } from 'hooks';
 
 const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {});
@@ -48,18 +49,11 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
 
   const { nextRoute } = useRouteState();
 
-  const { mutate: loginUserRequest } = useMutate<IResultOf<IAccessToken>>({
-    verb: 'POST',
-    path: '/api/TokenAuth/Authenticate',
-  });
+  const { mutate: loginUserRequest } = useTokenAuthAuthenticate(null);
 
-  const { mutate: signOffRequest } = useMutate({
-    verb: 'POST',
-    path: '/api/TokenAuth/SignOff',
-    queryParams: {
-      mobileNo: '',
-    },
-  });
+  const { mutate: signOffRequest } = useTokenAuthSignOff(null);
+
+  const { mutate: resetPasswordSendOtp } = useMutateHttp({ path: '/api/services/app/User/ResetPasswordSendOtp' });
 
   const { mutate: verifyOtpHttp } = useUserResetPasswordVerifyOtp({});
   const { mutate: resetPasswordHttp } = useUserResetPasswordUsingToken({});
@@ -69,15 +63,14 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
     refetch: fetchUserInfoRequest,
     error: fetchUserInfoErrorResult,
     data: userInfoData,
-  } = useGet({
-    path: `/api/services/app/Session/GetCurrentLoginInformations`,
+  } = useSessionGetCurrentLoginInformations({
     lazy: true,
   });
 
   useEffect(() => {
     if (!fetchingUserInfo) {
       if (userInfoData) {
-        dispatch(loginUserSuccessAction(userInfoData.result));
+        dispatch(loginUserSuccessAction(userInfoData.result.user));
 
         if (state.requireChangePassword) {
           router.push(CHANGE_PASSWORD_PAGE_URL);
@@ -127,7 +120,7 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
     loginUserRequest(loginFormData)
       .then(data => {
         if (data) {
-          const tokenResult = saveUserToken(data.result);
+          const tokenResult = saveUserToken(data.result as IAccessToken);
 
           // Token saved successfully
           if (tokenResult) {
@@ -174,11 +167,8 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const sendOtp = (payload: UserResetPasswordSendOtpQueryParams) => {
     dispatch(sendOtpAction(payload));
 
-    axios({
-      url: `${BASE_URL}/api/services/app/User/ResetPasswordSendOtp?mobileNo=${payload.mobileNo.replace('+', '%2B')}`,
-      method: 'POST',
-    })
-      .then(data => {
+    resetPasswordSendOtp(null, { mobileNo: payload.mobileNo.replace('+', '%2B') })
+      .then((data: any) => {
         dispatch(sendOtpSuccessAction(data.data.result));
       })
       .catch(() => {

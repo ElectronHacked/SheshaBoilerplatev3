@@ -8,6 +8,7 @@ import {
   ResetPasswordUsingTokenInput,
   AjaxResponseBase,
 } from 'api/user';
+import { UserLoginInfoDto } from 'api/session';
 
 export type IFlagProgressFlags =
   | 'isVerifyOtpModalVisible'
@@ -53,7 +54,7 @@ export interface IAuthStateContext
   authErrorMsg?: string;
   isReauth?: boolean; // We set this field to true if login fails while we were `isCheckingAuth`
   isFetchingUserInfo?: boolean;
-  loginInfo?: ILoginInfo;
+  loginInfo?: UserLoginInfoDto;
   requireChangePassword?: boolean;
   loginUserSuccessful?: boolean | null;
 

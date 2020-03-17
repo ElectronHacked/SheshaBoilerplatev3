@@ -11,7 +11,6 @@ const LayoutHeader = () => {
   const { logoutUser } = useAuthActions();
 
   const { loginInfo } = useAuthState();
-  const user = loginInfo && loginInfo.user;
 
   return (
     <Header>
@@ -36,14 +35,14 @@ const LayoutHeader = () => {
             <Badge count={1} offset={[-7, -4]} dot />
           </Tooltip>
         </div>
-        <div className="username">{user && `Hi, ${user.fullName}`}</div>
+        <div className="username">{loginInfo && `Hi, ${loginInfo.fullName}`}</div>
         <div className="user-avatar">
           <Dropdown
             placement="bottomRight"
             className="dropdown"
             overlay={
               <Menu className="overlay" style={{ top: 5 }}>
-                {user && (
+                {loginInfo && (
                   <Menu.Item className="account-dropdown-item" key="profile">
                     <Link href={DASHBOARD_PAGE_URL}>
                       <a>

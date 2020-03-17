@@ -10,6 +10,7 @@ import {
   ResetPasswordUsingTokenInput,
   AjaxResponseBase,
 } from 'api/user';
+import { UserLoginInfoDto } from 'api/session';
 
 export enum AuthActionEnums {
   CheckAuthAction = 'CHECK_AUTH_ACTION',
@@ -51,7 +52,7 @@ export const loginUserAction = createAction<IAuthStateContext, ILoginForm>(
   })
 );
 
-export const loginUserSuccessAction = createAction<IAuthStateContext, ILoginInfo>(
+export const loginUserSuccessAction = createAction<IAuthStateContext, UserLoginInfoDto>(
   AuthActionEnums.LoginUserSuccess,
   loginInfo => ({
     isLoggingInUser: false,

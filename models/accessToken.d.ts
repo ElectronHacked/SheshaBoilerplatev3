@@ -1,7 +1,9 @@
 export interface IAccessToken {
-  accessToken: string;
-  expireInSeconds: number;
-  expireOn: string;
-  encryptedAccessToken: string;
-  userId: number | string;
+  accessToken?: string | null;
+  encryptedAccessToken?: string | null;
+  expireInSeconds?: number;
+  expireOn?: string;
+  userId?: number;
+  personId?: string | null;
+  deviceName?: string | null;
 }

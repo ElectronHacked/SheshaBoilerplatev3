@@ -23,6 +23,7 @@ const API_LIST = [
   'UtilManSettings',
   'MobileDevice',
   'ReferenceList',
+  'Session',
 ];
 
 function generateFetcher() {
