@@ -4,9 +4,13 @@ import flagsReducer from '../utils/flagsReducer';
 
 export function globalReducer(
   incomingState: IGlobalStateContext,
-  { type, payload }: ReduxActions.Action<IGlobalStateContext>
+  action: ReduxActions.Action<IGlobalStateContext>
 ): IGlobalStateContext {
-  const state = flagsReducer(incomingState, { type, payload });
+  //#region Register flags reducer
+  const state = flagsReducer(incomingState, action);
+
+  const { type, payload } = action;
+  //#endregion
 
   switch (type) {
     case GlobalActionEnums.ToggleHeaderVisibility:

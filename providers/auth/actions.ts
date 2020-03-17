@@ -9,41 +9,41 @@ import {
   ResetPasswordVerifyOtpResponse,
   ResetPasswordUsingTokenInput,
   AjaxResponseBase,
-} from 'useApis';
+} from 'api/user';
 
 export enum AuthActionEnums {
-  CheckAuth = 'CHECK_AUTH',
-  LoginUser = 'LOGIN_USER',
+  CheckAuthAction = 'CHECK_AUTH_ACTION',
+  LoginUserRequest = 'LOGIN_USER_REQUEST',
   LoginUserSuccess = 'LOGIN_USER_SUCCESS',
   LoginUserError = 'LOGIN_USER_ERROR',
-  LogoutUser = 'LOGOUT_USER',
+  LogoutUserRequest = 'LOGOUT_USER_REQUEST',
   LogoutUserSuccess = 'LOGOUT_USER_SUCCESS',
   LogoutUserError = 'LOGOUT_USER_ERROR',
-  FetchUserData = 'FETCH_USER_DATA',
+  FetchUserDataRequest = 'FETCH_USER_DATA_REQUEST',
   FetchUserDataSuccess = 'FETCH_USER_DATA_SUCCESS',
   FetchUserDataError = 'FETCH_USER_DATA_ERROR',
 
   //#region Rest Password
-  SendOtp = 'SEND_OTP',
+  SendOtpRequest = 'SEND_OTP_REQUEST',
   SendOtpSuccess = 'SEND_OTP_SUCCESS',
   SendOtpError = 'SEND_OTP_ERROR',
-  VerifyOtp = 'VERIFY_OTP',
+  VerifyOtpRequest = 'VERIFY_OTP_REQUEST',
   VerifyOtpSuccess = 'VERIFY_OTP_SUCCESS',
   VerifyOtpError = 'VERIFY_OTP_ERROR',
-  ResetPassword = 'RESETpASSWORD',
+  ResetPasswordRequest = 'RESETpASSWORD_REQUEST',
   ResetPasswordSuccess = 'RESETpASSWORD_SUCCESS',
   ResetPasswordError = 'RESETpASSWORD_ERROR',
   ToggleVerifyOtpModalVisibility = 'TOGGLE_VERIFY_OTP_MODAL_VISIBILITY',
   //#endregion
 }
 
-export const checkAuthAction = createAction<IAuthStateContext>(AuthActionEnums.CheckAuth, () => ({
+export const checkAuthAction = createAction<IAuthStateContext>(AuthActionEnums.CheckAuthAction, () => ({
   isCheckingAuth: true,
 }));
 
 //#region  Login user
 export const loginUserAction = createAction<IAuthStateContext, ILoginForm>(
-  AuthActionEnums.LoginUser,
+  AuthActionEnums.LoginUserRequest,
   loginFormData => ({
     isLoggingInUser: true,
     authErrorMsg: null,
@@ -75,7 +75,7 @@ export const loginUserErrorAction = createAction<IAuthStateContext, string, bool
 //#endregion
 
 //#region Logout user
-export const logoutUserAction = createAction<IAuthStateContext>(AuthActionEnums.LogoutUser, () => ({
+export const logoutUserAction = createAction<IAuthStateContext>(AuthActionEnums.LogoutUserRequest, () => ({
   isLoggingOutUser: true,
   authErrorMsg: null,
 }));
@@ -96,7 +96,7 @@ export const logoutUserErrorAction = createAction<IAuthStateContext, string>(
 
 //#region Forgot password
 export const sendOtpAction = createAction<IAuthStateContext, UserResetPasswordSendOtpQueryParams>(
-  AuthActionEnums.SendOtp,
+  AuthActionEnums.SendOtpRequest,
   sendOtpReqPayload => ({ sendOtpReqPayload, isSendingOtp: true, sendOtpError: null, verifyOtpError: null })
 );
 
@@ -116,7 +116,7 @@ export const sendOtpErrorAction = createAction<IAuthStateContext, string>(
 );
 
 export const verifyOtpAction = createAction<IAuthStateContext, UserResetPasswordSendOtpQueryParams>(
-  AuthActionEnums.VerifyOtp,
+  AuthActionEnums.VerifyOtpRequest,
   resetPasswordVerifyOtpPayload => ({ resetPasswordVerifyOtpPayload, isVerifyingOtp: true })
 );
 
@@ -137,12 +137,12 @@ export const verifyOtpErrorAction = createAction<IAuthStateContext, string>(
 );
 
 export const resetPasswordAction = createAction<IAuthStateContext, ResetPasswordUsingTokenInput>(
-  AuthActionEnums.SendOtp,
+  AuthActionEnums.SendOtpRequest,
   resetPasswordUsingTokenReqPayload => ({ resetPasswordUsingTokenReqPayload, isResettingPasswordUsingToken: true })
 );
 
 export const resetPasswordSuccessAction = createAction<IAuthStateContext, AjaxResponseBase>(
-  AuthActionEnums.SendOtp,
+  AuthActionEnums.SendOtpRequest,
   resetPasswordUsingTokenResPayload => ({
     resetPasswordUsingTokenResPayload,
     isResettingPasswordUsingToken: false,
@@ -151,7 +151,7 @@ export const resetPasswordSuccessAction = createAction<IAuthStateContext, AjaxRe
 );
 
 export const resetPasswordErrorAction = createAction<IAuthStateContext, string>(
-  AuthActionEnums.SendOtp,
+  AuthActionEnums.SendOtpRequest,
   resetPasswordUsingTokenError => ({ resetPasswordUsingTokenError, isResettingPasswordUsingToken: false })
 );
 

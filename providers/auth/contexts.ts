@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ILoginInfo, ILoginForm } from 'models';
+import { ILoginInfo, ILoginForm, IFlagsState, IFlagsSetters } from 'models';
 import {
   UserResetPasswordSendOtpQueryParams,
   ResetPasswordSendOtpResponse,
@@ -7,9 +7,43 @@ import {
   ResetPasswordVerifyOtpResponse,
   ResetPasswordUsingTokenInput,
   AjaxResponseBase,
-} from 'useApis';
+} from 'api/user';
 
-export interface IAuthStateContext {
+export type IFlagProgressFlags =
+  | 'isVerifyOtpModalVisible'
+  | 'loginUser'
+  | 'logoutUser'
+  | 'fetchUserData'
+  | 'sendOtp'
+  | 'verifyOtp'
+  | 'resetPassword';
+export type IFlagSucceededFlags =
+  | 'isVerifyOtpModalVisible'
+  | 'loginUser'
+  | 'logoutUser'
+  | 'fetchUserData'
+  | 'sendOtp'
+  | 'verifyOtp'
+  | 'resetPassword';
+export type IFlagFailedFlags =
+  | 'isVerifyOtpModalVisible'
+  | 'loginUser'
+  | 'logoutUser'
+  | 'fetchUserData'
+  | 'sendOtp'
+  | 'verifyOtp'
+  | 'resetPassword';
+export type IFlagActionedFlags =
+  | 'isVerifyOtpModalVisible'
+  | 'loginUser'
+  | 'logoutUser'
+  | 'fetchUserData'
+  | 'sendOtp'
+  | 'verifyOtp'
+  | 'resetPassword';
+
+export interface IAuthStateContext
+  extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   userNameOrEmailAddress?: string;
   password?: string;
   isLoggingInUser?: boolean;
@@ -43,7 +77,8 @@ export interface IAuthStateContext {
   //#endregion
 }
 
-export interface IAuthActionsContext {
+export interface IAuthActionsContext
+  extends IFlagsSetters<IFlagProgressFlags, IFlagSucceededFlags, IFlagFailedFlags, IFlagActionedFlags> {
   checkAuth?: () => void;
   loginUser?: (loginFormData: ILoginForm) => void;
   // loginUserSuccess?: (loginInfo: ILoginInfo) => void;

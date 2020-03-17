@@ -36,10 +36,11 @@ import {
   ResetPasswordUsingTokenInput,
   AjaxResponseBase,
   ResetPasswordVerifyOtpResponse,
-} from 'useApis';
+} from 'api/user';
 import axios from 'axios';
 import { BASE_URL } from 'api/utils/constants';
 import { useRouteState } from 'providers/route';
+import { getFlagSetters } from 'providers/utils/flagsSetters';
 
 const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {});
@@ -233,6 +234,7 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
     <AuthStateContext.Provider value={state}>
       <AuthActionsContext.Provider
         value={{
+          ...getFlagSetters(dispatch),
           checkAuth,
           loginUser,
           logoutUser,
