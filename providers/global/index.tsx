@@ -27,7 +27,7 @@ const useGlobalState = () => {
   const context = useContext(GlobalStateContext);
 
   if (context === undefined) {
-    throw new Error('useGlobalState must be used within a CountProvider');
+    throw new Error('useGlobalState must be used within a GlobalProvider');
   }
   return context;
 };
@@ -36,7 +36,7 @@ const useGlobalActions = () => {
   const context = useContext(GlobalActionsContext);
 
   if (context === undefined) {
-    throw new Error('useGlobalActions must be used within a CountProvider');
+    throw new Error('useGlobalActions must be used within a GlobalProvider');
   }
 
   return context;

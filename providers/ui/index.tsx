@@ -25,7 +25,7 @@ function useUiState() {
   const context = useContext(UiStateContext);
 
   if (context === undefined) {
-    throw new Error('useUiState must be used within a CountProvider');
+    throw new Error('useUiState must be used within a UiProvider');
   }
   return context;
 }
@@ -34,7 +34,7 @@ function useUiActions() {
   const context = useContext(UiActionsContext);
 
   if (context === undefined) {
-    throw new Error('useUiActions must be used within a CountProvider');
+    throw new Error('useUiActions must be used within a UiProvider');
   }
 
   return context;

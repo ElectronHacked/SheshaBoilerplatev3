@@ -22,7 +22,7 @@ function useRouteState() {
   const context = useContext(RouteStateContext);
 
   if (context === undefined) {
-    throw new Error('useRouteState must be used within a CountProvider');
+    throw new Error('useRouteState must be used within a RouteProvider');
   }
   return context;
 }
@@ -31,7 +31,7 @@ function useRouteActions() {
   const context = useContext(RouteActionsContext);
 
   if (context === undefined) {
-    throw new Error('useRouteActions must be used within a CountProvider');
+    throw new Error('useRouteActions must be used within a RouteProvider');
   }
 
   return context;
