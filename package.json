@@ -106,7 +106,7 @@
     "redux-persist": "^5.10.0",
     "redux-react-hook": "^3.3.2",
     "redux-saga": "^1.0.1",
-    "restful-react": "^9.11.1",
+    "restful-react": "^9.12.1",
     "sass-extract": "^2.1.0",
     "sass-extract-js": "^0.4.0",
     "utility-types": "^3.7.0",

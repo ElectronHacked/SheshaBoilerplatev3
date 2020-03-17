@@ -1,7 +1,6 @@
 import React, { FC, useContext } from 'react';
 import { AuthStateContext, AuthActionsContext } from 'providers/auth/contexts';
 import { useFormState } from 'react-use-form-state';
-import { UserResetPasswordSendOtpQueryParams } from 'useApis';
 import { Form, Input, Icon, Button, Alert } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 import { UnAuthedAccountPageLayout } from 'components/layouts';
@@ -9,6 +8,7 @@ import { VerifyOtpModal } from 'components';
 import { useRouter } from 'next/router';
 import { LOGIN_PAGE_URL } from 'routes';
 import './styles.scss';
+import { UserResetPasswordSendOtpQueryParams } from 'api/user';
 
 interface IProps {}
 

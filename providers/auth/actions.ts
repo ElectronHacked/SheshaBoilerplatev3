@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 
 import { IAuthStateContext } from 'providers/auth/contexts';
 
-import { ILoginForm, ILoginInfo } from 'models';
+import { ILoginForm } from 'models';
 import {
   ResetPasswordSendOtpResponse,
   UserResetPasswordSendOtpQueryParams,

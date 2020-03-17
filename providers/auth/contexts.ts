@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ILoginInfo, ILoginForm, IFlagsState, IFlagsSetters } from 'models';
+import { ILoginForm, IFlagsState, IFlagsSetters } from 'models';
 import {
   UserResetPasswordSendOtpQueryParams,
   ResetPasswordSendOtpResponse,

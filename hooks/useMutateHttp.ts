@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { makePostRequest } from 'api/utils';
-import { Context } from 'restful-react/dist/Context';
 import qs from 'qs';
+import { BASE_URL } from 'api/utils/constants';
 
 interface IMutate {
   path: string;
@@ -9,7 +9,6 @@ interface IMutate {
 }
 
 export const useMutateHttp = ({ path, verb = 'POST' }: IMutate) => {
-  const { base } = useContext(Context);
   const [loading, setIsLoading] = useState(false);
 
   const mutateFunc = verb && makePostRequest;
@@ -19,7 +18,7 @@ export const useMutateHttp = ({ path, verb = 'POST' }: IMutate) => {
       setIsLoading(true);
       const parameters = params ? `?${qs.stringify(params)}` : '';
 
-      mutateFunc(`${base}${path}${parameters}`, payload)
+      mutateFunc(`${BASE_URL}${path}${parameters}`, payload)
         .then(value => {
           setIsLoading(false);
           resolve(value);

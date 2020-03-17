@@ -36,9 +36,9 @@ const MainLayout: React.FC<IProps> = ({
   const { isHeaderShown } = useGlobal();
   const { asPath } = useRouter();
   const { loginInfo } = useAuth();
-  const grantedPermissions = loginInfo?.user?.grantedPermissions || [];
+  const grantedPermissions = loginInfo?.grantedPermissions || [];
   const availableAppRoutes = appRoutes.filter(
-    i => !Boolean(i.permissionName) || grantedPermissions.indexOf(i.permissionName) > -1
+    i => !Boolean(i.permissionName) || grantedPermissions.indexOf(i.permissionName as any) > -1
   );
 
   const [isCollapsed, setIsCollapsed] = useState(true);

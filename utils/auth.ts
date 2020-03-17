@@ -6,8 +6,10 @@ import { LOGIN_PAGE_URL } from 'routes';
 
 // Fields to remove from the AuthContext
 interface IUnnecessaryTokenFields {
-  encryptedAccessToken: string;
-  userId: number | string;
+  encryptedAccessToken?: string | null;
+  userId?: number;
+  personId?: string | null;
+  deviceName?: string | null;
 }
 
 type IncomingTokenType = Subtract<IAccessToken, IUnnecessaryTokenFields>;

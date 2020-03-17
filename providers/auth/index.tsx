@@ -33,9 +33,8 @@ import {
   ResetPasswordUsingTokenInput,
   AjaxResponseBase,
   ResetPasswordVerifyOtpResponse,
+  ResetPasswordSendOtpResponseAjaxResponse,
 } from 'api/user';
-import axios from 'axios';
-import { BASE_URL } from 'api/utils/constants';
 import { useRouteState } from 'providers/route';
 import { getFlagSetters } from 'providers/utils/flagsSetters';
 import { useTokenAuthAuthenticate, useTokenAuthSignOff } from 'api/tokenAuth';
@@ -167,12 +166,18 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const sendOtp = (payload: UserResetPasswordSendOtpQueryParams) => {
     dispatch(sendOtpAction(payload));
 
-    resetPasswordSendOtp(null, { mobileNo: payload.mobileNo.replace('+', '%2B') })
-      .then((data: any) => {
-        dispatch(sendOtpSuccessAction(data.data.result));
+    const SEND_OTP_ERROR_MSG = 'Sorry, there seems to be a problem with the mobile number you provided';
+
+    resetPasswordSendOtp(null, { mobileNo: payload.mobileNo })
+      .then(({ data }: { data: ResetPasswordSendOtpResponseAjaxResponse }) => {
+        if (data.error) {
+          dispatch(sendOtpErrorAction(SEND_OTP_ERROR_MSG));
+        } else {
+          dispatch(sendOtpSuccessAction(data.result));
+        }
       })
       .catch(() => {
-        dispatch(sendOtpErrorAction('Sorry, there seems to be a problem with the mobile number you provided'));
+        dispatch(sendOtpErrorAction(SEND_OTP_ERROR_MSG));
       });
   };
 
