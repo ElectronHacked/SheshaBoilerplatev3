@@ -6,6 +6,7 @@ export enum GlobalActionEnums {
   FetchPosts = 'FETCH_POSTS_REQUEST',
   FetchPostsSuccess = 'FETCH_POSTS_SUCCESS',
   RegisterUser = 'REGISTER_USER_REQUEST',
+  /* NEW_ACTION_TYPE_GOES_HERE */
 }
 
 export const toggleHeaderVisibilityAction = createAction<IGlobalStateContext, boolean>(
@@ -21,3 +22,5 @@ export const fetchPostsSuccessAction = createAction<IGlobalStateContext>(
   GlobalActionEnums.FetchPostsSuccess,
   () => ({})
 );
+
+/* NEW_ACTION_GOES_HERE */

@@ -12,9 +12,11 @@ const UiProvider: FC<PropsWithChildren<any>> = ({ children }) => {
     dispatch(setControlsSizeAction(size));
   };
 
+  /* NEW_ACTION_DECLARATION_GOES_HERE */
+
   return (
     <UiStateContext.Provider value={state}>
-      <UiActionsContext.Provider value={{ ...getFlagSetters(dispatch), setControlsSize }}>
+      <UiActionsContext.Provider value={{ ...getFlagSetters(dispatch), setControlsSize /* NEW_ACTION_GOES_HERE */ }}>
         {children}
       </UiActionsContext.Provider>
     </UiStateContext.Provider>

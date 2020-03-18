@@ -14,6 +14,7 @@ export function routeReducer(
 
   switch (type) {
     case RouteActionEnums.GoingToRoute:
+      /* NEW_ACTION_ENUM_GOES_HERE */
       return {
         ...state,
         ...payload,

@@ -3,6 +3,7 @@ import { IUiStateContext, ControlSize } from './contexts';
 
 export enum UiActionsEnums {
   SetControlsSize = 'SET_CONTROLS_SIZE',
+  /* NEW_ACTION_TYPE_GOES_HERE */
 }
 
 export const setControlsSizeAction = createAction<IUiStateContext, ControlSize>(
@@ -11,3 +12,5 @@ export const setControlsSizeAction = createAction<IUiStateContext, ControlSize>(
     size,
   })
 );
+
+/* NEW_ACTION_GOES_HERE */

@@ -14,6 +14,7 @@ export function uiReducer(
 
   switch (type) {
     case UiActionsEnums.SetControlsSize:
+      /* NEW_ACTION_ENUM_GOES_HERE */
       return {
         ...state,
         ...payload,

@@ -17,7 +17,7 @@ export type IFlagProgressFlags =
   | 'fetchUserData'
   | 'sendOtp'
   | 'verifyOtp'
-  | 'resetPassword';
+  | 'resetPassword' /* NEW_IN_PROGRESS_FLAG_GOES_HERE */;
 export type IFlagSucceededFlags =
   | 'isVerifyOtpModalVisible'
   | 'loginUser'
@@ -25,7 +25,7 @@ export type IFlagSucceededFlags =
   | 'fetchUserData'
   | 'sendOtp'
   | 'verifyOtp'
-  | 'resetPassword';
+  | 'resetPassword' /* NEW_SUCCEEDED_FLAG_GOES_HERE */;
 export type IFlagErrorFlags =
   | 'isVerifyOtpModalVisible'
   | 'loginUser'
@@ -33,7 +33,7 @@ export type IFlagErrorFlags =
   | 'fetchUserData'
   | 'sendOtp'
   | 'verifyOtp'
-  | 'resetPassword';
+  | 'resetPassword' /* NEW_ERROR_FLAG_GOES_HERE */;
 export type IFlagActionedFlags =
   | 'isVerifyOtpModalVisible'
   | 'loginUser'
@@ -41,7 +41,7 @@ export type IFlagActionedFlags =
   | 'fetchUserData'
   | 'sendOtp'
   | 'verifyOtp'
-  | 'resetPassword';
+  | 'resetPassword' /* NEW_ACTIONED_FLAG_GOES_HERE */;
 
 export interface IAuthStateContext
   extends IFlagsState<IFlagProgressFlags, IFlagSucceededFlags, IFlagErrorFlags, IFlagActionedFlags> {

@@ -12,10 +12,17 @@ const GlobalProvider: FC<PropsWithChildren<any>> = ({ children }) => {
   const fetchPosts = () => dispatch(fetchPostsAction());
   const fetchPostsSuccess = () => dispatch(fetchPostsSuccessAction());
 
+  /* NEW_ACTION_DECLARATION_GOES_HERE */
+
   return (
     <GlobalStateContext.Provider value={state}>
       <GlobalActionsContext.Provider
-        value={{ ...getFlagSetters(dispatch), toggleHeaderVisibility, fetchPosts, fetchPostsSuccess }}
+        value={{
+          ...getFlagSetters(dispatch),
+          toggleHeaderVisibility,
+          fetchPosts,
+          fetchPostsSuccess /* NEW_ACTION_GOES_HERE */,
+        }}
       >
         {children}
       </GlobalActionsContext.Provider>

@@ -36,6 +36,8 @@ export enum AuthActionEnums {
   ResetPasswordError = 'RESETpASSWORD_ERROR',
   ToggleVerifyOtpModalVisibility = 'TOGGLE_VERIFY_OTP_MODAL_VISIBILITY',
   //#endregion
+
+  /* NEW_ACTION_TYPE_GOES_HERE */
 }
 
 export const checkAuthAction = createAction<IAuthStateContext>(AuthActionEnums.CheckAuthAction, () => ({
@@ -161,3 +163,5 @@ export const toggleVerifyOtpModalVisibilityAction = createAction<IAuthStateConte
   isVerifyOtpModalShown => ({ isVerifyOtpModalShown })
 );
 //#endregion
+
+/* NEW_ACTION_GOES_HERE */

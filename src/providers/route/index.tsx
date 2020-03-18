@@ -9,9 +9,11 @@ const RouteProvider: FC<PropsWithChildren<any>> = ({ children }) => {
 
   const goingToRoute = (route: string) => dispatch(goingToRouteAction(route));
 
+  /* NEW_ACTION_DECLARATION_GOES_HERE */
+
   return (
     <RouteStateContext.Provider value={state}>
-      <RouteActionsContext.Provider value={{ ...getFlagSetters(dispatch), goingToRoute }}>
+      <RouteActionsContext.Provider value={{ ...getFlagSetters(dispatch), goingToRoute /* NEW_ACTION_GOES_HERE */ }}>
         {children}
       </RouteActionsContext.Provider>
     </RouteStateContext.Provider>

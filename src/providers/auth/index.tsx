@@ -224,6 +224,8 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
 
   const toggleVerifyOtpModalVisibility = (value: boolean) => dispatch(toggleVerifyOtpModalVisibilityAction(value));
 
+  /* NEW_ACTION_DECLARATION_GOES_HERE */
+
   return (
     <AuthStateContext.Provider value={state}>
       <AuthActionsContext.Provider
@@ -236,6 +238,7 @@ const AuthProvider: FC<PropsWithChildren<any>> = ({ children }) => {
           verifyOtp,
           resetPassword,
           toggleVerifyOtpModalVisibility,
+          /* NEW_ACTION_GOES_HERE */
         }}
       >
         {children}

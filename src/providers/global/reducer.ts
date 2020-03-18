@@ -14,6 +14,7 @@ export function globalReducer(
 
   switch (type) {
     case GlobalActionEnums.ToggleHeaderVisibility:
+      /* NEW_ACTION_ENUM_GOES_HERE */
       return {
         ...state,
         ...payload,

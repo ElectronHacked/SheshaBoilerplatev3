@@ -34,6 +34,7 @@ export function authReducer(
     case AuthActionEnums.ResetPasswordSuccess:
     case AuthActionEnums.ResetPasswordError:
     case AuthActionEnums.ToggleVerifyOtpModalVisibility:
+      /* NEW_ACTION_ENUM_GOES_HERE */
       //#endregion
       return {
         ...state,
