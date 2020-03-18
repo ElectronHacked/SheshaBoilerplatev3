@@ -107,6 +107,10 @@ module.exports = withConfig(
 
         return config;
       },
+      publicRuntimeConfig: {
+        // Will be available on both server and client
+        staticFolder: 'public/static',
+      },
     }
   )
 );
