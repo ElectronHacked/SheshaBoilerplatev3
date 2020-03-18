@@ -1,4 +1,4 @@
-require('./config/polyfills');
+require('./src/config/polyfills');
 
 const withPlugins = require('next-compose-plugins');
 const withCSS = require('@zeit/next-css');
@@ -19,7 +19,7 @@ const withConfig = nextRuntimeDotenv({
 
 const theme = sassExtract.renderSync(
   {
-    file: './styles/_variables.scss',
+    file: './src/styles/_variables.scss',
   },
   {
     plugins: [

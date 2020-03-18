@@ -4,21 +4,21 @@
     [
       "module-resolver",
       {
-        "root": ["./"],
+        "root": ["./src"],
         "alias": {
-          "api": "./api",
-          "hocs": "./hocs",
-          "components": "./components",
-          "app-constants": "./app-constants",
-          "contexts": "./contexts",
-          "data": "./data",
-          "enums": "./enums",
-          "hooks": "./hooks",
-          "providers": "./providers",
-          "routes": "./routes",
-          "styles": "./styles",
-          "useApis": "./useApis",
-          "utils": "./utils"
+          "api": "./src/api",
+          "hocs": "./src/hocs",
+          "components": "./src/components",
+          "app-constsrc/ants": "./app-constants",
+          "contexts": "./src/contexts",
+          "data": "./src/data",
+          "enums": "./src/enums",
+          "hooks": "./src/hooks",
+          "providers": "./src/providers",
+          "routes": "./src/routes",
+          "styles": "./src/styles",
+          "useApis": "./src/useApis",
+          "utils": "./src/utils"
         }
       }
     ],

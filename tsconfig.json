@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "esnext",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "module": "esnext",
     "jsx": "preserve",
     "lib": ["dom", "es2017"],
@@ -34,6 +34,6 @@
     "**/*.ts",
     "**/*.tsx",
     "googleMap/regionPolygon.ts",
-    "components/global/fullcalendar/index.js"
+    "src/components/global/fullcalendar/index.js"
   ]
 }
