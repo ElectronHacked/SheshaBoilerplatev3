@@ -19,7 +19,7 @@ const withConfig = nextRuntimeDotenv({
 
 const theme = sassExtract.renderSync(
   {
-    file: './src/styles/_variables.scss',
+    file: './styles/_variables.scss',
   },
   {
     plugins: [

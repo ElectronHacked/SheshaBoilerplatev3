@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './styles.scss';
-// import { withAuth } from 'hocs';
 import { Collapse, Icon, Button } from 'antd';
 import { ExpandIconPosition } from 'antd/lib/collapse/Collapse';
 import { MainLayout } from 'components/layouts';
@@ -12,13 +11,6 @@ const { Panel } = Collapse;
 function callback(key) {
   console.log(key);
 }
-
-// {
-//   isInProgress: {
-//     fetchPosts: false
-//     fetchUsers: false
-//   }
-// }
 
 const text = `
   A dog is a type of domesticated animal.
@@ -47,14 +39,14 @@ export const Home = () => {
 
   return (
     <MainLayout title="Home" description="This is the home page">
-      <Button onClick={fetchPosts} type="primary" loading={isInProgress.fetchPosts}>
-        Fetch Posts
-      </Button>
-      <Button onClick={fetchPostsSuccess} type="danger" disabled={!isInProgress.fetchPosts}>
-        Cancel Fetch Posts Request
-      </Button>
-      <br />
       <div className="home-page">
+        <Button onClick={fetchPosts} type="primary" loading={isInProgress.fetchPosts}>
+          Fetch Posts
+        </Button>
+        <Button onClick={fetchPostsSuccess} type="danger" disabled={!isInProgress.fetchPosts}>
+          Cancel Fetch Posts Request
+        </Button>
+        <br />
         <Collapse
           defaultActiveKey={['1']}
           onChange={callback}

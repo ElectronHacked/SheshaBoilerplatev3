@@ -9,14 +9,14 @@
           "api": "./src/api",
           "hocs": "./src/hocs",
           "components": "./src/components",
-          "app-constsrc/ants": "./app-constants",
+          "app-constants": "./src/app-constants",
           "contexts": "./src/contexts",
           "data": "./src/data",
           "enums": "./src/enums",
           "hooks": "./src/hooks",
           "providers": "./src/providers",
           "routes": "./src/routes",
-          "styles": "./src/styles",
+          "styles": "./styles",
           "useApis": "./src/useApis",
           "utils": "./src/utils"
         }
