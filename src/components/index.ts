@@ -19,4 +19,4 @@ export { default as SettingGroup } from './pages/settings/settingGroup';
 export { default as SettingGroupItem } from './pages/settings/settingGroupItem';
 export { default as SettingGroupLink } from './pages/settings/settingGroupLink';
 export { default as SettingsBody } from './pages/settings/settingsBody';
-/* new-component-import-goes-here */
+/* NEW_COMPONENT_EXPORT_GOES_HERE */
