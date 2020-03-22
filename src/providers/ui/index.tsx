@@ -1,7 +1,7 @@
 import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { uiReducer } from './reducer';
 
-import { setControlsSizeAction } from './actions';
+import { setControlsSizeAction, /* NEW_ACTION_IMPORT_GOES_HERE */ } from './actions';
 import { ControlSize, UiActionsContext, UiStateContext, UI_CONTEXT_INITIAL_STATE } from './contexts';
 import { getFlagSetters } from '../utils/flagsSetters';
 

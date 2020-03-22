@@ -1,6 +1,6 @@
 import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { globalReducer } from './reducer';
-import { toggleHeaderVisibilityAction, fetchPostsAction, fetchPostsSuccessAction } from './actions';
+import { toggleHeaderVisibilityAction, fetchPostsAction, fetchPostsSuccessAction, /* NEW_ACTION_IMPORT_GOES_HERE */ } from './actions';
 import { GlobalActionsContext, defaultGlobalStateContext, GlobalStateContext } from './contexts';
 import { getFlagSetters } from 'providers/utils/flagsSetters';
 

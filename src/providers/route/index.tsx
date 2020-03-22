@@ -1,7 +1,7 @@
 import React, { FC, useReducer, useContext, PropsWithChildren } from 'react';
 import { routeReducer } from './reducer';
 import { RouteStateContext, RouteActionsContext } from 'providers/route/contexts';
-import { goingToRouteAction } from './actions';
+import { goingToRouteAction, /* NEW_ACTION_IMPORT_GOES_HERE */ } from './actions';
 import { getFlagSetters } from '../utils/flagsSetters';
 
 const RouteProvider: FC<PropsWithChildren<any>> = ({ children }) => {
