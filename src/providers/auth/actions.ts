@@ -1,7 +1,5 @@
 import { createAction } from 'redux-actions';
-
 import { IAuthStateContext } from './contexts';
-
 import { ILoginForm } from 'models';
 import {
   ResetPasswordSendOtpResponse,
@@ -11,7 +9,6 @@ import {
   AjaxResponseBase,
 } from 'api/user';
 import { UserLoginInfoDto } from 'api/session';
-
 export enum AuthActionEnums {
   CheckAuthAction = 'CHECK_AUTH_ACTION',
   LoginUserRequest = 'LOGIN_USER_REQUEST',

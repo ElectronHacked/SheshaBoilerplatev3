@@ -1,0 +1,85 @@
+{
+  "name": "shesha-boilerplate-v3",
+  "components": [],
+  "enums": ["FlagsActionTypes", "HttpStatusCodes"],
+  "models": [
+    "IComment",
+    "ILoadable",
+    "IDispatchable",
+    "IItem",
+    "IToastData",
+    "ITokenData",
+    "IDesktopNotificationResult",
+    "IIMSEvent",
+    "ILoginPayload",
+    "IDesktopNotificationOptions",
+    "IDesktopNotificationOnClickAction",
+    "IAccessToken",
+    "IOverlayLoaderPayload",
+    "ICancelIncidentPayload",
+    "IDesktopNotificationAction",
+    "ILoginForm",
+    "ILoginInfo",
+    "IRoute",
+    "ICoords",
+    "IUserInfo",
+    "ILegend",
+    "ITableColumn",
+    "IQuickFilter",
+    "ISavedFilter",
+    "ICustomFilter",
+    "ICustomFilterOptions",
+    "IFormComponent",
+    "IForm",
+    "IDataTableConfiguration",
+    "IEntityConfiguration",
+    "IResultOf",
+    "IHttpResponseError",
+    "IHttpResponse",
+    "ITableFilter",
+    "INavLink",
+    "ISuccessResponse",
+    "IPasswordValidation",
+    "IFlagsState",
+    "IFlagsSetters"
+  ],
+  "hooks": [],
+  "hocs": ["withAuth", "withMemo"],
+  "contexts": [],
+  "providers": [
+    {
+      "name": "auth",
+      "actions": [
+        "checkAuthAction",
+        "loginUserAction",
+        "loginUserSuccessAction",
+        "loginUserErrorAction",
+        "logoutUserAction",
+        "logoutUserSuccessAction",
+        "logoutUserErrorAction",
+        "sendOtpAction",
+        "sendOtpSuccessAction",
+        "sendOtpErrorAction",
+        "verifyOtpAction",
+        "verifyOtpSuccessAction",
+        "verifyOtpErrorAction",
+        "resetPasswordAction",
+        "resetPasswordSuccessAction",
+        "resetPasswordErrorAction",
+        "toggleVerifyOtpModalVisibilityAction"
+      ]
+    },
+    {
+      "name": "global",
+      "actions": ["toggleHeaderVisibilityAction", "fetchPostsAction", "fetchPostsSuccessAction"]
+    },
+    {
+      "name": "route",
+      "actions": ["goingToRouteAction"]
+    },
+    {
+      "name": "ui",
+      "actions": ["setControlsSizeAction"]
+    }
+  ]
+}

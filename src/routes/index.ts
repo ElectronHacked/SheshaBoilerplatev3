@@ -33,31 +33,41 @@ export const DETAILS_VIEW_PAGE_URL = '/details';
 export const SCHEDULED_EVENTS_PAGE_URL = '/scheduled-events';
 
 export const USERS_INDEX_URL = '/users';
+
 export const USERS_PERMISSION = 'pages:persons';
 
 export const TEAMS_INDEX_URL = '/teams';
+
 export const TEAMS_PERMISSION = 'pages:teams';
 
 export const PROJECTS_INDEX_URL = '/projects';
 export const PROJECTS_PERMISSION = 'pages:projects';
 
 export const INSPECTION_ASSIGNMENTS_INDEX_URL = '/inspectionAssignments';
+
 export const INSPECTION_ASSIGNMENTS_PERMISSION = 'pages:inspectionAssignments';
+
 export const INSPECTION_ASSIGNMENTS_CREATE_PERMISSION = 'pages:inspectionAssignments:create';
 
 export const INSPECTIONS_INDEX_URL = '/inspections';
+
 export const INSPECTIONS_PERMISSION = 'pages:inspections';
 
 export const AREAS_INDEX_URL = '/areas';
+
 export const AREAS_PERMISSION = 'pages:areas';
 
 export const ROLES_INDEX_URL = '/roles';
+
 export const ROLES_PERMISSION = 'pages:shaRoles';
 
 export const SETTINGS_URL = '/settings/overview';
+
 export const APP_SETTINGS_PERMISSION = 'pages:applicationSettings';
 
 export const SPECIAL_REDIRECT_LINKS = [];
+
+/* NEW_PAGE_DECLARATION_GOES_HERE */
 
 export const appRoutes: INavLink[] = [
   {
@@ -109,4 +119,5 @@ export const appRoutes: INavLink[] = [
     linkTo: ROLES_INDEX_URL,
     permissionName: ROLES_PERMISSION,
   },
+  /* NEW_PAGE_LINK_GOES_HERE */
 ];
