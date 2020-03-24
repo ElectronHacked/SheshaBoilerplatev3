@@ -19,6 +19,7 @@ import {
   resetPasswordSuccessAction,
   resetPasswordErrorAction,
   toggleVerifyOtpModalVisibilityAction,
+  /* NEW_ACTION_IMPORT_GOES_HERE */
   // fetchUserInfoAction,
 } from './actions';
 import { ILoginForm, IHttpResponse, IAccessToken } from 'models';
