@@ -1,8 +1,6 @@
 import { IAccessToken, IPasswordValidation } from 'models';
-
 import { Subtract } from 'utility-types';
 import { ACCESS_TOKEN_NAME } from 'app-constants';
-import { LOGIN_PAGE_URL } from 'routes';
 
 // Fields to remove from the AuthContext
 interface IUnnecessaryTokenFields {
@@ -67,7 +65,6 @@ export const removeAccessToken = () => {
   try {
     localStorage.removeItem(ACCESS_TOKEN_NAME);
     localStorage.clear();
-    window.location.href = LOGIN_PAGE_URL;
     return true;
   } catch (error) {
     return false;
